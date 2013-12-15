@@ -6,11 +6,12 @@ class CreateBlogs < ActiveRecord::Migration
       ## Database authenticatable
       t.string :name,               null: false
       t.string :description,        null: false
-      t.string :keywords,           null: false, array: true
+      t.string :keywords,           null: false
       t.string :url,                null: false
       t.string :image_url,          null: false
       t.string :lang,               null: false
       t.string :host,               null: false
+      t.json :attrs,                null: false, default: '{}'
 
       t.timestamps
     end

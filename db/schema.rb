@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 4) do
+ActiveRecord::Schema.define(version: 5) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,28 +34,30 @@ ActiveRecord::Schema.define(version: 4) do
   add_index "authors", ["username"], name: "index_authors_on_username", unique: true, using: :btree
 
   create_table "blogs", force: true do |t|
-    t.string   "name",        null: false
-    t.string   "description", null: false
-    t.string   "keywords",    null: false, array: true
-    t.string   "url",         null: false
-    t.string   "image_url",   null: false
-    t.string   "lang",        null: false
-    t.string   "host",        null: false
+    t.string   "name",                     null: false
+    t.string   "description",              null: false
+    t.string   "keywords",                 null: false
+    t.string   "url",                      null: false
+    t.string   "image_url",                null: false
+    t.string   "lang",                     null: false
+    t.string   "host",                     null: false
+    t.json     "attrs",       default: {}, null: false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "author_id",   null: false
+    t.integer  "author_id",                null: false
   end
 
   add_index "blogs", ["author_id"], name: "index_blogs_on_author_id", using: :btree
   add_index "blogs", ["host"], name: "index_blogs_on_host", unique: true, using: :btree
 
   create_table "comments", force: true do |t|
-    t.integer  "post_id",    null: false
-    t.boolean  "visible",    null: false
-    t.string   "author",     null: false
+    t.integer  "post_id",                 null: false
+    t.boolean  "visible",                 null: false
+    t.string   "author",                  null: false
     t.string   "email"
     t.string   "url"
-    t.text     "content",    null: false
+    t.json     "attrs",      default: {}, null: false
+    t.text     "content",                 null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -63,17 +65,17 @@ ActiveRecord::Schema.define(version: 4) do
   add_index "comments", ["post_id"], name: "index_comments_on_post_id", using: :btree
 
   create_table "posts", force: true do |t|
-    t.string   "slug",                        null: false
-    t.string   "guid",                        null: false
-    t.boolean  "visible",                     null: false
-    t.integer  "blog_id",                     null: false
-    t.integer  "author_id",                   null: false
-    t.string   "subject",                     null: false
+    t.string   "slug",                          null: false
+    t.string   "guid",                          null: false
+    t.boolean  "visible",                       null: false
+    t.integer  "blog_id",                       null: false
+    t.integer  "author_id",                     null: false
+    t.string   "subject",                       null: false
     t.text     "excerpt"
-    t.text     "content",                     null: false
-    t.string   "format",     default: "html", null: false
-    t.json     "attributes", default: {},     null: false
-    t.datetime "published",                   null: false
+    t.text     "content",                       null: false
+    t.string   "format",       default: "html", null: false
+    t.json     "attrs",        default: {},     null: false
+    t.datetime "published_at",                  null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -81,5 +83,12 @@ ActiveRecord::Schema.define(version: 4) do
   add_index "posts", ["blog_id"], name: "index_posts_on_blog_id", using: :btree
   add_index "posts", ["guid"], name: "index_posts_on_guid", unique: true, using: :btree
   add_index "posts", ["slug"], name: "index_posts_on_slug", unique: true, using: :btree
+
+  create_table "tags", force: true do |t|
+    t.integer "post_id",  null: false
+    t.string  "tag_name", null: false
+  end
+
+  add_index "tags", ["post_id"], name: "index_tags_on_post_id", using: :btree
 
 end

@@ -11,6 +11,8 @@ class CreateComments < ActiveRecord::Migration
       t.string :email
       t.string :url
 
+      t.json :attrs, null: false, default: "{}"
+
       t.text :content, null: false
 
       t.timestamps

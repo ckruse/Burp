@@ -16,9 +16,9 @@ class CreatePosts < ActiveRecord::Migration
       t.text :content, null: false
       t.string :format, null: false, default: 'html'
 
-      t.json :attributes, null: false, default: '{}'
+      t.json :attrs, null: false, default: '{}'
 
-      t.timestamp :published, null: false
+      t.timestamp :published_at, null: false
 
       t.timestamps
     end
