@@ -1,5 +1,18 @@
 Burp::Application.routes.draw do
   devise_for :authors
+
+  get "/:year/:mon/:slug" => "posts#show", year: /\d{4}/, mon: /[a-z]{3}/
+  get "/:year/:mon/:slug" => "posts#update", year: /\d{4}/, mon: /[a-z]{3}/
+
+  get '/tags' => 'tags#index', as: :tags
+  get '/tags/:tag' => 'tags#show', as: :tag
+
+  root to: "posts#index"
+
+  get "admin" => "admin/admin#dashboard"
+  namespace :admin do
+  end
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -40,7 +53,7 @@ Burp::Application.routes.draw do
   #       get 'recent', on: :collection
   #     end
   #   end
-  
+
   # Example resource route with concerns:
   #   concern :toggleable do
   #     post 'toggle'

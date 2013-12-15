@@ -1,0 +1,34 @@
+<% index ||= false %><article>
+  <%= render 'post_header', p: p %>
+
+  <%= p.content.html_safe %>
+
+  <% if index %>
+  <details class="trenner" open><%= link_to p.comments.length.to_s + " comments", comments_url(p) %></a></details>
+  <% else %>
+  <section id="comments">
+    <% if @pingbacks and !@pingbacks.empty? then %>
+      <header><h3><%= if @pingbacks.length == 1 then 'One Pingback' else @pingbacks.length.to_s + " Pingbacks" end %></h3></header>
+      <ol id="pingbackslist">
+        <% @pingbacks.each do |p| %>
+          <li><a href="<%= p[:uri] %>"><%== p[:desc] %></a></li>
+        <% end %>
+      </ol>
+    <% end %>
+
+    <header>
+      <h3><%= p.comments.length %> comments</h3>
+      <details open>Comment Feed: <a href="TODO">RSS</a> / <a href="TODO">Atom</a></details>
+    </header>
+
+    <% p.comments.each do |c| %>
+      <%= render 'comment', c: c, p: p %>
+    <% end %>
+
+
+    <% if p.attrs['no_comments'].blank? %><%= render 'comment_form', p: p %><% end %>
+
+  </section>
+  <% end %>
+
+</article>

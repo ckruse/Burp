@@ -1,0 +1,8 @@
+<header>
+  <h2><%= link_to p.subject, post_url(p), title: "permanent link to this post" %></h2>
+  <details open>Published at <time pubdate datetime="<%= p.published_at.strftime("%Y-%m-%dT%H:%M:%SZ") %>"><%= l(p.published_at) %></time> by <a href="mailto:<%= p.author.email %>"><%= p.author.name %></a><% if(p.updated_at > p.published_at) %>, updated at <time datetime="<%= p.updated_at.strftime("%Y-%m-%dT%H:%M:%SZ") %>"><%= l(p.updated_at) %></time><% end %>
+    <% if p.tags %><br>Filed under: <%
+    tags = p.tags.sort { |a,b| a.tag_name <=> b.tag_name }
+    tags.each do |t| %><a href="TODO"><%= t.tag_name %></a><% if t != tags.last %>, <% end end end %></details>
+</header>
+<% if p.excerpt %><aside><%= p.excerpt.html_safe %></aside><% end %>

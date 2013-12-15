@@ -1,0 +1,9 @@
+<article id="comment-<%= c.id %>">
+  <header>
+    <img class="gravatar" src="<% if c.attrs.has_key?(:pavatar) %><%= c.attrs[:pavatar] %><% elsif c.attrs.has_key?(:gravatar) %>http://www.gravatar.com/avatar/<%= c.attrs[:gravatar] %>?s=80&amp;d=<%= image_path 'gravatar.jpg' %><% else %><%= image_path 'gravatar.jpg' %><% end %>" alt="Gravatar">
+      <h4><%= c.author %> wrote</h4>
+      <details>at <%= link_to comment_url(p, c), title: "permanent link to this comment" do %><time pubdate datetime="<%= c.created_at.strftime("%Y-%m-%dT%H:%M:%SZ") %>"><%= l(c.created_at) %></time><% end %></details>
+  </header>
+
+  <%= c.content.html_safe %>
+</article>
