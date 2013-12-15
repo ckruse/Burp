@@ -11,6 +11,8 @@ Burp::Application.routes.draw do
   get '/archive/:year' => 'archive#months', as: :archive_year
   get '/archive/:year/:month' => 'archive#posts', as: :archive_month
 
+  get '/feed' => 'posts#index', as: 'feed'
+
   root to: "posts#index"
 
   get "admin" => "admin/admin#dashboard"

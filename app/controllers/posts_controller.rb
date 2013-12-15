@@ -5,6 +5,14 @@ class PostsController < ApplicationController
     else
       @posts = Post.includes(:comments, :author, :tags, :blog).order(published_at: :desc, created_at: :desc, subject: :asc).limit(10)
     end
+
+    respond_to do |format|
+      format.html
+      format.rss
+      format.atom
+      format.json { render @posts }
+    end
+
   end
 
   def show

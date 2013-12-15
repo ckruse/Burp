@@ -15,8 +15,8 @@
 
     <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
 
-    <link rel="alternate" type="application/rss+xml" title="RSS" href="TODO">
-    <link rel="alternate" type="application/atom+xml" title="Atom" href="TODO">
+    <link rel="alternate" type="application/rss+xml" title="RSS" href="<%= feed_url(:rss) %>">
+    <link rel="alternate" type="application/atom+xml" title="Atom" href="<%=feed_url(:atom) %>">
 
     <meta name="description" content="<% if @post and not @post.excerpt.blank? %><%= @post.excerpt %><% else %><% if @blog %><%= @blog.description %><% else %>Who knows wayne?<% end %><% end %>">
     <meta name="keywords" content="<% if @post and @post.tags %><% @post.tags.each do |t| %><%= t.tag_name %>, <% end %><% end %><% if @blog %><% @blog.keywords %><% else %>wayne, ck, christian, kruse<% end %>">
