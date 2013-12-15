@@ -30,8 +30,13 @@ module ApplicationHelper
     post_url(p) + "#comment-" + c.id.to_s
   end
 
-  def archive_month_path(mon)
-    mon.strftime('/archive/%Y/%b').downcase
+  def archive_month_path(mon, y = nil)
+    if y.nil?
+      mon.strftime('/archive/%Y/%b').downcase
+    else
+      m = [nil, 'jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug', 'sep', 'oct', 'nov', 'dec'][mon.to_i]
+      "/archive/#{y}/#{m}"
+    end
   end
 
   def archive_month_url(mon)

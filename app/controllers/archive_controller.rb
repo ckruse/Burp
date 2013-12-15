@@ -2,6 +2,12 @@
 
 class ArchiveController < ApplicationController
   def years
+    if params[:month_year]
+      year, mon_num = params[:month_year].split('-', 2)
+      redirect_to archive_month_path(mon_num, year)
+      return
+    end
+
     @years = Post.select('EXTRACT(YEAR FROM created_at) AS year, COUNT(*) AS cnt').group('EXTRACT(YEAR FROM created_at)').order('year DESC')
     @years = @years.where('blog_id = ?', @blog.id) if @blog
 

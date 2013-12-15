@@ -2,6 +2,11 @@
 
 class TagsController < ApplicationController
   def index
+    if params[:tag]
+      redirect_to tag_path(params[:tag])
+      return
+    end
+
     @tags = Tag.select('LOWER(tag_name) AS tag_name, COUNT(*) AS cnt').joins('INNER JOIN posts ON tags.post_id = posts.id').group('LOWER(tag_name)').order('cnt DESC')
     @tags = @tags.where('blog_id = ?', @blog.id) if @blog
 

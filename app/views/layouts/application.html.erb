@@ -39,7 +39,7 @@
       <footer>
         <h3><%= image_tag "about.png", alt: "About This Site" %></h3>
         <p>This site is devoted to subjects <a href="http://kennst-du-wayne.de/">only Wayne cares about</a>.</p>
-        <p>This site is disfigured by <%= link_to @blog ? @blog.author.name : "Christian Kruse", "mailto:" + (@blog ? @blog.author.email : "cjk--remove-this@defunct.ch") %> with content. The software used is CKs <a href="http://github.com/ckruse/Burp">Burp</a>.</p>
+        <p><% if @blog %>This site is disfigured by <%= link_to @blog.author.name, "mailto:" + @blog.author.email %> with content. <% end %>The software used is CKs <a href="http://github.com/ckruse/Burp">Burp</a>.</p>
         <p><%= link_to "RSS", "TODO" %> / <%= link_to "Atom", "TODO" %></p>
       </footer>
 
@@ -60,7 +60,7 @@
         <h3><%= image_tag "archive.png", alt: "Archiv" %></h3>
 
         <h4><label for="month"><%= link_to 'Month', archive_path %></label></h4>
-        <form action="TODO" method="get">
+        <form action="<%= archive_path %>" method="get">
           <p><select id="month" name="month_year"><% @arc_months.each do |m| %>
             <option value="<%= m.arc_mon %>"><% d = Date.parse("#{m.arc_mon}-01") %><%= l(d, format: "%B %Y")  %></option>
             <% end %></select>
@@ -69,7 +69,7 @@
         </form>
 
         <h4><%= link_to "Tags", tags_path %></h4>
-        <form method="get" action="TODO">
+        <form method="get" action="<%= tags_path %>">
           <p><select id="tags" name="tag">
             <% @all_tags.each do |t| %><option value="<%= t.tag_name %>"><%= t.tag_name %></option><% end %>
           </select>
