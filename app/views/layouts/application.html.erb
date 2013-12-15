@@ -1,14 +1,91 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Burp</title>
-  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
-  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
+  <head>
+    <meta charset="utf-8">
+    <title><% if @post %><%= @post.subject %> - <% end %><% if @blog %><%= @blog.name %><% else %>Who knows Wayne?<% end %></title>
 
-<%= yield %>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <%= csrf_meta_tags %>
 
-</body>
+    <!--[if lt IE 9]><script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+
+    <%= stylesheet_link_tag    "application", media: "all",   "data-turbolinks-track" => true %>
+    <%= stylesheet_link_tag    "print",       media: "print", "data-turbolinks-track" => true %>
+
+    <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+
+    <link rel="alternate" type="application/rss+xml" title="RSS" href="TODO">
+    <link rel="alternate" type="application/atom+xml" title="Atom" href="TODO">
+
+    <meta name="description" content="<% if @post and not @post.excerpt.blank? %><%= @post.excerpt %><% else %><% if @blog %><%= @blog.description %><% else %>Who knows wayne?<% end %><% end %>">
+    <meta name="keywords" content="<% if @post and @post.tags %><% @post.tags.each do |t| %><%= t.tag_name %>, <% end %><% end %><% if @blog %><% @blog.keywords %><% else %>wayne, ck, christian, kruse<% end %>">
+  </head>
+  <body>
+    <nav id="sidebar"><a href="#menu">Jump to menu</a></nav>
+
+    <header>
+      <h1><a title="Back to start page" href="<%= root_url %>"><% if @blog then %><%= @blog.name %><% else %>Who knows Wayne?<% end %></a></h1>
+    </header>
+
+    <div id="main">
+      <%= yield %>
+    </div>
+
+  <nav id="menu">
+    <h2>Menu</h2>
+
+    <div id="container">
+      <footer>
+        <h3><%= image_tag "about.png", alt: "About This Site" %></h3>
+        <p>This site is devoted to subjects <a href="http://kennst-du-wayne.de/">only Wayne cares about</a>.</p>
+        <p>This site is disfigured by <%= link_to @blog ? @blog.author.name : "Christian Kruse", "mailto:" + (@blog ? @blog.author.email : "cjk--remove-this@defunct.ch") %> with content. The software used is CKs <a href="http://github.com/ckruse/Burp">Burp</a>.</p>
+        <p><%= link_to "RSS", "TODO" %> / <%= link_to "Atom", "TODO" %></p>
+      </footer>
+
+      <section id="last">
+        <h3><%= image_tag "last.png", alt: "Last Posts" %></h3>
+
+        <ul>
+          <% if @last_four.blank? %>
+            <li class="no-data">No posts, yet</li>
+          <% end %>
+          <% @last_four.each do |p| %>
+            <li><%= link_to p.subject, post_url(p) %><% unless p.comments.blank? %><%= link_to "(#{p.comments.length})", comments_url(p), class: "comments", title: "to the comments" %><% end %> <%= l(p.published_at.to_date) %></li>
+          <% end %>
+        </ul>
+      </section>
+
+      <section id="archives">
+        <h3><%= image_tag "archive.png", alt: "Archiv" %></h3>
+
+        <h4><label for="month">Month</label></h4>
+        <form action="TODO" method="get">
+          <p><select id="month" name="month_year"><% @arc_months.each do |m| %>
+            <option value="<%= m.arc_mon %>"><% d = Date.parse("#{m.arc_mon}-01") %><%= l(d, format: "%B %Y")  %></option>
+            <% end %></select>
+            <input class="menu-submit" type="image" src="<%= image_path "revolver.png" %>" title="los" alt="los" name="go-month">
+          </p>
+        </form>
+
+        <h4><%= link_to "Tags", "TODO" %></a></h4>
+        <form method="get" action="TODO">
+          <p><select id="tags" name="tag">
+            <% @all_tags.each do |t| %><option value="<%= t.tag_name %>"><%= t.tag_name %></option><% end %>
+          </select>
+          <input class="menu-submit" type="image" src="<%= image_path "revolver.png" %>" title="los" alt="Go"></p>
+        </form>
+
+        <h4>Search</h4>
+        <form method="get" action="TODO">
+          <p><input class="menu-search" type="text" name="s" value="">
+            <input class="menu-submit" type="image" src="<%= image_path "revolver.png" %>" title="Go" alt="suchen"></p>
+        </form>
+      </section>
+
+    </div>
+    <br class="clearfix">
+  </nav>
+
+  </body>
 </html>
