@@ -29,4 +29,14 @@ module ApplicationHelper
   def comment_url(p, c)
     post_url(p) + "#comment-" + c.id.to_s
   end
+
+  def archive_month_path(mon)
+    mon.strftime('/archive/%Y/%b').downcase
+  end
+
+  def archive_month_url(mon)
+    root_url + mon.strftime('/archive/%Y/%b').downcase
+  end
+
+
 end

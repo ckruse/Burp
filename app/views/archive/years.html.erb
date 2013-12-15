@@ -1,0 +1,5 @@
+<ol>
+  <% @years.each do |year| %>
+    <li><%= link_to year.year.to_i.to_s + ' (' + year.cnt.to_s + ')', archive_year_path(year.year.to_i.to_s) %></li>
+  <% end %>
+</ol>

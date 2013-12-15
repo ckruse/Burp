@@ -1,0 +1,5 @@
+<ol>
+  <% @months.each do |mon| %>
+    <li><%= link_to l(mon.mon, format: '%B') + ' (' + mon.cnt.to_s + ')', archive_month_path(mon.mon) %></li>
+  <% end %>
+</ol>

@@ -7,6 +7,10 @@ Burp::Application.routes.draw do
   get '/tags' => 'tags#index', as: :tags
   get '/tags/:tag' => 'tags#show', as: :tag
 
+  get '/archive' => 'archive#years', as: :archive
+  get '/archive/:year' => 'archive#months', as: :archive_year
+  get '/archive/:year/:month' => 'archive#posts', as: :archive_month
+
   root to: "posts#index"
 
   get "admin" => "admin/admin#dashboard"
