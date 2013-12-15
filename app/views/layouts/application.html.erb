@@ -59,7 +59,7 @@
       <section id="archives">
         <h3><%= image_tag "archive.png", alt: "Archiv" %></h3>
 
-        <h4><label for="month">Month</label></h4>
+        <h4><label for="month"><%= link_to 'Month', archive_path %></label></h4>
         <form action="TODO" method="get">
           <p><select id="month" name="month_year"><% @arc_months.each do |m| %>
             <option value="<%= m.arc_mon %>"><% d = Date.parse("#{m.arc_mon}-01") %><%= l(d, format: "%B %Y")  %></option>
@@ -68,7 +68,7 @@
           </p>
         </form>
 
-        <h4><%= link_to "Tags", "TODO" %></a></h4>
+        <h4><%= link_to "Tags", tags_path %></h4>
         <form method="get" action="TODO">
           <p><select id="tags" name="tag">
             <% @all_tags.each do |t| %><option value="<%= t.tag_name %>"><%= t.tag_name %></option><% end %>
