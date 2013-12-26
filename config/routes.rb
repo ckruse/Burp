@@ -1,5 +1,5 @@
 Burp::Application.routes.draw do
-  devise_for :authors
+  devise_for :authors, :path => "admin", path_names: { sign_in: 'login', sign_out: 'logout', password: 'password' }
 
   get "/:year/:mon/:slug" => "posts#show", year: /\d{4}/, mon: /[a-z]{3}/
   get "/:year/:mon/:slug" => "posts#update", year: /\d{4}/, mon: /[a-z]{3}/
