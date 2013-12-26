@@ -16,6 +16,7 @@ gem 'quiet_assets', group: :development
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
+gem 'anjlab-bootstrap-rails', require: 'bootstrap-rails'
 
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
