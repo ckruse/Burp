@@ -6,7 +6,7 @@ use Data::Dumper;
 use DBI;
 
 my $old_db = DBI->connect("dbi:Pg:dbname=burp", "ckruse", "");
-my $new_db = DBI->connect("dbi:Pg:dbname=berl", "ckruse", "");
+my $new_db = DBI->connect("dbi:Pg:dbname=burp_dev", "ckruse", "");
 
 my $user_map = {};
 my $blog_map = {};
@@ -20,7 +20,7 @@ $sth->execute;
 my $insert = $new_db->prepare("INSERT INTO authors (username, name, email, url) VALUES (?, ?, ?, ?)");
 
 while(my $row = $sth->fetchrow_hashref) {
-  $insert->execute($row->{username}, $row->{name}, $row->{email}, $row->{url});
+  $insert->execute($row->{username}, $row->{name}, $row->{email} || "", $row->{url});
   $user_map->{$row->{id}} = $new_db->selectrow_arrayref("SELECT MAX(id) FROM authors")->[0];
 }
 
@@ -50,23 +50,35 @@ while(my $row = $sth->fetchrow_hashref) {
 my $sth = $old_db->prepare("SELECT * FROM posts");
 $sth->execute();
 
-my $insert = $new_db->prepare("INSERT INTO posts (slug, guid, visible, author_id, blog_id, subject, excerpt, content, format, created, updated, published) VALUES (?, ?, ?, ?, ?, ?, ?, ?, 'html', ?, ?, ?)");
+my $insert = $new_db->prepare("INSERT INTO posts (slug, guid, visible, author_id, blog_id, subject, excerpt, content, format, created_at, updated_at, published_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?, 'html', ?, ?, ?)");
 
 while(my $row = $sth->fetchrow_hashref) {
   my ($year, $mon) = year_mon($row->{created});
-  $insert->execute($row->{uri_tag}, $blog_uri_map->{$row->{blog_id}} . $year . "/" . $mon . "/" . $row->{uri_tag}, $row->{visible}, $user_map->{$row->{author_id}}, $blog_map->{$row->{blog_id}}, $row->{subject}, $row->{excerpt}, $row->{content}, $row->{created}, $row->{updated}, $row->{published});
+  $insert->execute($year . "/" . $mon . "/" . $row->{uri_tag}, $blog_uri_map->{$row->{blog_id}} . $year . "/" . $mon . "/" . $row->{uri_tag}, $row->{visible}, $user_map->{$row->{author_id}}, $blog_map->{$row->{blog_id}}, $row->{subject}, $row->{excerpt}, $row->{content}, $row->{created}, $row->{updated}, $row->{published});
   $posts_map->{$row->{id}} = $new_db->selectrow_arrayref("SELECT MAX(id) FROM posts")->[0];
 }
 
 my $sth = $old_db->prepare("SELECT * FROM comments");
 $sth->execute();
 
-my $insert = $new_db->prepare("INSERT INTO comments (post_id, visible, author, email, url, content, unique_id, created) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+my $insert = $new_db->prepare("INSERT INTO comments (post_id, visible, author, email, url, content, created_at, updated_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
 
 while(my $row = $sth->fetchrow_hashref) {
-  $insert->execute($posts_map->{$row->{post_id}}, $row->{visible}, $row->{author}, $row->{email}, $row->{url}, $row->{content}, $row->{unique_id}, $row->{created});
+  $insert->execute($posts_map->{$row->{post_id}}, $row->{visible}, $row->{author}, $row->{email}, $row->{url}, $row->{content}, $row->{created}, $row->{created});
 }
 
+
+$sth = $old_db->prepare("SELECT * FROM tags");
+$sth->execute();
+
+my $insert = $new_db->prepare("INSERT INTO tags (post_id, tag_name) VALUES (?, ?)");
+
+while(my $row = $sth->fetchrow_hashref) {
+  $insert->execute($posts_map->{$row->{post_id}}, $row->{tag});
+}
+
+
+$new_db->prepare("UPDATE tags SET tag_name = LOWER(tag_name)")->execute;
 
 sub year_mon($) {
   my $d = shift;
