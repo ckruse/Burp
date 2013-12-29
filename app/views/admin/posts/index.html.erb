@@ -1,0 +1,13 @@
+<% content_for :title do %>Posts<% end %>
+
+  <h2>Posts</h2>
+
+  <div class="posts">
+    <article>
+      <% @posts.each do |p| %>
+        <%= render 'post_header', p: p %>
+      <% end %>
+    </article>
+  </div>
+
+  <%= will_paginate @posts, renderer: BootstrapPagination::Rails, next_label: '»', previous_label: '«' %>
