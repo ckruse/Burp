@@ -7,9 +7,10 @@ class Admin::AdminController < ApplicationController
   def dashboard
     if @blog
       @comments = Comment.
-        where(blog_id: @blog.id).
+        joins('INNER JOIN posts ON posts.id = post_id').
+        where('posts.blog_id = ?', @blog.id).
         limit(10).
-        order(:created_at)
+        order(created_at: :desc)
 
       @entries = Post.
         where(blog_id: @blog.id).

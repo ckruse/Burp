@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="shortcut icon" href="/favicon.png">
+
+    <title><% if @blog %><%= @blog.name %>: <% end %>admin interface<% if content_for?(:title) %>: <%= yield :title %><% end %></title>
+
+    <%= stylesheet_link_tag :admin %>
+
+    <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+    <%= javascript_include_tag "admin", "data-turbolinks-track" => true %>
+  </head>
+
+  <body>
+    <div class="navbar navbar-fixed-top navbar-inverse" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <%= link_to 'Burp', 'https:/github.com/ckruse/Burp', class: "navbar-brand" %>
+        </div>
+        <div class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li class="active"><%= link_to((@blog ? @blog.name : 'Burp') +  ' admin interface', admin_path) %></li>
+            <li><%= link_to 'Configuration', '' %></li>
+            <li><%= link_to 'Posts', '' %></li>
+            <li><%= link_to 'Comments', '' %></li>
+            <li><%= link_to 'Media', '' %></li>
+          </ul>
+        </div><!-- /.nav-collapse -->
+      </div><!-- /.container -->
+    </div><!-- /.navbar -->
+
+    <div class="container">
+
+      <div class="row row-offcanvas row-offcanvas-right">
+
+        <%= render 'layouts/admin_sidebar' %>
+
+        <div class="col-xs-12 col-sm-<%= @has_subnav ? 9 : 12 %>">
+
+          <%= yield %>
+
+        </div><!--/span-->
+      </div><!--/row-->
+    </div><!--/.container-->
+
+  </body>
+</html>

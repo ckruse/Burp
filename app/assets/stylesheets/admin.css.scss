@@ -1,5 +1,14 @@
 // -*- coding: utf-8 -*-
 
-@import "twitter/bootstrap";
+@import "bootstrap";
+
+body {
+  padding-top: 70px;
+}
+
+article.comment {
+  header img { display:block; }
+  h4, details { display:inline; }
+}
 
 // eof
