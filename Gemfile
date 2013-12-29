@@ -1,13 +1,13 @@
 source 'https://rubygems.org'
 
-gem 'rails', '~> 4.0.0'
+gem 'rails', '~> 4.0'
 
 gem 'pg'
 gem 'devise'
 
-gem 'sass-rails', '~> 4.0.0'
+gem 'sass-rails', '~> 4.0'
 gem 'uglifier', '>= 1.3.0'
-gem 'coffee-rails', '~> 4.0.0'
+gem 'coffee-rails', '~> 4.0'
 
 gem 'quiet_assets', group: :development
 
@@ -16,7 +16,7 @@ gem 'therubyracer', platforms: :ruby
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
-gem 'anjlab-bootstrap-rails', require: 'bootstrap-rails'
+gem 'bootstrap-sass', '~> 3.0.3.0'
 
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
