@@ -7,7 +7,9 @@ body {
 }
 
 article.comment {
-  header img { display:block; }
+  margin-bottom:1em;
+
+  img { padding-bottom:1em; }
   h4, details { display:inline; }
 }
 

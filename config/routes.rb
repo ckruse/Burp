@@ -15,8 +15,13 @@ Burp::Application.routes.draw do
 
   root to: "posts#index"
 
-  get "admin" => "admin/admin#dashboard"
+  get 'admin', to: redirect('/admin/comments')
   namespace :admin do
+    resources :comments
+
+    post '/comments/batch_action' => 'comments#batch_action', as: :batch_action
+    post '/comments/:id/hidden' => 'comments#hidden', as: :comment_hidden
+    post '/comments/:id/visible' => 'comments#visible', as: :comment_visible
   end
 
   # The priority is based upon order of creation: first created -> highest priority.
