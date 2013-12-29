@@ -5,20 +5,17 @@ class Admin::CommentsController < ApplicationController
   layout 'admin'
 
   def index
-    page = params[:p]
-    page = 0 if page.nil? or page < 0
-
     if @blog
       @comments = Comment.
         joins('INNER JOIN posts ON posts.id = post_id').
         where('posts.blog_id = ?', @blog.id).
         includes(post: :blog).
-        limit(10).
+        paginate(page: params[:page], per_page: 10).
         order(created_at: :desc)
     else
       @comments = Comment.
-        offset(page * 10).
-        limit(10).
+        includes(post: :blog).
+        paginate(page: params[:page], per_page: 10).
         order(created_at: :desc)
     end
 
