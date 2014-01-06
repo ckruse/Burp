@@ -1,6 +1,8 @@
 /* -*- coding: utf-8 -*- */
 
 //= require bootstrap
+//= require jquery.elastic.source.js
+//= require urlify.js
 
 dashboard = {
   deleteComment: function(obj) {

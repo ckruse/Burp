@@ -1,0 +1,72 @@
+  <% if @post.errors.any? %>
+    <div id="error_explanation">
+      <h4><% t('admin.posts.error_message', errors_count: pluralize(@post.errors.count, t("global.error"), t('global.errors'))) %>:</h4>
+
+      <ul>
+      <% @post.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<div class="form-group">
+  <%= f.label :subject, class: 'control-label' %>
+  <%= f.text_field :subject, class: 'form-control' %>
+</div>
+
+<div class="form-group">
+  <%= f.label :slug, class: 'control-label' %>
+  <%= f.text_field :slug, class: 'form-control' %>
+</div>
+
+<div class="form-group">
+  <label class="control-label" for="tags">Tags (comma separated list)</label>
+  <%= text_field_tag 'tags', (@post.tags.map {|t| t.tag_name}).join(', '), class: 'form-control' %>
+</div>
+
+<div class="checkbox">
+  <%= f.label :visible, class: 'control-label' %>
+  <%= f.check_box :visible %>
+</div>
+
+<div class="form-group">
+  <%= f.label :excerpt, class: 'control-label' %>
+  <%= f.text_area :excerpt, class: 'form-control' %>
+</div>
+
+<div class="row">
+  <div class="form-group col-md-6">
+    <%= f.label :content, class: 'control-label' %>
+    <%= f.text_area :content, class: 'form-control' %>
+  </div>
+
+  <div class="col-md-6">
+    <label class="control-label">Preview</label>
+    <div id="preview"></div>
+  </div>
+</div>
+
+
+<script>
+ var tm;
+ $("#post_content").elastic();
+
+ $("#post_content").on('keyup', function() {
+   if(tm) {
+     window.clearTimeout(tm);
+   }
+   tm = window.setTimeout(function() {
+     var html = $("#preview").html($("#post_content").val());
+     SyntaxHighlighter.all();
+   }, 800);
+ });
+
+ $("#post_subject").on('change', function() {
+   var val = $(this).val();
+   if($("#post_slug").val() == "") {
+     $("#post_slug").val(URLify(val, val.length));
+   }
+ });
+
+</script>

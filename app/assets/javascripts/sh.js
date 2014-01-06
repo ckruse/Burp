@@ -1019,7 +1019,7 @@ SyntaxHighlighter.brushes.Lisp = function(){
 }
 
 SyntaxHighlighter.brushes.Lisp.prototype = new SyntaxHighlighter.Highlighter();
-SyntaxHighlighter.brushes.Lisp.aliases   = ['lisp'];
+SyntaxHighlighter.brushes.Lisp.aliases   = ['lisp', 'elisp'];
 
 
 /**
@@ -1847,3 +1847,32 @@ SyntaxHighlighter.brushes.Lisp.aliases   = ['lisp'];
 	// CommonJS
 	typeof(exports) != 'undefined' ? exports.Brush = Brush : null;
 })();
+
+
+
+(function()
+{
+	// CommonJS
+	typeof(require) != 'undefined' ? SyntaxHighlighter = require('shCore').SyntaxHighlighter : null;
+
+	function Brush()
+	{
+		this.regexList = [
+ 			{ regex: SyntaxHighlighter.regexLib.singleLinePerlComments,	css: 'comments' },		// one line comments
+			{ regex: SyntaxHighlighter.regexLib.doubleQuotedString,		css: 'string' },		// double quoted strings
+			{ regex: SyntaxHighlighter.regexLib.singleQuotedString,		css: 'string' },		// single quoted strings
+      { regex: /(^|\n)\s*[a-zA-Z0-9]+/g, css: 'keyword'},
+			{ regex: /\b[A-Za-z0-9_.-]+\b/g,									css: 'constants' }		// constants
+			];
+	};
+
+	Brush.prototype	= new SyntaxHighlighter.Highlighter();
+	Brush.aliases	= ['conf'];
+
+	SyntaxHighlighter.brushes.Conf = Brush;
+
+	// CommonJS
+	typeof(exports) != 'undefined' ? exports.Brush = Brush : null;
+})();
+
+
