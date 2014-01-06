@@ -16,13 +16,8 @@ class CreateBlogs < ActiveRecord::Migration
       t.timestamps
     end
 
-    reversible do |dir|
-      dir.up { execute "ALTER TABLE blogs ADD COLUMN author_id INTEGER NOT NULL REFERENCES authors(id) ON DELETE CASCADE ON UPDATE CASCADE" }
-      dir.down { execute "ALTER TABLE blogs DROP COLUMN author_id" }
-    end
-
+    add_reference :blogs, :author, index: true, null: false
     add_index :blogs, :host, :unique => true
-    add_index :blogs, :author_id
   end
 end
 
