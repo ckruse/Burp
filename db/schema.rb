@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 5) do
+ActiveRecord::Schema.define(version: 6) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -63,6 +63,17 @@ ActiveRecord::Schema.define(version: 5) do
   end
 
   add_index "comments", ["post_id"], name: "index_comments_on_post_id", using: :btree
+
+  create_table "media", force: true do |t|
+    t.string  "name",       null: false
+    t.string  "media_type", null: false
+    t.string  "url",        null: false
+    t.string  "path",       null: false
+    t.integer "blog_id",    null: false
+  end
+
+  add_index "media", ["blog_id", "url"], name: "index_media_on_blog_id_and_url", unique: true, using: :btree
+  add_index "media", ["url"], name: "index_media_on_url", using: :btree
 
   create_table "posts", force: true do |t|
     t.string   "slug",                          null: false
