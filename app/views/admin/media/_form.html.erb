@@ -1,0 +1,21 @@
+  <% if @medium.errors.any? %>
+    <div id="error_explanation">
+      <h4><% t('admin.media.error_message', errors_count: pluralize(@medium.errors.count, t("global.error"), t('global.errors'))) %>:</h4>
+
+      <ul>
+      <% @medium.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<div class="form-group">
+  <%= f.label :name, class: 'control-label' %>
+  <%= f.text_field :name, class: 'form-control' %>
+</div>
+
+<div class="form-group">
+  <label class="control-label" for="file">Medium</label>
+  <%= f.file_field :file %>
+</div>

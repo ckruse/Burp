@@ -18,7 +18,8 @@ Burp::Application.routes.draw do
   get 'admin', to: redirect('/admin/comments')
   namespace :admin do
     resources :comments, except: [:new, :create]
-    resources :posts
+    resources :posts, except: :show
+    resources :media, except: [:edit, :update]
 
     post '/comments/batch_action' => 'comments#batch_action', as: :batch_action
     post '/comments/:id/hidden' => 'comments#hidden', as: :comment_hidden
