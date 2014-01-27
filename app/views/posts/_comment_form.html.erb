@@ -1,6 +1,6 @@
 <%= form_for @comment, url: post_url(p), id: "new-comment" do |f| %>
-  <h3>Your Comment</h3>
-  <p>You can use <a href="http://en.wikipedia.org/wiki/Markdown">MarkDown</a> to format your comment: *Word* for <em>italic</em>, **Word** for <strong>bold</strong>, images will get removed.<br>
+  <h3><%= t('global.your comment') %></h3>
+  <p><%= t('global.use markdown').html_safe %><br>
     <%= f.text_area :content, rows: 15, cols: 70 %>
   </p>
   <p id="metadata"><% if @captcha then %><input type="hidden" name="question" value="<%= @captcha[:num] %>"><% end %>
@@ -9,12 +9,12 @@
     <%= f.label :url %> <%= f.url_field :url %>
   </p>
 
-  <% if @captcha then %><p>Because of massive spam attacks you may only post if you can answer the following question: <label for="answer"><%= @captcha[:q] %></label><br><input type="text" name="answer" id="answer" value="<%= @captcha[:answer] %>"></p><% end %>
+  <% if @captcha then %><p><%= t('global.captcha') %> <label for="answer"><%= t('captchas.' + @captcha[:q]) %></label><br><input type="text" name="answer" id="answer" value="<%= @captcha[:answer] %>"></p><% end %>
 
   <p>
-    <input type="checkbox" name="cookiesave" id="cookie" value="yes"<%if @new_comment_cookiesave %> checked="checked"<%end%>> <label for="cookie">Save data in a cookie</label><br>
-    <input type="checkbox" name="preview" id="preview" value="yes"<% if @preview %> checked="checked"<% end %>> <label for="preview">Preview</label>
+    <input type="checkbox" name="cookiesave" id="cookie" value="yes"<%if @new_comment_cookiesave %> checked="checked"<%end%>> <label for="cookie"><%= t('global.save data in a cookie') %></label><br>
+    <input type="checkbox" name="preview" id="preview" value="yes"<% if @preview %> checked="checked"<% end %>> <label for="preview"><%= t('global.preview') %></label>
   </p>
 
-  <p><input type="submit" value="Save Comment" id="comment_form"></p>
+  <p><input type="submit" value="<%= t('global.save comment') %>" id="comment_form"></p>
 <% end %>

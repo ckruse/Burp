@@ -1,1 +1,1 @@
-<%= link_to 'New Post', new_admin_post_path, class: 'list-group-item' + ((action_name == 'new' or action_name == 'create') ? ' active' : '') %>
+<%= link_to t('admin.new post'), new_admin_post_path, class: 'list-group-item' + ((action_name == 'new' or action_name == 'create') ? ' active' : '') %>

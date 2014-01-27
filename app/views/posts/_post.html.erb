@@ -8,7 +8,7 @@
   <% else %>
   <section id="comments">
     <% if @pingbacks and !@pingbacks.empty? then %>
-      <header><h3><%= if @pingbacks.length == 1 then 'One Pingback' else @pingbacks.length.to_s + " Pingbacks" end %></h3></header>
+      <header><h3><%= pluralize(@pingbacks.length, t('global.pingbacks'), t("global.ingbacks")) %></h3></header>
       <ol id="pingbackslist">
         <% @pingbacks.each do |p| %>
           <li><a href="<%= p[:uri] %>"><%== p[:desc] %></a></li>
@@ -17,16 +17,15 @@
     <% end %>
 
     <header>
-      <h3><%= p.comments.length %> comments</h3>
-      <details open>Comment Feed: <a href="TODO">RSS</a> / <a href="TODO">Atom</a></details>
+      <h3><%= pluralize(p.comments.length, t('global.comment'), t('global.comments')) %></h3>
+      <details open><%= t('global.comment feed') %>: <%= link_to t('global.rss'), feed_url(:rss) %> / <%= link_to t('global.atom'), feed_url(:atom) %></details>
     </header>
 
     <% p.comments.each do |c| %>
       <%= render 'comment', c: c, p: p %>
     <% end %>
 
-
-    <% if p.attrs['no_comments'].blank? %><%= render 'comment_form', p: p %><% end %>
+    <% if p.attrs['comments'] != 'disabled' %><%= render 'comment_form', p: p %><% end %>
 
   </section>
   <% end %>

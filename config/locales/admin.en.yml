@@ -1,0 +1,23 @@
+en:
+  admin:
+    admin interface: Admin Interface
+    toggle navigation: toggle navigation
+    configuration: Configuration
+    posts: Posts
+    comments: Comments
+    media: Media
+    visible: visible
+    invisible: invisible
+    are you sure: Are you sure?
+    delete: Delete
+    edit: Edit
+    hide: Hide
+    show: Show
+    edit comment: Edit comment
+    save: Save
+    cancel: Cancel
+    new post: New Post
+    published at: Published at
+    updated at: updated at
+    filed under: Filed under
+

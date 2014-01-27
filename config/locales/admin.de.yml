@@ -1,0 +1,23 @@
+de:
+  admin:
+    admin interface: Admin-Oberfläche
+    toggle navigation: Navigation umschalten
+    configuration: Konfiguration
+    posts: Einträge
+    comments: Kommentare
+    media: Medien
+    visible: Sichtbar
+    invisible: Unsichtbar
+    are you sure: Sind Sie sicher?
+    delete: Löschen
+    edit: Bearbeiten
+    hide: Ausblenden
+    show: Anzeigen
+    edit comment: Kommentar bearbeiten
+    save: Speichern
+    cancel: Abbrechen
+    new post: Neuer Eintrag
+    published at: Veröffentlicht am
+    updated at: geändert am
+    filed under: Eingestellt unter
+

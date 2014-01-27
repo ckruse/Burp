@@ -1,6 +1,6 @@
-<% content_for :title do %>Edit comment<% end %>
+<% content_for :title do %><%= t('admin.edit comment') %><% end %>
 
-<h2>Edit comment</h2>
+<h2><%= t('admin.edit comment') %></h2>
 
 <%= form_for @comment, url: admin_comment_path(@comment), class: 'form-horizontal' do |f| %>
 
@@ -24,7 +24,7 @@
     <%= f.text_area :content, class: 'form-control' %>
   </div>
 
-  <%= f.submit 'Save', class: 'btn btn-primary' %>
-  <%= link_to 'Cancel', admin_comments_path, class: 'btn btn-default' %>
+  <%= f.submit t('admin.save'), class: 'btn btn-primary' %>
+  <%= link_to t('admin.cancel'), admin_comments_path, class: 'btn btn-default' %>
 
 <% end %>

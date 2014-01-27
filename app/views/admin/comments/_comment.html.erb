@@ -7,11 +7,11 @@
     <div class="container">
       <div class="row header">
         <div class="col-md-1">
-          <img class="gravatar" src="<% if c.attrs.has_key?(:pavatar) %><%= c.attrs[:pavatar] %><% elsif c.attrs.has_key?(:gravatar) %>http://www.gravatar.com/avatar/<%= c.attrs[:gravatar] %>?s=80&amp;d=<%= image_path 'gravatar.jpg' %><% else %><%= image_path 'gravatar.jpg' %><% end %>" alt="Gravatar">
+          <img class="gravatar" src="<% if c.attrs.has_key?(:pavatar) %><%= c.attrs[:pavatar] %><% elsif c.attrs.has_key?(:gravatar) %>http://www.gravatar.com/avatar/<%= c.attrs[:gravatar] %>?s=80&amp;d=<%= image_path 'gravatar.jpg' %><% else %><%= image_path 'gravatar.jpg' %><% end %>" alt="<%= t('global.avatar') %>">
         </div>
         <div class="col-md-9">
-          <h4><%= c.author %> wrote</h4>
-          <details>at <%= link_to comment_url(p, c), title: "permanent link to this comment" do %><time pubdate datetime="<%= c.created_at.strftime("%Y-%m-%dT%H:%M:%SZ") %>"><%= l(c.created_at) %></time><% end %> (<em><%= c.visible ? 'visible' : 'invisible' %></em>)</details>
+          <h4><%= c.author %> <%= t('global.wrote') %></h4>
+          <details><%= t('global.comments_at') %> <%= link_to comment_url(p, c) do %><time pubdate datetime="<%= c.created_at.strftime("%Y-%m-%dT%H:%M:%SZ") %>"><%= l(c.created_at) %></time><% end %> (<em><%= t('admin.' + (c.visible ? 'visible' : 'invisible')) %></em>)</details>
 
             <%= c.content.html_safe %>
         </div>
@@ -19,13 +19,13 @@
     </div>
 
     <p class="actions">
-      <%= link_to 'Delete', admin_comment_path(c), method: :delete, class: 'btn btn-default', data: {confirm: 'Are you sure?'} %>
-      <%= link_to 'Edit', edit_admin_comment_path(c), class: 'btn btn-default' %>
+      <%= link_to t('admin.delete'), admin_comment_path(c), method: :delete, class: 'btn btn-default', data: {confirm: t('admin.are you sure')} %>
+      <%= link_to t('admin.edit'), edit_admin_comment_path(c), class: 'btn btn-default' %>
 
       <% if c.visible %>
-        <%= link_to 'Hide', admin_comment_hidden_path(c), method: :post, class: 'btn btn-default' %>
+        <%= link_to t('admin.hide'), admin_comment_hidden_path(c), method: :post, class: 'btn btn-default' %>
       <% else %>
-        <%= link_to 'Show', admin_comment_visible_path(c), method: :post, class: 'btn btn-default' %>
+        <%= link_to t('admin.show'), admin_comment_visible_path(c), method: :post, class: 'btn btn-default' %>
       <% end %>
     </p>
   </div>

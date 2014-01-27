@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title><% if @post %><%= @post.subject %> - <% end %><% if @blog %><%= @blog.name %><% else %>Who knows Wayne?<% end %></title>
+    <title><% if content_for :title %><%= yield :title %> - <% end %><% if @blog %><%= @blog.name %><% else %><%= t('global.who_knows_wayne') %><% end %></title>
 
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -20,14 +20,12 @@
 
     <link rel="shortcut icon" href="/favicon.png">
 
-    <meta name="description" content="<% if @post and not @post.excerpt.blank? %><%= @post.excerpt %><% else %><% if @blog %><%= @blog.description %><% else %>Who knows wayne?<% end %><% end %>">
-    <meta name="keywords" content="<% if @post and @post.tags %><% @post.tags.each do |t| %><%= t.tag_name %>, <% end %><% end %><% if @blog %><% @blog.keywords %><% else %>wayne, ck, christian, kruse<% end %>">
-  </head>
-  <body>
-    <nav id="sidebar"><a href="#menu">Jump to menu</a></nav>
+    <meta name="description" content="<% if @post and not @post.excerpt.blank? %><%= @post.excerpt %><% else %><% if @blog %><%= @blog.description %><% else %><%= t('global.who_knows_wayne') %><% end %><% end %>">
+    <meta name="keywords" content="<% if content_for :keywords %><%= yield :keywords %> <% end %><% if @blog %><% @blog.keywords %><% else %>wayne, ck, christian, kruse<% end %>">
+    <nav id="sidebar"><a href="#menu"><%= t('global.jump to menu') %></a></nav>
 
     <header>
-      <h1><a title="Back to start page" href="<%= root_url %>"><% if @blog then %><%= @blog.name %><% else %>Who knows Wayne?<% end %></a></h1>
+      <h1><a title="<%= t('global.back to start page') %>" href="<%= root_url %>"><% if @blog then %><%= @blog.name %><% else %><%= t('global.who_knows_wayne') %><% end %></a></h1>
     </header>
 
     <div id="main">
@@ -35,53 +33,53 @@
     </div>
 
   <nav id="menu">
-    <h2>Menu</h2>
+    <h2><%= t('global.menu') %></h2>
 
     <div id="container">
       <footer>
-        <h3><%= image_tag "about.png", alt: "About This Site" %></h3>
-        <p>This site is devoted to subjects <a href="http://kennst-du-wayne.de/">only Wayne cares about</a>.</p>
-        <p><% if @blog %>This site is disfigured by <%= link_to @blog.author.name, "mailto:" + @blog.author.email %> with content. <% end %>The software used is CKs <a href="http://github.com/ckruse/Burp">Burp</a>.</p>
-        <p><%= link_to "RSS", "TODO" %> / <%= link_to "Atom", "TODO" %></p>
+        <h3><%= image_tag "about.png", alt: t('global.about this site') %></h3>
+        <p><%= t('global.subjects_for_wayne').html_safe %></p>
+        <p><% if @blog %><%= t('global.disfigured_by', email: link_to(@blog.author.name, "mailto:" + @blog.author.email)).html_safe %> <% end %><%= t('global.burp_used').html_safe %></p>
+        <p><%= link_to "RSS", feed_url(:rss) %> / <%= link_to "Atom", feed_url(:atom) %></p>
       </footer>
 
       <section id="last">
-        <h3><%= image_tag "last.png", alt: "Last Posts" %></h3>
+        <h3><%= image_tag "last.png", alt: t("global.last posts") %></h3>
 
         <ul>
           <% if @last_four.blank? %>
-            <li class="no-data">No posts, yet</li>
+            <li class="no-data"><%= t('global.no posts yet') %></li>
           <% end %>
           <% @last_four.each do |p| %>
-            <li><%= link_to p.subject, post_url(p) %><% unless p.comments.blank? %><%= link_to "(#{p.comments.length})", comments_url(p), class: "comments", title: "to the comments" %><% end %> <%= l(p.published_at.to_date) %></li>
+            <li><%= link_to p.subject, post_url(p) %><% unless p.comments.blank? %><%= link_to "(#{p.comments.length})", comments_url(p), class: "comments", title: t("global.to the comments") %><% end %> <%= l(p.published_at.to_date) %></li>
           <% end %>
         </ul>
       </section>
 
       <section id="archives">
-        <h3><%= image_tag "archive.png", alt: "Archiv" %></h3>
+        <h3><%= image_tag "archive.png", alt: t("global.archive") %></h3>
 
-        <h4><label for="month"><%= link_to 'Month', archive_path %></label></h4>
+        <h4><label for="month"><%= link_to t('global.month'), archive_path %></label></h4>
         <form action="<%= archive_path %>" method="get">
           <p><select id="month" name="month_year"><% @arc_months.each do |m| %>
             <option value="<%= m.arc_mon %>"><% d = Date.parse("#{m.arc_mon}-01") %><%= l(d, format: "%B %Y")  %></option>
             <% end %></select>
-            <input class="menu-submit" type="image" src="<%= image_path "revolver.png" %>" title="los" alt="los" name="go-month">
+            <input class="menu-submit" type="image" src="<%= image_path "revolver.png" %>" title="<%= t("global.go") %>" alt="<%= t("global.go") %>" name="go-month">
           </p>
         </form>
 
-        <h4><%= link_to "Tags", tags_path %></h4>
+        <h4><%= link_to t("global.tags"), tags_path %></h4>
         <form method="get" action="<%= tags_path %>">
           <p><select id="tags" name="tag">
             <% @all_tags.each do |t| %><option value="<%= t.tag_name %>"><%= t.tag_name %></option><% end %>
           </select>
-          <input class="menu-submit" type="image" src="<%= image_path "revolver.png" %>" title="los" alt="Go"></p>
+          <input class="menu-submit" type="image" src="<%= image_path "revolver.png" %>" title="<%= t("global.go") %>" alt="<%= t("global.go") %>"></p>
         </form>
 
-        <h4>Search</h4>
+        <h4><%= t("global.search") %></h4>
         <form method="get" action="TODO">
           <p><input class="menu-search" type="text" name="s" value="">
-            <input class="menu-submit" type="image" src="<%= image_path "revolver.png" %>" title="Go" alt="suchen"></p>
+            <input class="menu-submit" type="image" src="<%= image_path "revolver.png" %>" title="<%= t("global.search_go") %>" alt="<%= t("global.search_go") %>"></p>
         </form>
       </section>
 

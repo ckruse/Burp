@@ -1,0 +1,15 @@
+de:
+  activerecord:
+    models:
+
+    attributes:
+      comment:
+        author: Name
+        email: E-Mail
+        url: URL
+        content: Inhalt
+
+      author:
+        username: Benutzername
+        password: Passwort
+        remember_me: Eingeloggt bleiben

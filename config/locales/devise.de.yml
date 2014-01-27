@@ -1,0 +1,13 @@
+de:
+  devise_views:
+    hello: Hallo
+    someone has requested a link to change your password. you can do this through the link below: Jemand hat einen Link angefordert, um Ihr Passwort zurück zu setzen. Sie können dies tun, indem Sie den Link unten besuchen.
+    if you didnt request this please ignore this email: "Wenn sie dies nicht angefordert haben ignorieren Sie diese E-Mail bitte."
+    your password wont change until you access the link above and create a new one: "Ihr Passwort wird sich nicht ändern solange sie den Link oben nicht besuchen und ein neues erstellen."
+    change your password: Ändern Sie Ihr Passwort
+    new password: Neues Passwort
+    confirm new password: Passwort-Bestätigung
+    change my password: Ändere mein Passwort
+    forgot your password: Passwort vergessen?
+    send me reset password instructions: Passwort-Zurücksetzen-Instruktionen senden
+    sign in: Einloggen

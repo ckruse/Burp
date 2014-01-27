@@ -1,7 +1,7 @@
 <header>
   <h2><%= link_to p.subject, edit_admin_post_url(p) %></h2>
-  <details open>Published at <time pubdate datetime="<%= p.published_at.strftime("%Y-%m-%dT%H:%M:%SZ") %>"><%= l(p.published_at) %></time> by <a href="mailto:<%= p.author.email %>"><%= p.author.name %></a><% if(p.updated_at > p.published_at) %>, updated at <time datetime="<%= p.updated_at.strftime("%Y-%m-%dT%H:%M:%SZ") %>"><%= l(p.updated_at) %></time><% end %>
-    <% if p.tags %><br>Filed under: <%
+  <details open><%= t('admin.published at') %> <time pubdate datetime="<%= p.published_at.strftime("%Y-%m-%dT%H:%M:%SZ") %>"><%= l(p.published_at) %></time> <%= t('by') %> <%= link_to p.author.name, 'mailto:' + p.author.email %><% if(p.updated_at > p.published_at) %>, <%= t('admin.updated at') %> <time datetime="<%= p.updated_at.strftime("%Y-%m-%dT%H:%M:%SZ") %>"><%= l(p.updated_at) %></time><% end %>
+    <% if p.tags %><br><%= t('admin.filed under') %>: <%
     tags = p.tags.sort { |a,b| a.tag_name <=> b.tag_name }
-    tags.each do |t| %><a href="TODO"><%= t.tag_name %></a><% if t != tags.last %>, <% end end end %></details>
+    tags.each do |t| %><%= link_to t.tag_name, tag_path(t) %></a><% if t != tags.last %>, <% end end end %></details>
 </header>
