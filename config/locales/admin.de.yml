@@ -14,10 +14,21 @@ de:
     hide: Ausblenden
     show: Anzeigen
     edit comment: Kommentar bearbeiten
+    edit post: Eintrag „%{subject}” bearbeiten
     save: Speichern
     cancel: Abbrechen
     new post: Neuer Eintrag
     published at: Veröffentlicht am
     updated at: geändert am
     filed under: Eingestellt unter
+    preview: Vorschau
+    tags: Schlagworte
+    comma separated list: Komma-separierte Liste
+    new medium: Neues Medium
+    media: Medien
+    name: Name
+    url: URL
+    mime type: MIME-Typ
+    configuration: Configuration
+
 

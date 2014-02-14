@@ -13,3 +13,18 @@ de:
         username: Benutzername
         password: Passwort
         remember_me: Eingeloggt bleiben
+
+      post:
+        subject: Titel
+        slug: URL
+        visible: Sichtbar
+        excerpt: Zusammenfassung
+        content: Inhalt
+
+      blog:
+        description: Beschreibung
+        Keywords: Schlagworte
+        image_url: Bild-URL
+        lang: Sprache
+        url: URL
+        host: Host

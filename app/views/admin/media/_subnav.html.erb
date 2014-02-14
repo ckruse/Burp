@@ -1,1 +1,1 @@
-<%= link_to 'New Medium', new_admin_medium_path, class: 'list-group-item' + ((action_name == 'new' or action_name == 'create') ? ' active' : '') %>
+<%= link_to t('admin.new medium'), new_admin_medium_path, class: 'list-group-item' + ((action_name == 'new' or action_name == 'create') ? ' active' : '') %>

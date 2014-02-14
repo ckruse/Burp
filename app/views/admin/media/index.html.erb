@@ -1,10 +1,10 @@
-<h2>Media</h2>
+<h2><%= t('admin.media') %></h2>
 
 <table class="table table-condensed table-striped table-hover">
   <tr>
-    <th>Name</th>
-    <th>URL</th>
-    <th>MIME-Type</th>
+    <th><%= t('admin.name') %></th>
+    <th><%= t('admin.url') %></th>
+    <th><%= t('admin.mime type') %></th>
     <th> </th>
   </tr>
 
@@ -14,7 +14,7 @@
       <td><%= m.url %></td>
       <td><%= m.media_type %></td>
       <td>
-        <%= link_to '', admin_medium_path(m), method: :delete, data: {confirm: 'Are you sure?'}, class: 'glyphicon glyphicon-trash' %>
+        <%= link_to '', admin_medium_path(m), method: :delete, data: {confirm: t('admin.are you sure')}, class: 'glyphicon glyphicon-trash' %>
       </td>
     </tr>
   <% end %>

@@ -20,10 +20,12 @@ Burp::Application.routes.draw do
     resources :comments, except: [:new, :create]
     resources :posts, except: :show
     resources :media, except: [:edit, :update]
+    resources :blogs, except: :show
 
     post '/comments/batch_action' => 'comments#batch_action', as: :batch_action
     post '/comments/:id/hidden' => 'comments#hidden', as: :comment_hidden
     post '/comments/:id/visible' => 'comments#visible', as: :comment_visible
+
   end
 
   # The priority is based upon order of creation: first created -> highest priority.

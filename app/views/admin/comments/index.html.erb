@@ -1,5 +1,5 @@
-<% content_for :title do %>Comments<% end %>
-  <h2>Comments</h2>
+<% content_for :title do %><%= t('admin.comments') %><% end %>
+  <h2><%= t('admin.comments') %></h2>
 
   <div class="comments">
     <%= form_tag admin_batch_action_path, class: 'container' do %>
@@ -8,9 +8,9 @@
       <% end %>
 
       <p>
-        <%= submit_tag 'Delete', name: 'delete', class: 'btn btn-default', data: {confirm: 'Are you sure?'} %>
-        <%= submit_tag 'Show', name: 'show', class: 'btn btn-default' %>
-        <%= submit_tag 'Hide', name: 'hide', class: 'btn btn-default' %>
+        <%= submit_tag t('admin.delete'), name: 'delete', class: 'btn btn-default', data: {confirm: t("admin.are you sure")} %>
+        <%= submit_tag t('admin.show'), name: 'show', class: 'btn btn-default' %>
+        <%= submit_tag t('admin.hide'), name: 'hide', class: 'btn btn-default' %>
       </p>
     <% end %>
   </div>

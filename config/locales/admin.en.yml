@@ -14,10 +14,20 @@ en:
     hide: Hide
     show: Show
     edit comment: Edit comment
+    edit post: Edit post
     save: Save
     cancel: Cancel
     new post: New Post
     published at: Published at
     updated at: updated at
     filed under: Filed under
+    preview: Preview
+    tags: Tags
+    comma separated list: comma separated list
+    new medium: New Medium
+    media: Media
+    name: Name
+    url: URL
+    mime type: MIME type
+    configuration: Konfiguration
 
