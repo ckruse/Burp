@@ -20,8 +20,31 @@
 
 <div class="form-group">
   <%= f.label :lang, class: 'control-label' %>
-  <%= f.select :lang, options_for_select([["Deutsch", 'de'], ["English", 'en']]), class: 'form-control' %>
+  <%= f.select :lang, options_for_select([["Deutsch", 'de'], ["English", 'en']]), {}, class: 'form-control' %>
 </div>
+
+<div class="form-group">
+  <%= label_tag 'attrs[comments]', t('admin.comments'), class: 'control-label' %>
+
+  <label class="checkbox">
+    <%= radio_button_tag 'attrs[comments]', 'enabled', @blog.attrs['comments'].blank? || @blog.attrs['comments'] == 'enabled' %> <%= t('admin.enabled') %>
+  </label>
+  <label class="checkbox">
+    <%= radio_button_tag 'attrs[comments]', 'disabled', @blog.attrs['comments'] == 'disabled' %> <%= t('admin.disabled') %>
+  </label>
+</div>
+
+<div class="form-group">
+  <%= label_tag 'attrs[comments_moderated]', t('admin.comments moderated'), class: 'control-label' %>
+
+  <label class="checkbox">
+    <%= radio_button_tag 'attrs[comments_moderated]', 'yes', @blog.attrs['comments_moderated'].blank? || @blog.attrs['comments_moderated'] == 'yes' %> <%= t('admin.moderated') %>
+  </label>
+  <label class="checkbox">
+    <%= radio_button_tag 'attrs[comments_moderated]', 'no', @blog.attrs['comments_moderated'] == 'no' %> <%= t('admin.not moderated') %>
+  </label>
+</div>
+
 
 <% if current_author.admin? %>
 
@@ -34,6 +57,12 @@
 <div class="form-group">
   <%= f.label :host, class: 'control-label' %>
   <%= f.text_field :host, class: 'form-control' %>
+</div>
+
+
+<div class="form-group">
+  <%= f.label :author_id, class: 'control-label' %>
+  <%= f.collection_select :author_id, Author.order('name'), :id, :name, {}, class: 'form-control' %>
 </div>
 
 <% end %>

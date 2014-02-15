@@ -1,0 +1,2 @@
+<% raise StandardError  unless current_author.admin? %>
+<%= link_to t('admin.new blog'), new_admin_blog_path, class: 'list-group-item' + ((action_name == 'new' or action_name == 'create') ? ' active' : '') %>

@@ -2,7 +2,7 @@
 subnav = capture do
   begin %>
 <%= render 'subnav' %><% @has_subnav = true
-  rescue ActionView::MissingTemplate
+  rescue ActionView::MissingTemplate, StandardError
     @has_subnav = false
   end
 end

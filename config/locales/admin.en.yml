@@ -29,5 +29,36 @@ en:
     name: Name
     url: URL
     mime type: MIME type
-    configuration: Konfiguration
+    configuration: Configuration
+    disabled: disabled
+    enabled: enabled
+    comments moderated: moderated comments
+    moderated: moderated
+    not moderated: not moderated
+    blogs: Blogs
+    new blog: New Blog
+
+    posts:
+      created: The post has successfully been created.
+      updated: The post has successfully been updated.
+      deleted: The post has successfully been destroyed.
+
+    blogs:
+      created: The new blog has successfully been created.
+      updated: The blog has successfully been updated.
+      destroyed: The blog has successfully been destroyed.
+
+    comments:
+      Comment has successfully been updated: Comment has successfully been updated
+      Comments have successfully been deleted: Comments have successfully been deleted
+      Comments have successfully marked as invisible: Comments have successfully marked as invisible
+      Comments have successfully marked as visible: Comments have successfully marked as visible
+      Comment has successfully been maked as visible: Comment has successfully been maked as visible
+      Comment has successfully been maked as invisible: Comment has successfully been maked as invisible
+      Comment has successfully been deleted: Comment has successfully been deleted
+
+    media:
+      created: The medium has successfully been created.
+      deleted: The medium has successfully been destroyed.
+
 

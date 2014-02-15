@@ -65,7 +65,7 @@ class Admin::MediaController < ApplicationController
 
 
     if @medium.save
-      redirect_to admin_media_url, notice: I18n.t('admin.posts.created')
+      redirect_to admin_media_url, notice: I18n.t('admin.media.created')
     else
       File.unlink(@medium.full_path) if fd and File.exists?(@medium.full_path)
       render :new

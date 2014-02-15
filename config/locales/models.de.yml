@@ -23,7 +23,7 @@ de:
 
       blog:
         description: Beschreibung
-        Keywords: Schlagworte
+        keywords: Schlagworte
         image_url: Bild-URL
         lang: Sprache
         url: URL
