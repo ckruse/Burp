@@ -47,4 +47,15 @@ de:
     new comment for: Neuer Kommentar für
     successfully saved: Der Kommentar wurde erfolgreich gespeichert.
 
+  new_comment_mailer:
+    new_comment: 'Ein neuer Kommentar von %{author} wurde geschrieben'
+    hi: Hallo
+    new_comment_written: 'Ein neuer Kommentar wurde geschrieben:'
+    by: Von
+    email: E-Mail
+    url: URL
+    content: Inhalt
+    yours_sincerly: "Freundliche Grüße"
+
+
 

@@ -47,3 +47,13 @@ en:
     new comment for: New comment for
     successfully saved: Comment has successfully been saved.
 
+  new_comment_mailer:
+    new_comment: 'New comment has been posted by %{author}'
+    hi: Hi
+    new_comment_written: 'A new comment has been posted:'
+    by: By
+    email: eMail
+    url: URL
+    subject: Subject
+    content: Content
+    yours_sincerly: "Your's sincerly"

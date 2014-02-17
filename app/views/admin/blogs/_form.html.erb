@@ -45,6 +45,12 @@
   </label>
 </div>
 
+<div class="form-group">
+  <%= label_tag 'attrs[mail_notify]', t('admin.mail_notify'), class: 'control-label' %>
+
+  <%= text_field_tag 'attrs[mail_notify]', @blog.attrs['mail_notify'], class: 'form-control' %>
+</div>
+
 
 <% if current_author.admin? %>
 

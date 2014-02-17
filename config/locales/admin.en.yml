@@ -37,6 +37,7 @@ en:
     not moderated: not moderated
     blogs: Blogs
     new blog: New Blog
+    mail_notify: Notify by mail on new comments
 
     posts:
       created: The post has successfully been created.

@@ -37,6 +37,7 @@ de:
     not moderated: nicht moderiert
     blogs: Blogs
     new blog: Neues Weblog
+    mail_notify: Mail-Benachrichtigung bei neuem Kommentar
 
     posts_controller:
       created: Der Eintrag wurde erfolgreich erstellt.

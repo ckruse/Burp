@@ -38,7 +38,7 @@ class CommentsController < ApplicationController
 
     if params[:preview].blank? and @comment.save
       unless @post.blog.attrs['mail_notify'].blank?
-        # TODO: send mail notification
+        NewCommentMailer.new_comment(@post.blog.attrs['mail_notify'], @comment).deliver
       end
 
       redirect_to post_url(@post), notice: t('comments.successfully saved')
