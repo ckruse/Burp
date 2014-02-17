@@ -26,7 +26,8 @@ class TagsController < ApplicationController
   end
 
   def show
-    @posts = Post.where('id IN (SELECT post_id FROM tags WHERE LOWER(tag_name) = ?)', params[:tag]).order('updated_at DESC, created_at DESC')
+    @tag = params[:tag]
+    @posts = Post.where('id IN (SELECT post_id FROM tags WHERE LOWER(tag_name) = ?)', @tag).order('updated_at DESC, created_at DESC')
     @posts = @posts.where('blog_id = ?', @blog.id) if @blog
   end
 

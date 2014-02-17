@@ -77,8 +77,9 @@
         </form>
 
         <h4><%= t("global.search") %></h4>
-        <form method="get" action="TODO">
-          <p><input class="menu-search" type="text" name="s" value="">
+        <form method="get" action="https://www.google.de/search">
+          <p><input class="menu-search" type="text" name="as_q" value="">
+            <input type="hidden" name="as_sitesearch" value="<% if @blog %><%= @blog.url %><% else %>http://wer.kennt-wayne.de/<% end %>">
             <input class="menu-submit" type="image" src="<%= image_path "revolver.png" %>" title="<%= t("global.search_go") %>" alt="<%= t("global.search_go") %>"></p>
         </form>
       </section>

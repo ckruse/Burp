@@ -1,3 +1,4 @@
+<%= content_for :title do %><%= l(@date_time, format: '%B %Y') %><% end %>
 <% @posts.each do |p| %>
   <article>
     <%= render 'posts/post_header', p: p %>
