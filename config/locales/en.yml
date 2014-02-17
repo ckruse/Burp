@@ -41,4 +41,9 @@ en:
     comment feed: Comment Feed
     logout: Sign out
     years: Years
+    preview: Preview
+
+  comments:
+    new comment for: New comment for
+    successfully saved: Comment has successfully been saved.
 

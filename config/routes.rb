@@ -2,7 +2,9 @@ Burp::Application.routes.draw do
   devise_for :authors, :path => "admin", path_names: { sign_in: 'login', sign_out: 'logout', password: 'password' }
 
   get "/:year/:mon/:slug" => "posts#show", year: /\d{4}/, mon: /[a-z]{3}/
-  get "/:year/:mon/:slug" => "posts#update", year: /\d{4}/, mon: /[a-z]{3}/
+
+  post "/:year/:mon/:slug" => "comments#create", year: /\d{4}/, mon: /[a-z]{3}/
+  get "/:year/:mon/:slug/new" => "comments#new", year: /\d{4}/, mon: /[a-z]{3}/
 
   get '/tags' => 'tags#index', as: :tags
   get '/tags/:tag' => 'tags#show', as: :tag

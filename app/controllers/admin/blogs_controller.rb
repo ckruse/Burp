@@ -49,7 +49,7 @@ class Admin::BlogsController < ApplicationController
     end
 
     if @blog.save
-      redirect_to edit_admin_blog_url(@blog), notice: I18n.t('admin.blogs.created')
+      redirect_to edit_admin_blog_url(@blog), notice: I18n.t('admin.blogs_controller.created')
     else
       render :new
     end
@@ -68,7 +68,7 @@ class Admin::BlogsController < ApplicationController
     @blog.changed_attributes['attrs'] = true if changed
 
     if @blog.save
-      redirect_to edit_admin_blog_url(@blog), notice: I18n.t('admin.blogs.updated')
+      redirect_to edit_admin_blog_url(@blog), notice: I18n.t('admin.blogs_controller.updated')
     else
       render :edit
     end
@@ -84,7 +84,7 @@ class Admin::BlogsController < ApplicationController
     @blog = Blog.find params[:id] if @blog.blank?
     @blog.destroy
 
-    redirect_to admin_blogs_url, notice: I18n.t('admin.blogs.destroyed')
+    redirect_to admin_blogs_url, notice: I18n.t('admin.blogs_controller.destroyed')
   end
 
 end

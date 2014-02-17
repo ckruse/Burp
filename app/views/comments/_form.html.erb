@@ -1,0 +1,18 @@
+<%= form_for @comment, url: post_url(p), id: "new-comment" do |f| %>
+  <h3><%= t('global.your comment') %></h3>
+  <p><%= t('global.use markdown').html_safe %><br>
+    <%= f.text_area :content, rows: 15, cols: 70 %>
+  </p>
+  <p id="metadata">
+    <%= f.label :author %> <%= f.text_field :author, required: true %><br>
+    <%= f.label :email %> <%= f.email_field :email %><br>
+    <%= f.label :url %> <%= f.url_field :url %>
+  </p>
+
+  <p>
+    <input type="checkbox" name="cookiesave" id="cookie" value="yes"<%if cookies[:author] %> checked="checked"<%end%>> <label for="cookie"><%= t('global.save data in a cookie') %></label><br>
+    <input type="checkbox" name="preview" id="preview" value="yes"<% if @preview %> checked="checked"<% end %>> <label for="preview"><%= t('global.preview') %></label>
+  </p>
+
+  <p><input type="submit" value="<%= t('global.save comment') %>" id="comment_form"> <input type="submit" name="preview" value="<%= t('global.preview') %>"></p>
+<% end %>

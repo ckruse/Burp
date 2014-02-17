@@ -41,6 +41,10 @@ de:
     comment feed: Kommentar-Feed
     logout: Ausloggen
     years: Jahre
+    preview: Vorschau
 
+  comments:
+    new comment for: Neuer Kommentar für
+    successfully saved: Der Kommentar wurde erfolgreich gespeichert.
 
 

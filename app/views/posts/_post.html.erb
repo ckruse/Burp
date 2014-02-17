@@ -17,15 +17,15 @@
     <% end %>
 
     <header>
-      <h3><%= pluralize(p.comments.length, t('global.comment'), t('global.comments')) %></h3>
+      <h3><%= pluralize(p.comments.visibles.length, t('global.comment'), t('global.comments')) %></h3>
       <details open><%= t('global.comment feed') %>: <%= link_to t('global.rss'), feed_url(:rss) %> / <%= link_to t('global.atom'), feed_url(:atom) %></details>
     </header>
 
-    <% p.comments.each do |c| %>
-      <%= render 'comment', c: c, p: p %>
+    <% p.comments.visibles.each do |c| %>
+      <%= render 'comments/comment', c: c, p: p %>
     <% end %>
 
-    <% if p.attrs['comments'] != 'disabled' %><%= render 'comment_form', p: p %><% end %>
+    <% if p.attrs['comments'] != 'disabled' and p.blog.attrs['comments'] != 'disabled' %><%= render 'comments/form', p: p %><% end %>
 
   </section>
   <% end %>

@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 class PostsController < ApplicationController
   def index
     if @blog
@@ -26,12 +28,11 @@ class PostsController < ApplicationController
 
     @comment = Comment.new
 
-    if cookies[:burp]
-      author, email, url = cookies[:burp].split '----'
-
-      @comment.author ||= author
-      @comment.email  ||= email
-      @comment.url    ||= url
-    end
+    author, email, url = cookies[:author], cookies[:email], cookies[:url]
+    @comment.author ||= author
+    @comment.email ||= email
+    @comment.url ||= url
   end
 end
+
+# eof

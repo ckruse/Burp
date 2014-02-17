@@ -38,17 +38,17 @@ de:
     blogs: Blogs
     new blog: Neues Weblog
 
-    posts:
+    posts_controller:
       created: Der Eintrag wurde erfolgreich erstellt.
       updated: Der Eintrag wurde erfolgreich geändert.
       deleted: Der Eintrag wurde erfolgreich gelöscht.
 
-    blogs:
+    blogs_controller:
       created: Das Weblog wurde erfolgreich erstellt.
       updated: Das Weblog wurde erfolgreich geändert.
       destroyed: Das Weblog wurde erfolgreich gelöscht.
 
-    comments:
+    comments_controller:
       Comment has successfully been updated: Der Kommentar wurde erfolgreich geändert.
       Comments have successfully been deleted: Die Kommentare wurden erfolgreich gelöscht.
       Comments have successfully marked as invisible: Die Kommentare wurden erfolgreich als unsichtbar markiert.
@@ -57,7 +57,7 @@ de:
       Comment has successfully been maked as invisible: Der Kommentar wurde erfolgreich als unsichtbar markiert.
       Comment has successfully been deleted: Der Kommentar wurde erfolgreich gelöscht.
 
-    media:
+    media_controller:
       created: Das Medium wurde erfolgreich erstellt.
       deleted: Das Medium wurde erfolgreich gelöscht.
 

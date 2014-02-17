@@ -29,6 +29,12 @@
     </header>
 
     <div id="main">
+      <% flash.each do |name,msg| %>
+        <div class="alert-<%= name == :notice ? "success" : "error" %>">
+          <%= msg %>
+        </div>
+      <% end %>
+
       <%= yield %>
     </div>
 

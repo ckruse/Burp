@@ -32,7 +32,7 @@ class Admin::CommentsController < ApplicationController
 
     respond_to do |format|
       if @comment.update_attributes(params.require(:comment).permit(:author, :email, :url, :content))
-        format.html { redirect_to admin_comments_url, notice: t('admin.comments.Comment has successfully been updated') }
+        format.html { redirect_to admin_comments_url, notice: t('admin.comments_controller.Comment has successfully been updated') }
         format.json { head :no_content, status: :ok }
       else
         format.html { render action: :edit }
@@ -77,7 +77,7 @@ class Admin::CommentsController < ApplicationController
       notice = 'Comments have successfully been deleted'
     end
 
-    redirect_to admin_comments_url, notice: t('admin.comments.' + notice)
+    redirect_to admin_comments_url, notice: t('admin.comments_controller.' + notice)
   end
 
   def visible
@@ -88,7 +88,7 @@ class Admin::CommentsController < ApplicationController
     @comment.save
 
     respond_to do |format|
-      format.html { redirect_to admin_comments_url, notice: t('admin.comments.Comment has successfully been maked as visible') }
+      format.html { redirect_to admin_comments_url, notice: t('admin.comments_controller.Comment has successfully been maked as visible') }
       format.json { head :no_content, status: :ok }
     end
   end
@@ -101,7 +101,7 @@ class Admin::CommentsController < ApplicationController
     @comment.save
 
     respond_to do |format|
-      format.html { redirect_to admin_comments_url, notice: t('admin.comments.Comment has successfully been maked as invisible') }
+      format.html { redirect_to admin_comments_url, notice: t('admin.comments_controller.Comment has successfully been maked as invisible') }
       format.json { head :no_content, status: :ok }
     end
   end
@@ -113,7 +113,7 @@ class Admin::CommentsController < ApplicationController
     @comment.destroy
 
     respond_to do |format|
-      format.html { redirect_to admin_comments_url, notice: t('admin.comments.Comment has successfully been deleted') }
+      format.html { redirect_to admin_comments_url, notice: t('admin.comments_controller.Comment has successfully been deleted') }
       format.json { head :no_content, status: :ok }
     end
 

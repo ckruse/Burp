@@ -1,5 +1,5 @@
-<header>
-  <h2><%= link_to p.subject, post_url(p), title: t("global.permanent link to this post") %></h2>
+<% subject_add ||= nil %><header>
+  <h2><% if subject_add %><%= subject_add %> <% end %><%= link_to p.subject, post_url(p), title: t("global.permanent link to this post") %></h2>
   <details open><%= t('global.post_published_at') %> <time pubdate datetime="<%= p.published_at.strftime("%Y-%m-%dT%H:%M:%SZ") %>"><%= l(p.published_at) %></time> <%= t('global.by') %> <%= link_to p.author.name, "mailto:" + p.author.email %><% if(p.updated_at > p.published_at) %>, <%= t('global.updated at') %> <time datetime="<%= p.updated_at.strftime("%Y-%m-%dT%H:%M:%SZ") %>"><%= l(p.updated_at) %></time><% end %>
     <% if p.tags %><br><%= t('global.filed under') %>: <%
     tags = p.tags.sort { |a,b| a.tag_name <=> b.tag_name }

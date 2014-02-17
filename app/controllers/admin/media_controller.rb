@@ -65,7 +65,7 @@ class Admin::MediaController < ApplicationController
 
 
     if @medium.save
-      redirect_to admin_media_url, notice: I18n.t('admin.media.created')
+      redirect_to admin_media_url, notice: I18n.t('admin.media_controller.created')
     else
       File.unlink(@medium.full_path) if fd and File.exists?(@medium.full_path)
       render :new
@@ -76,7 +76,7 @@ class Admin::MediaController < ApplicationController
     @medium = Medium.find(params[:id])
     @medium.destroy
 
-    redirect_to admin_media_url, notice: I18n.t('admin.media.deleted')
+    redirect_to admin_media_url, notice: I18n.t('admin.media_controller.deleted')
   end
 end
 

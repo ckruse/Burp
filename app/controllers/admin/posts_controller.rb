@@ -65,7 +65,7 @@ class Admin::PostsController < ApplicationController
     end
 
     if saved
-      redirect_to edit_admin_post_url(@post), notice: I18n.t('admin.posts.created')
+      redirect_to edit_admin_post_url(@post), notice: I18n.t('admin.posts_controller.created')
     else
       @post.slug = @post.slug.gsub(/.*\//, '')
       render :new
@@ -100,7 +100,7 @@ class Admin::PostsController < ApplicationController
     end
 
     if saved
-      redirect_to edit_admin_post_url(@post), notice: I18n.t('admin.posts.updated')
+      redirect_to edit_admin_post_url(@post), notice: I18n.t('admin.posts_controller.updated')
     else
       @post.slug = @post.slug.gsub(/.*\//, '')
       render :edit
@@ -111,7 +111,7 @@ class Admin::PostsController < ApplicationController
     @post = Post.find(params[:id])
     @post.destroy
 
-    redirect_to admin_posts_url, notice: I18n.t('admin.posts.deleted')
+    redirect_to admin_posts_url, notice: I18n.t('admin.posts_controller.deleted')
   end
 end
 

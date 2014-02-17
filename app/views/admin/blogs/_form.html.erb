@@ -38,10 +38,10 @@
   <%= label_tag 'attrs[comments_moderated]', t('admin.comments moderated'), class: 'control-label' %>
 
   <label class="checkbox">
-    <%= radio_button_tag 'attrs[comments_moderated]', 'yes', @blog.attrs['comments_moderated'].blank? || @blog.attrs['comments_moderated'] == 'yes' %> <%= t('admin.moderated') %>
+    <%= radio_button_tag 'attrs[comments_moderated]', 'yes', @blog.attrs['comments_moderated'] == 'yes' %> <%= t('admin.moderated') %>
   </label>
   <label class="checkbox">
-    <%= radio_button_tag 'attrs[comments_moderated]', 'no', @blog.attrs['comments_moderated'] == 'no' %> <%= t('admin.not moderated') %>
+    <%= radio_button_tag 'attrs[comments_moderated]', 'no', @blog.attrs['comments_moderated'].blank? || @blog.attrs['comments_moderated'] == 'no' %> <%= t('admin.not moderated') %>
   </label>
 </div>
 
