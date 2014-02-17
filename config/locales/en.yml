@@ -42,6 +42,7 @@ en:
     logout: Sign out
     years: Years
     preview: Preview
+    post_published_at: Published at
 
   comments:
     new comment for: New comment for
