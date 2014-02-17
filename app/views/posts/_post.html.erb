@@ -18,7 +18,7 @@
 
     <header>
       <h3><%= pluralize(p.comments.visibles.length, t('global.comment'), t('global.comments')) %></h3>
-      <details open><%= t('global.comment feed') %>: <%= link_to t('global.rss'), feed_url(:rss) %> / <%= link_to t('global.atom'), feed_url(:atom) %></details>
+      <!-- details open><%# t('global.comment feed') %>: <%# link_to t('global.rss'), feed_url(:rss) %> / <%# link_to t('global.atom'), feed_url(:atom) %></details -->
     </header>
 
     <% p.comments.visibles.each do |c| %>
