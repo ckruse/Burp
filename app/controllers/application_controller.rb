@@ -14,6 +14,10 @@ class ApplicationController < ActionController::Base
   def load_blog
     host = request.host
     @blog = Blog.find_by_host host
+
+    if @blog
+      I18n.locale = @blog.lang || I18n.default_locale
+    end
   end
 
   def load_burp_std
