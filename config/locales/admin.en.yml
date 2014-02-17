@@ -39,17 +39,17 @@ en:
     new blog: New Blog
     mail_notify: Notify by mail on new comments
 
-    posts:
+    posts_controller:
       created: The post has successfully been created.
       updated: The post has successfully been updated.
       deleted: The post has successfully been destroyed.
 
-    blogs:
+    blogs_controller:
       created: The new blog has successfully been created.
       updated: The blog has successfully been updated.
       destroyed: The blog has successfully been destroyed.
 
-    comments:
+    comments_controller:
       Comment has successfully been updated: Comment has successfully been updated
       Comments have successfully been deleted: Comments have successfully been deleted
       Comments have successfully marked as invisible: Comments have successfully marked as invisible
@@ -58,7 +58,7 @@ en:
       Comment has successfully been maked as invisible: Comment has successfully been maked as invisible
       Comment has successfully been deleted: Comment has successfully been deleted
 
-    media:
+    media_controller:
       created: The medium has successfully been created.
       deleted: The medium has successfully been destroyed.
 
