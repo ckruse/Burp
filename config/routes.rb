@@ -17,6 +17,9 @@ Burp::Application.routes.draw do
 
   get '/media/:slug' => 'media#show', as: :medium
 
+  get '/rss-feed', to: redirect('/feed.rss')
+  get '/atom-feed', to: redirect('/feed.atom')
+
   root to: "posts#index"
 
   get 'admin', to: redirect('/admin/comments')
