@@ -21,7 +21,7 @@
       <!-- details open><%# t('global.comment feed') %>: <%# link_to t('global.rss'), feed_url(:rss) %> / <%# link_to t('global.atom'), feed_url(:atom) %></details -->
     </header>
 
-    <% p.comments.visibles.each do |c| %>
+    <% p.comments.visibles.order('created DESC').each do |c| %>
       <%= render 'comments/comment', c: c, p: p %>
     <% end %>
 
