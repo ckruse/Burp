@@ -38,7 +38,7 @@ class Admin::PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
 
-    tags = params[:tags].split(/\s+,\s+/)
+    tags = params[:tags].split(/\s*,\s*/)
     my_tags = []
 
     tags.each do |t|
