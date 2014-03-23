@@ -26,10 +26,6 @@ class PostsController < ApplicationController
       @post = Post.includes(:comments, :author, :tags).where(slug: id).order("comments.created_at, tags.tag_name").first!
     end
 
-    @validator_field, @validator_value = CommentsController.fields
-    cookies[:validator_field] = @validator_field
-    cookies[:validator_value] = @validator_value
-
     @comment = Comment.new
 
     author, email, url = cookies[:author], cookies[:email], cookies[:url]
