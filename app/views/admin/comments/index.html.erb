@@ -3,8 +3,8 @@
 
   <div class="comments">
     <%= form_tag admin_batch_action_path, class: 'container' do %>
-    <% @comments.each do |c| %>
-      <%= render 'comment', c: c, p: c.post %>
+      <% @comments.each do |c| %>
+        <%= render 'comment', c: c, p: c.post %>
       <% end %>
 
       <p>
