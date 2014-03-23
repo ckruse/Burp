@@ -46,6 +46,7 @@ class CommentsController < ApplicationController
 
     if Akismet.spam?(akismet_attributes, request)
       head status: 403
+      return
     end
 
     if params[:preview].blank? and @comment.save
