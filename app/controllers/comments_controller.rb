@@ -50,7 +50,7 @@ class CommentsController < ApplicationController
           new_comment(@post.blog.attrs['mail_notify'], @comment).deliver
       end
 
-      redirect_to post_url(@post), notice: t('comments.successfully saved')
+      redirect_to post_url(@post), notice: @post.blog.attrs['comments_moderated'] == 'yes' ? t('comments.successfully saved') : t('comments.successfully saved and moderated')
     else
       render :new
     end

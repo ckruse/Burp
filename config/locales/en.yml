@@ -47,6 +47,7 @@ en:
   comments:
     new comment for: New comment for
     successfully saved: Comment has successfully been saved.
+    successfully saved and moderated: Comment has successfully been saved and awaits moderation.
 
   new_comment_mailer:
     new_comment: 'New comment has been posted by %{author}'

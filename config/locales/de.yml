@@ -46,6 +46,7 @@ de:
   comments:
     new comment for: Neuer Kommentar für
     successfully saved: Der Kommentar wurde erfolgreich gespeichert.
+    successfully saved and moderated: Der Kommentar wurde erfolgreich gespeichert und befindet sich nun in der Moderations-Queue.
 
   new_comment_mailer:
     new_comment: 'Ein neuer Kommentar von %{author} wurde geschrieben'
