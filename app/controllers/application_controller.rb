@@ -12,6 +12,7 @@ class ApplicationController < ActionController::Base
   private
 
   def load_blog
+    Thread.current[:host] = request.host
     host = request.host
     @blog = Blog.find_by_host host
 
