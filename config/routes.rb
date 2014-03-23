@@ -32,6 +32,8 @@ Burp::Application.routes.draw do
     post '/comments/batch_action' => 'comments#batch_action', as: :batch_action
     post '/comments/:id/hidden' => 'comments#hidden', as: :comment_hidden
     post '/comments/:id/visible' => 'comments#visible', as: :comment_visible
+    post '/comments/:id/spam' => 'comments#spam', as: :comment_spam
+    post '/comments/:id/ham' => 'comments#ham', as: :comment_ham
 
   end
 

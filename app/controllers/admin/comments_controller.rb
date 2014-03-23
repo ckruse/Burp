@@ -75,6 +75,28 @@ class Admin::CommentsController < ApplicationController
       end
 
       notice = 'Comments have successfully been deleted'
+    elsif not params[:spam].nil?
+      @comments.each do |c|
+        next if @blog and c.post.blog_id != @blog.id
+        @comment = c
+
+        Akismet.submit_spam(akismet_attributes)
+        @comment.visible = false
+        @comment.save
+      end
+
+      notice = 'Comments have been submitted as spam'
+    elsif not params[:ham].nil?
+      @comments.each do |c|
+        next if @blog and c.post.blog_id != @blog.id
+        @comment = c
+
+        Akismet.submit_ham(akismet_attributes)
+        @comment.visible = true
+        @comment.save
+      end
+
+      notice = 'Comments have been submitted as ham'
     end
 
     redirect_to admin_comments_url, notice: t('admin.comments_controller.' + notice)
@@ -117,6 +139,45 @@ class Admin::CommentsController < ApplicationController
       format.json { head :no_content, status: :ok }
     end
 
+  end
+
+  def ham
+    @comment = Comment.find params[:id]
+    raise ActiveRecord::RecordNotFound if not @blog.blank? and @comment.post.blog_id != @blog.id
+
+    Akismet.submit_ham(akismet_attributes)
+    @comment.visible = false
+    @comment.save
+
+    respond_to do |format|
+      format.html { redirect_to admin_comments_url, notice: t('admin.comments_controller.Comment has been submitted as ham') }
+      format.json { head :no_content, status: :ok }
+    end
+  end
+
+  def ham
+    @comment = Comment.find params[:id]
+    raise ActiveRecord::RecordNotFound if not @blog.blank? and @comment.post.blog_id != @blog.id
+
+    Akismet.submit_spam(akismet_attributes)
+    @comment.visible = true
+    @comment.save
+
+    respond_to do |format|
+      format.html { redirect_to admin_comments_url, notice: t('admin.comments_controller.Comment has been submitted as spam') }
+      format.json { head :no_content, status: :ok }
+    end
+  end
+
+  private
+  def akismet_attributes
+    {
+      :comment_author       => @comment.author,
+      :comment_author_url   => @comment.url,
+      :comment_author_email => @comment.email,
+      :comment_content      => @comment.content,
+      :permalink            => post_url(@post)
+    }
   end
 
 end

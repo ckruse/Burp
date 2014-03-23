@@ -40,6 +40,8 @@ en:
     mail_notify: Notify by mail on new comments
     select all: Select all
     comments per site: Comments per site
+    spam: Spam
+    ham: Ham
 
     posts_controller:
       created: The post has successfully been created.
@@ -59,6 +61,10 @@ en:
       Comment has successfully been maked as visible: Comment has successfully been maked as visible
       Comment has successfully been maked as invisible: Comment has successfully been maked as invisible
       Comment has successfully been deleted: Comment has successfully been deleted
+      Comment has been submitted as ham: Comment has been submitted as ham.
+      Comment has been submitted as spam: Comment has been submitted as spam.
+      Comments have been submitted as ham: Comments have been submitted as ham.
+      Comments have been submitted as spam: Comments have been submitted as spam.
 
     media_controller:
       created: The medium has successfully been created.

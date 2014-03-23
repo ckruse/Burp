@@ -39,6 +39,8 @@ de:
     new blog: Neues Weblog
     mail_notify: Mail-Benachrichtigung bei neuem Kommentar
     select all: Alle selektieren
+    spam: Spam
+    ham: Ham
 
     posts_controller:
       created: Der Eintrag wurde erfolgreich erstellt.
@@ -58,6 +60,10 @@ de:
       Comment has successfully been maked as visible: Der Kommentar wurde erfolgreich als sichtbar markiert.
       Comment has successfully been maked as invisible: Der Kommentar wurde erfolgreich als unsichtbar markiert.
       Comment has successfully been deleted: Der Kommentar wurde erfolgreich gelöscht.
+      Comment has been submitted as ham: Der Kommentar wurde als Ham gemeldet.
+      Comment has been submitted as spam: Der Kommentar wurde als Spam gemeldet.
+      Comments have been submitted as ham: Die Kommentare wurden als Ham gemeldet.
+      Comments have been submitted as spam: Die Kommentare wurden als Spam gemeldet.
 
     media_controller:
       created: Das Medium wurde erfolgreich erstellt.
