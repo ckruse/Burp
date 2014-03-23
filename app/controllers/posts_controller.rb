@@ -3,9 +3,14 @@
 class PostsController < ApplicationController
   def index
     if @blog
-      @posts = Post.includes(:comments, :author, :tags, :blog).order(published_at: :desc, created_at: :desc, subject: :asc).limit(10).where(blog_id: @blog.id)
+      @posts = Post.includes(:comments, :author, :tags, :blog).
+        order(published_at: :desc, created_at: :desc, subject: :asc).
+        limit(10).
+        where(blog_id: @blog.id)
     else
-      @posts = Post.includes(:comments, :author, :tags, :blog).order(published_at: :desc, created_at: :desc, subject: :asc).limit(10)
+      @posts = Post.includes(:comments, :author, :tags, :blog).
+        order(published_at: :desc, created_at: :desc, subject: :asc).
+        limit(10)
     end
 
     respond_to do |format|
@@ -21,9 +26,13 @@ class PostsController < ApplicationController
     id = id_from_params
 
     if @blog
-      @post = Post.includes(:comments, :author, :tags).where(slug: id, blog_id: @blog.id).order("comments.created_at, tags.tag_name").first!
+      @post = Post.includes(:comments, :author, :tags).
+        where(slug: id, blog_id: @blog.id).
+        order("comments.created_at, tags.tag_name").first!
     else
-      @post = Post.includes(:comments, :author, :tags).where(slug: id).order("comments.created_at, tags.tag_name").first!
+      @post = Post.includes(:comments, :author, :tags).
+        where(slug: id).
+        order("comments.created_at, tags.tag_name").first!
     end
 
     @comment = Comment.new
