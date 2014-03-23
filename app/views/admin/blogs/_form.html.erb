@@ -32,9 +32,7 @@
   <label class="checkbox">
     <%= radio_button_tag 'attrs[comments]', 'disabled', @blog.attrs['comments'] == 'disabled' %> <%= t('admin.disabled') %>
   </label>
-</div>
 
-<div class="form-group">
   <%= label_tag 'attrs[comments_moderated]', t('admin.comments moderated'), class: 'control-label' %>
 
   <label class="checkbox">
@@ -43,6 +41,9 @@
   <label class="checkbox">
     <%= radio_button_tag 'attrs[comments_moderated]', 'no', @blog.attrs['comments_moderated'].blank? || @blog.attrs['comments_moderated'] == 'no' %> <%= t('admin.not moderated') %>
   </label>
+
+  <%= label_tag 'attrs[comments_per_site]', t('admin.comments per site'), class: 'control-label' %>
+  <%= text_field_tag 'attrs[comments_per_site]', @blog.attrs['comments_per_site'] || '50', class: 'form-control' %>
 </div>
 
 <div class="form-group">

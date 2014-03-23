@@ -32,13 +32,14 @@ en:
     configuration: Configuration
     disabled: disabled
     enabled: enabled
-    comments moderated: moderated comments
+    comments moderated: Moderated comments
     moderated: moderated
     not moderated: not moderated
     blogs: Blogs
     new blog: New Blog
     mail_notify: Notify by mail on new comments
     select all: Select all
+    comments per site: Comments per site
 
     posts_controller:
       created: The post has successfully been created.

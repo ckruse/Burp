@@ -10,7 +10,7 @@ class Admin::CommentsController < ApplicationController
         joins('INNER JOIN posts ON posts.id = post_id').
         where('posts.blog_id = ?', @blog.id).
         includes(post: :blog).
-        paginate(page: params[:page], per_page: 50).
+        paginate(page: params[:page], per_page: @blog.attrs['comments_per_site'] || 50).
         order(created_at: :desc)
     else
       @comments = Comment.
