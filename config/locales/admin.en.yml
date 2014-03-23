@@ -38,6 +38,7 @@ en:
     blogs: Blogs
     new blog: New Blog
     mail_notify: Notify by mail on new comments
+    select all: Select all
 
     posts_controller:
       created: The post has successfully been created.

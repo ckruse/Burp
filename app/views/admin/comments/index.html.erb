@@ -8,6 +8,7 @@
       <% end %>
 
       <p>
+        <button id="comments-select-all" class="btn btn-default"><%= t('admin.select all') %></button>
         <%= submit_tag t('admin.delete'), name: 'delete', class: 'btn btn-default', data: {confirm: t("admin.are you sure")} %>
         <%= submit_tag t('admin.show'), name: 'show', class: 'btn btn-default' %>
         <%= submit_tag t('admin.hide'), name: 'hide', class: 'btn btn-default' %>

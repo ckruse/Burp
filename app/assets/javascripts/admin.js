@@ -4,30 +4,12 @@
 //= require jquery.elastic.source.js
 //= require urlify.js
 
-dashboard = {
-  deleteComment: function(obj) {
-  }
-};
-
 $(document).on('ready', function() {
-  $(".well.comments").on('click', function() {
-    var action = $(this).attr('data-js');
-
-    switch(action) {
-      case 'delete-comment':
-      dashboard.deleteComment(this);
-      break;
-
-      case 'hide-comment':
-      dashboard.hideComment(this);
-      break;
-
-      case 'show-comment':
-      dashboard.showComment(this);
-      break;
-    }
-
+  $("#comments-select-all").on('click', function(ev) {
+    ev.preventDefault();
+    $(".comment.row input[type=checkbox]").click();
   });
 });
+
 
 // eof

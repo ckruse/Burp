@@ -38,6 +38,7 @@ de:
     blogs: Blogs
     new blog: Neues Weblog
     mail_notify: Mail-Benachrichtigung bei neuem Kommentar
+    select all: Alle selektieren
 
     posts_controller:
       created: Der Eintrag wurde erfolgreich erstellt.
