@@ -44,6 +44,10 @@ class CommentsController < ApplicationController
       cookies[:url] = @comment.url
     end
 
+    if Akismet.spam?(akismet_attributes, request)
+      head status: 403
+    end
+
     if params[:preview].blank? and @comment.save
       unless @post.blog.attrs['mail_notify'].blank?
         NewCommentMailer.
@@ -56,6 +60,20 @@ class CommentsController < ApplicationController
     end
 
   end
+
+  private
+
+  private
+  def akismet_attributes
+    {
+      :comment_author       => @comment.author,
+      :comment_author_url   => @comment.url,
+      :comment_author_email => @comment.email,
+      :comment_content      => @comment.content,
+      :permalink            => post_url(@post)
+    }
+  end
+
 end
 
 # eof
