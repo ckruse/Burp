@@ -57,7 +57,9 @@ class Admin::MediaController < ApplicationController
       fd.write(file.read)
 
       @medium.media_type = file.content_type
-      @medium.url = file.original_filename.gsub(/.*[\\\/]/, '').parameterize
+      fname = file.original_filename.gsub(/.*[\\\/]/, '')
+      suffix = fname.gsub(/.*\,[a-z]{2,}/, '')
+      @medium.url = fname.parameterize + '.' + suffix
       @medium.blog_id = @blog.id
 
       fd.close
