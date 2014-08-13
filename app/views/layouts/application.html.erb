@@ -23,7 +23,9 @@
     <meta name="description" content="<% if @post and not @post.excerpt.blank? %><%= @post.excerpt %><% else %><% if @blog %><%= @blog.description %><% else %><%= t('global.who_knows_wayne') %><% end %><% end %>">
     <meta name="keywords" content="<% if content_for :keywords %><%= yield :keywords %> <% end %><% if @blog %><% @blog.keywords %><% else %>wayne, ck, christian, kruse<% end %>">
     <nav id="sidebar"><a href="#menu"><%= t('global.jump to menu') %></a></nav>
+  </head>
 
+  <body>
     <header>
       <h1><a title="<%= t('global.back to start page') %>" href="<%= root_url %>"><% if @blog then %><%= @blog.name %><% else %><%= t('global.who_knows_wayne') %><% end %></a></h1>
     </header>
