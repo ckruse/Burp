@@ -5,5 +5,5 @@
       <details><%= t('global.comments_at') %> <%= link_to comment_url(p, c), title: t('global.permanent_comment_link') do %><time pubdate datetime="<%= (c.created_at || DateTime.now).strftime("%Y-%m-%dT%H:%M:%SZ") %>"><%= l(c.created_at || DateTime.now) %></time><% end %></details>
   </header>
 
-  <%= c.content.html_safe %>
+  <%= c.markdown %>
 </article>

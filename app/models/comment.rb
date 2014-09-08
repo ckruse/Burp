@@ -10,6 +10,9 @@ class Comment < ActiveRecord::Base
 
   scope :visibles, ->{ where(visible: true) }
 
+  def markdown
+    Kramdown::Converter::CommentHtml.convert(Kramdown::Document.new(content).root)[0].html_safe
+  end
 end
 
 # eof

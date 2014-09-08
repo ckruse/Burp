@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '~> 4.0'
+gem 'rails', '~> 4.1'
 
 gem 'pg'
 gem 'devise'
@@ -32,6 +32,7 @@ gem 'rails-i18n'
 gem 'uuid'
 
 gem 'ruby-akismet', require: 'akismet'
+gem 'kramdown'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
