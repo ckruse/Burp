@@ -12,7 +12,7 @@ xml.rss version: "2.0", 'xmlns:atom' => "http://www.w3.org/2005/Atom" do
         xml.description post.content
         xml.pubDate post.created_at.to_s(:rfc822)
         xml.link post_url(post)
-        xml.guid post.guid
+        xml.guid post_url(post)
       end
     end
   end

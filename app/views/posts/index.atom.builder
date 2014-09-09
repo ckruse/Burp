@@ -3,7 +3,7 @@ atom_feed(id: @blog ? @blog.url : 'http://wer.kennt-wayne.de/') do |feed|
   feed.updated(@posts[0].updated_at) if @posts.length > 0
 
   @posts.each do |post|
-    feed.entry(post, id: post.guid) do |entry|
+    feed.entry(post, id: post_url(post)) do |entry|
       entry.title(post.subject)
       entry.content(post.content, type: 'html')
 
