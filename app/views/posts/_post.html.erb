@@ -1,7 +1,7 @@
 <% index ||= false %><article>
   <%= render 'post_header', p: p %>
 
-  <%= p.content.html_safe %>
+  <%= p.to_html %>
 
   <% if index %>
   <details class="trenner" open><%= link_to p.comments.length.to_s + " comments", comments_url(p) %></a></details>

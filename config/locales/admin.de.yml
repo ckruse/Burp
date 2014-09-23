@@ -41,6 +41,8 @@ de:
     select all: Alle selektieren
     spam: Spam
     ham: Ham
+    html: HTML
+    markdown: Markdown
 
     posts_controller:
       created: Der Eintrag wurde erfolgreich erstellt.

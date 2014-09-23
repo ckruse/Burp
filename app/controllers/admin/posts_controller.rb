@@ -32,7 +32,8 @@ class Admin::PostsController < ApplicationController
   end
 
   def post_params
-    params.require(:post).permit(:subject, :slug, :visible, :excerpt, :content)
+    params.require(:post).permit(:subject, :slug, :visible, :excerpt,
+                                 :content, :posting_format)
   end
 
   def create

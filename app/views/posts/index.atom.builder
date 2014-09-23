@@ -5,7 +5,7 @@ atom_feed(id: @blog ? @blog.url : 'http://wer.kennt-wayne.de/') do |feed|
   @posts.each do |post|
     feed.entry(post, id: post_url(post)) do |entry|
       entry.title(post.subject)
-      entry.content(post.content, type: 'html')
+      entry.content(post.to_html, type: 'html')
 
       entry.author do |author|
         author.name(post.author.name)

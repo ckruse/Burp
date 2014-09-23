@@ -42,6 +42,8 @@ en:
     comments per site: Comments per site
     spam: Spam
     ham: Ham
+    html: HTML
+    markdown: Markdown
 
     posts_controller:
       created: The post has successfully been created.

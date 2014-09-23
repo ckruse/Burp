@@ -20,6 +20,7 @@ de:
         visible: Sichtbar
         excerpt: Zusammenfassung
         content: Inhalt
+        posting_format: Posting-Format
 
       blog:
         description: Beschreibung

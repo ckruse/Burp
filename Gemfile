@@ -33,6 +33,7 @@ gem 'uuid'
 
 gem 'ruby-akismet', require: 'akismet'
 gem 'kramdown'
+gem 'coderay'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.

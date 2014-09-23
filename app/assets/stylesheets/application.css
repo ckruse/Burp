@@ -11,4 +11,5 @@
  *= require_self
  *= require screen.css.scss
  *= require sh.css
+ *= require syntax.css.scss
  */
