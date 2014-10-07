@@ -13,7 +13,8 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
-//= require sh.js
+//= require sh/shCore.js
+//= require_tree ./sh/
 
 $(document).ready(SyntaxHighlighter.all);
 
