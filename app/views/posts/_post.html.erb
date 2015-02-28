@@ -4,7 +4,7 @@
   <%= p.to_html %>
 
   <% if index %>
-  <details class="trenner" open><%= link_to p.comments.length.to_s + " comments", comments_url(p) %></a></details>
+  <details class="trenner" open><%= link_to p.comments.visibles.length.to_s + " comments", comments_url(p) %></a></details>
   <% else %>
   <section id="comments">
     <% if @pingbacks and !@pingbacks.empty? then %>

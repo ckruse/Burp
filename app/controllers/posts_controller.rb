@@ -13,6 +13,8 @@ class PostsController < ApplicationController
         limit(10)
     end
 
+    @posts = @posts.where(visible: true)
+
     respond_to do |format|
       format.html
       format.rss
