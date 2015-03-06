@@ -1,4 +1,4 @@
-<% index ||= false %><article>
+<% index ||= false %><article<% unless p.visible %> class="invisible"<% end %>>
   <%= render 'post_header', p: p %>
 
   <%= p.to_html %>

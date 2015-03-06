@@ -13,7 +13,7 @@ class PostsController < ApplicationController
         limit(10)
     end
 
-    @posts = @posts.where(visible: true)
+    @posts = @posts.where(visible: true) if current_author.blank?
 
     respond_to do |format|
       format.html
