@@ -1,2 +1,3 @@
 <% content_for :title do %><%= @post.subject %><% end %>
+<% content_for :keywords do %><%= (@post.tags.map {|t| t.tag_name}).join(', ') %><% end %>
 <%= render "post", p: @post %>

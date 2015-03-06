@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title><% if content_for :title %><%= yield :title %> - <% end %><% if @blog %><%= @blog.name %><% else %><%= t('global.who_knows_wayne') %><% end %></title>
+    <title><% if content_for?(:title) %><%= content_for(:title) %> - <% end %><% if @blog %><%= @blog.name %><% else %><%= t('global.who_knows_wayne') %><% end %></title>
 
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -21,7 +21,7 @@
     <link rel="shortcut icon" href="/favicon.png">
 
     <meta name="description" content="<% if @post and not @post.excerpt.blank? %><%= @post.excerpt %><% else %><% if @blog %><%= @blog.description %><% else %><%= t('global.who_knows_wayne') %><% end %><% end %>">
-    <meta name="keywords" content="<% if content_for :keywords %><%= yield :keywords %> <% end %><% if @blog %><% @blog.keywords %><% else %>wayne, ck, christian, kruse<% end %>">
+    <meta name="keywords" content="<% if content_for?(:keywords) %><%= content_for(:keywords) %> <% end %><% if @blog and not @blog.keywords.blank? %><%= @blog.keywords %><% else %>wayne, ck, christian, kruse<% end %>">
   </head>
 
   <body>
