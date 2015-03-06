@@ -11,14 +11,14 @@ class ApplicationController < ActionController::Base
   before_filter :load_blog, :load_burp_std
 
   def routing
-    if @blog
-      url = params[:a].to_s.gsub(/\/$/, '').gsub(/.*\//, '')
-      post = Post.where('blog_id = ? AND slug LIKE ?', @blog.id, '%' + url).first
+    url = params[:a].to_s.gsub(/\/$/, '').gsub(/.*\//, '')
+    post = Post.where('slug LIKE ?', '%' + url)
+    post = post.where(blog_id: @blog.id) if @blog
+    post = post.first
 
-      if post
-        redirect_to post_url(post), status: 301
-        return
-      end
+    if post
+      redirect_to post_url(post), status: 301
+      return
     end
 
     render file: "#{Rails.root}/public/404.html", status: 404, layout: false
