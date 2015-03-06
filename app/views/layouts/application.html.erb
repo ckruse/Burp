@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html prefix="og: http://ogp.me/ns#">
   <head>
     <meta charset="utf-8">
     <title><% if content_for?(:title) %><%= content_for(:title) %> - <% end %><% if @blog %><%= @blog.name %><% else %><%= t('global.who_knows_wayne') %><% end %></title>
@@ -22,6 +22,16 @@
 
     <meta name="description" content="<% if @post and not @post.excerpt.blank? %><%= @post.excerpt %><% else %><% if @blog %><%= @blog.description %><% else %><%= t('global.who_knows_wayne') %><% end %><% end %>">
     <meta name="keywords" content="<% if content_for?(:keywords) %><%= content_for(:keywords) %> <% end %><% if @blog and not @blog.keywords.blank? %><%= @blog.keywords %><% else %>wayne, ck, christian, kruse<% end %>">
+
+    <meta property="og:title" content="<% if content_for?(:title) %><%= content_for(:title) %> - <% end %><% if @blog %><%= @blog.name %><% else %><%= t('global.who_knows_wayne') %><% end %>">
+    <meta property="og:description" content="<% if @post and not @post.excerpt.blank? %><%= @post.excerpt %><% else %><% if @blog %><%= @blog.description %><% else %><%= t('global.who_knows_wayne') %><% end %><% end %>">
+    <meta property="og:type" content="<% if @post %>article<% else %>website<% end %>">
+    <% if @post %>
+      <meta property="article:published_time" content="<%= @post.created_at.iso8601 %>">
+      <meta property="article:modified_time" content="<%= @post.updated_at.iso8601 %>">
+      <meta property="article:author" content="<%= @post.author.name %>">
+      <meta property="article:tag" content="<% if content_for?(:keywords) %><%= content_for(:keywords) %> <% end %><% if @blog and not @blog.keywords.blank? %><% @blog.keywords %><% else %>wayne, ck, christian, kruse<% end %>">
+    <% end %>
   </head>
 
   <body>
