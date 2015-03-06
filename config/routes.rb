@@ -34,8 +34,9 @@ Burp::Application.routes.draw do
     post '/comments/:id/visible' => 'comments#visible', as: :comment_visible
     post '/comments/:id/spam' => 'comments#spam', as: :comment_spam
     post '/comments/:id/ham' => 'comments#ham', as: :comment_ham
-
   end
+
+  match '*a', to: 'application#routing', via: :get
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
