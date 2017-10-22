@@ -70,13 +70,27 @@ defmodule Burp.BlogTest do
 
     test "list_comments/0 returns all comments" do
       comment = %{
-        insert(:comment) | post: %Ecto.Association.NotLoaded{__field__: :post, __cardinality__: :one, __owner__: Comment}
+        insert(:comment)
+        | post: %Ecto.Association.NotLoaded{
+            __field__: :post,
+            __cardinality__: :one,
+            __owner__: Comment
+          }
       }
+
       assert Blog.list_comments() == [comment]
     end
 
     test "get_comment!/1 returns the comment with given id" do
-      comment = %{insert(:comment) | post: %Ecto.Association.NotLoaded{__field__: :post, __cardinality__: :one, __owner__: Comment}}
+      comment = %{
+        insert(:comment)
+        | post: %Ecto.Association.NotLoaded{
+            __field__: :post,
+            __cardinality__: :one,
+            __owner__: Comment
+          }
+      }
+
       assert Blog.get_comment!(comment.id) == comment
     end
 
@@ -95,8 +109,23 @@ defmodule Burp.BlogTest do
     end
 
     test "update_comment/2 with valid data updates the comment" do
-      comment = %{insert(:comment) | post: %Ecto.Association.NotLoaded{__field__: :post, __cardinality__: :one, __owner__: Comment}}
-      assert {:ok, comment} = Blog.update_comment(comment, %{author: "Leia Skywalker", content: "For the rebellion!", email: "leia@example.org", url: "https://aldebaran.planet"})
+      comment = %{
+        insert(:comment)
+        | post: %Ecto.Association.NotLoaded{
+            __field__: :post,
+            __cardinality__: :one,
+            __owner__: Comment
+          }
+      }
+
+      assert {:ok, comment} =
+               Blog.update_comment(comment, %{
+                 author: "Leia Skywalker",
+                 content: "For the rebellion!",
+                 email: "leia@example.org",
+                 url: "https://aldebaran.planet"
+               })
+
       assert %Comment{} = comment
       assert comment.author == "Leia Skywalker"
       assert comment.content == "For the rebellion!"
@@ -105,7 +134,15 @@ defmodule Burp.BlogTest do
     end
 
     test "update_comment/2 with invalid data returns error changeset" do
-      comment = %{insert(:comment) | post: %Ecto.Association.NotLoaded{__field__: :post, __cardinality__: :one, __owner__: Comment}}
+      comment = %{
+        insert(:comment)
+        | post: %Ecto.Association.NotLoaded{
+            __field__: :post,
+            __cardinality__: :one,
+            __owner__: Comment
+          }
+      }
+
       assert {:error, %Ecto.Changeset{}} = Blog.update_comment(comment, %{content: nil})
       assert comment == Blog.get_comment!(comment.id)
     end
@@ -126,12 +163,28 @@ defmodule Burp.BlogTest do
     alias Burp.Blog.Tag
 
     test "list_tags/0 returns all tags" do
-      tag = %{insert(:tag) | post: %Ecto.Association.NotLoaded{__field__: :post, __cardinality__: :one, __owner__: Tag}}
+      tag = %{
+        insert(:tag)
+        | post: %Ecto.Association.NotLoaded{
+            __field__: :post,
+            __cardinality__: :one,
+            __owner__: Tag
+          }
+      }
+
       assert Blog.list_tags() == [tag]
     end
 
     test "get_tag!/1 returns the tag with given id" do
-      tag = %{insert(:tag) | post: %Ecto.Association.NotLoaded{__field__: :post, __cardinality__: :one, __owner__: Tag}}
+      tag = %{
+        insert(:tag)
+        | post: %Ecto.Association.NotLoaded{
+            __field__: :post,
+            __cardinality__: :one,
+            __owner__: Tag
+          }
+      }
+
       assert Blog.get_tag!(tag.id) == tag
     end
 
@@ -147,14 +200,30 @@ defmodule Burp.BlogTest do
     end
 
     test "update_tag/2 with valid data updates the tag" do
-      tag = %{insert(:tag) | post: %Ecto.Association.NotLoaded{__field__: :post, __cardinality__: :one, __owner__: Tag}}
+      tag = %{
+        insert(:tag)
+        | post: %Ecto.Association.NotLoaded{
+            __field__: :post,
+            __cardinality__: :one,
+            __owner__: Tag
+          }
+      }
+
       assert {:ok, tag} = Blog.update_tag(tag, %{tag_name: "foo bar"})
       assert %Tag{} = tag
       assert tag.tag_name == "foo bar"
     end
 
     test "update_tag/2 with invalid data returns error changeset" do
-      tag = %{insert(:tag) | post: %Ecto.Association.NotLoaded{__field__: :post, __cardinality__: :one, __owner__: Tag}}
+      tag = %{
+        insert(:tag)
+        | post: %Ecto.Association.NotLoaded{
+            __field__: :post,
+            __cardinality__: :one,
+            __owner__: Tag
+          }
+      }
+
       assert {:error, %Ecto.Changeset{}} = Blog.update_tag(tag, %{tag_name: nil})
       assert tag == Blog.get_tag!(tag.id)
     end

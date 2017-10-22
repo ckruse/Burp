@@ -11,7 +11,7 @@ defmodule Burp.Application do
       # Start the Ecto repository
       supervisor(Burp.Repo, []),
       # Start the endpoint when the application starts
-      supervisor(BurpWeb.Endpoint, []),
+      supervisor(BurpWeb.Endpoint, [])
       # Start your own worker by calling: Burp.Worker.start_link(arg1, arg2, arg3)
       # worker(Burp.Worker, [arg1, arg2, arg3]),
     ]

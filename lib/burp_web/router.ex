@@ -2,21 +2,39 @@ defmodule BurpWeb.Router do
   use BurpWeb, :router
 
   pipeline :browser do
-    plug :accepts, ["html"]
-    plug :fetch_session
-    plug :fetch_flash
-    plug :protect_from_forgery
-    plug :put_secure_browser_headers
+    plug(:accepts, ["html"])
+    plug(:fetch_session)
+    plug(:fetch_flash)
+    plug(:protect_from_forgery)
+    plug(:put_secure_browser_headers)
+
+    plug(BurpWeb.Plug.CurrentUser)
+    plug(BurpWeb.Plug.CurrentBlog)
+  end
+
+  pipeline :require_login do
+    plug(BurpWeb.Plug.EnsureAuthenticated)
   end
 
   pipeline :api do
-    plug :accepts, ["json"]
+    plug(:accepts, ["json"])
   end
 
   scope "/", BurpWeb do
-    pipe_through :browser # Use the default browser stack
+    # Use the default browser stack
+    pipe_through(:browser)
 
-    get "/", PageController, :index
+    get("/login", SessionController, :new)
+    post("/login", SessionController, :create)
+    get("/logout", SessionController, :delete)
+
+    get("/", PageController, :index)
+  end
+
+  scope "/admin", as: :admin, alias: BurpWeb.Admin do
+    pipe_through([:browser, :require_login])
+
+    resources("/posts", PostController, except: [:show])
   end
 
   # Other scopes may use custom stacks.

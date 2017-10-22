@@ -1,0 +1,8 @@
+<div class="btn-group" role="group">
+  <%= link gettext("Posts"), to: admin_post_path(@conn, :index), class: "btn btn-secondary #{active_class(@conn, BurpWeb.Admin.PostController)}" %>
+
+  <% if @current_user.admin do %>
+    <%# link gettext("Users"), to: "", class: "btn btn-secondary #{active_class(@conn, BurpWeb.Admin.UserController)}" %>
+    <%# link gettext("Blogs"), to: "", class: "btn btn-secondary #{active_class(@conn, BurpWeb.Admin.BlogController)}" %>
+  <% end %>
+</div>

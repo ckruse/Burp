@@ -102,6 +102,47 @@ defmodule Burp.Meta do
     Author.changeset(author, %{})
   end
 
+  def login_author(%Author{} = author) do
+    Author.login_changeset(author, %{})
+  end
+
+  def authenticate_author(login, password, blog) do
+    author = get_author_by_username_or_email_and_blog(login, blog)
+
+    cond do
+      author && Comeonin.Bcrypt.checkpw(password, author.encrypted_password) ->
+        {:ok, author}
+
+      author ->
+        {:error, Author.login_changeset(author, %{"login" => login, "password" => password})}
+
+      true ->
+        # just waste some time for timing sidechannel attacks
+        Comeonin.Bcrypt.dummy_checkpw()
+        {:error, Author.login_changeset(%Author{}, %{"login" => login, "password" => password})}
+    end
+  end
+
+  def get_author_by_username_or_email_and_blog(login, nil) do
+    from(
+      author in Author,
+      where: (fragment("lower(?)", author.email) == fragment("lower(?)", ^login) or
+                fragment("lower(?)", author.username) == fragment("lower(?)", ^login)) and
+        author.admin == true
+    )
+    |> Repo.one()
+  end
+
+  def get_author_by_username_or_email_and_blog(login, blog) do
+    from(
+      author in Author,
+      where: (fragment("lower(?)", author.email) == fragment("lower(?)", ^login) or
+                fragment("lower(?)", author.username) == fragment("lower(?)", ^login)) and
+        (author.id == ^blog.author_id or author.admin == true)
+    )
+    |> Repo.one()
+  end
+
   alias Burp.Meta.Blog
 
   @doc """
@@ -133,6 +174,10 @@ defmodule Burp.Meta do
 
   """
   def get_blog!(id), do: Repo.get!(Blog, id) |> Repo.preload(:author)
+
+  def get_blog_by_host(host) do
+    Repo.get_by(Blog, host: host) |> Repo.preload(:author)
+  end
 
   @doc """
   Creates a blog.

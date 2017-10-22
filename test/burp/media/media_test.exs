@@ -7,12 +7,28 @@ defmodule Burp.MediaTest do
     alias Burp.Media.Medium
 
     test "list_media/0 returns all media" do
-      medium = %{insert(:medium) | blog: %Ecto.Association.NotLoaded{__field__: :blog, __cardinality__: :one, __owner__: Medium}}
+      medium = %{
+        insert(:medium)
+        | blog: %Ecto.Association.NotLoaded{
+            __field__: :blog,
+            __cardinality__: :one,
+            __owner__: Medium
+          }
+      }
+
       assert Media.list_media() == [medium]
     end
 
     test "get_medium!/1 returns the medium with given id" do
-      medium = %{insert(:medium) | blog: %Ecto.Association.NotLoaded{__field__: :blog, __cardinality__: :one, __owner__: Medium}}
+      medium = %{
+        insert(:medium)
+        | blog: %Ecto.Association.NotLoaded{
+            __field__: :blog,
+            __cardinality__: :one,
+            __owner__: Medium
+          }
+      }
+
       assert Media.get_medium!(medium.id) == medium
     end
 
@@ -38,7 +54,15 @@ defmodule Burp.MediaTest do
     end
 
     test "update_medium/2 with invalid data returns error changeset" do
-      medium = %{insert(:medium) | blog: %Ecto.Association.NotLoaded{__field__: :blog, __cardinality__: :one, __owner__: Medium}}
+      medium = %{
+        insert(:medium)
+        | blog: %Ecto.Association.NotLoaded{
+            __field__: :blog,
+            __cardinality__: :one,
+            __owner__: Medium
+          }
+      }
+
       assert {:error, %Ecto.Changeset{}} = Media.update_medium(medium, %{name: nil})
       assert medium == Media.get_medium!(medium.id)
     end

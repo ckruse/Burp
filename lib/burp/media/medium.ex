@@ -3,14 +3,13 @@ defmodule Burp.Media.Medium do
   import Ecto.Changeset
   alias Burp.Media.Medium
 
-
   schema "media" do
-    field :media_type, :string
-    field :name, :string
-    field :path, :string
-    field :url, :string
+    field(:media_type, :string)
+    field(:name, :string)
+    field(:path, :string)
+    field(:url, :string)
 
-    belongs_to :blog, Burp.Meta.Blog
+    belongs_to(:blog, Burp.Meta.Blog)
 
     timestamps()
   end

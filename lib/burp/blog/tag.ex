@@ -3,10 +3,9 @@ defmodule Burp.Blog.Tag do
   import Ecto.Changeset
   alias Burp.Blog.Tag
 
-
   schema "tags" do
-    field :tag_name, :string
-    belongs_to :post, Burp.Blog.Post
+    field(:tag_name, :string)
+    belongs_to(:post, Burp.Blog.Post)
   end
 
   @doc false

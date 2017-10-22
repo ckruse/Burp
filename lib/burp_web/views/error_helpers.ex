@@ -9,9 +9,21 @@ defmodule BurpWeb.ErrorHelpers do
   Generates tag for inlined form input errors.
   """
   def error_tag(form, field) do
-    Enum.map(Keyword.get_values(form.errors, field), fn (error) ->
-      content_tag :span, translate_error(error), class: "help-block"
+    Enum.map(Keyword.get_values(form.errors, field), fn error ->
+      content_tag(:span, translate_error(error), class: "error-text")
     end)
+  end
+
+  def has_error?(form, field), do: Keyword.get_values(form.errors, field) != []
+
+  def error_class(form, field) do
+    case has_error?(form, field) do
+      true ->
+        "invalid"
+
+      _ ->
+        nil
+    end
   end
 
   @doc """

@@ -17,8 +17,26 @@ defmodule Burp.Blog do
       [%Post{}, ...]
 
   """
-  def list_posts do
-    Repo.all(Post)
+  def list_posts(blog \\ nil, published \\ true, query_params \\ [order: nil, limit: nil]) do
+    from(post in Post, order_by: [desc: post.inserted_at], preload: [:author, :comments, :tags])
+    |> only_published(published)
+    |> from_blog(blog)
+    |> Burp.PagingApi.set_limit(query_params[:limit])
+    |> Burp.OrderApi.set_ordering(query_params[:order], desc: :inserted_at)
+    |> Repo.all()
+  end
+
+  defp only_published(q, true), do: from(p in q, where: p.visible == true)
+  defp only_published(q, _), do: q
+  defp from_blog(q, nil), do: q
+  defp from_blog(q, blog), do: from(p in q, where: p.blog_id == ^blog.id)
+
+  def count_posts(blog \\ nil, published \\ true) do
+    from(post in Post)
+    |> only_published(published)
+    |> from_blog(blog)
+    |> select(count("*"))
+    |> Repo.one()
   end
 
   @doc """
@@ -35,7 +53,12 @@ defmodule Burp.Blog do
       ** (Ecto.NoResultsError)
 
   """
-  def get_post!(id), do: Repo.get!(Post, id)
+  def get_post!(id, blog \\ nil, published \\ true) do
+    from(p in Post, where: p.id == ^id, preload: [:author, :comments, :tags])
+    |> only_published(published)
+    |> from_blog(blog)
+    |> Repo.one!()
+  end
 
   @doc """
   Creates a post.
@@ -49,9 +72,9 @@ defmodule Burp.Blog do
       {:error, %Ecto.Changeset{}}
 
   """
-  def create_post(attrs \\ %{}) do
+  def create_post(attrs \\ %{}, blog, user) do
     %Post{}
-    |> Post.changeset(attrs)
+    |> Post.changeset(attrs, blog, user)
     |> Repo.insert()
   end
 

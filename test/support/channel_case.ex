@@ -25,13 +25,13 @@ defmodule BurpWeb.ChannelCase do
     end
   end
 
-
   setup tags do
     :ok = Ecto.Adapters.SQL.Sandbox.checkout(Burp.Repo)
+
     unless tags[:async] do
       Ecto.Adapters.SQL.Sandbox.mode(Burp.Repo, {:shared, self()})
     end
+
     :ok
   end
-
 end

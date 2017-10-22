@@ -11,7 +11,8 @@
 //
 // If you no longer want to use a dependency, remember
 // to also remove its path from "config.paths.watched".
-import "phoenix_html"
+import "phoenix_html";
+import Urlify from "urlify/dist/urlify-dev";
 
 // Import local files
 //
@@ -19,3 +20,24 @@ import "phoenix_html"
 // paths "./socket" or full ones "web/static/js/socket".
 
 // import socket from "./socket"
+
+document.addEventListener('DOMContentLoaded', function() {
+  let subj = document.getElementById("post_subject");
+  let urlify = Urlify.create({
+    spaces: '-',
+    toLower: true,
+    nonPrintable: '-',
+    trim: true,
+    addEToUmlauts: true
+  });
+
+  if(subj) {
+    subj.addEventListener("change", function() {
+      if(this.value != "") {
+        document.getElementById("post_slug").value = urlify(subj.value);
+      }
+    });
+  }
+});
+
+/* eof */

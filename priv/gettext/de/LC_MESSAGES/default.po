@@ -1,0 +1,219 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR Free Software Foundation, Inc.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"PO-Revision-Date: 2017-10-22 16:08+0200\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#~ ## `msgid`s in this file come from POT (.pot) files.
+#~ ##
+#~ ## Do not add, change, or remove `msgid`s manually here as
+#~ ## they're tied to the ones in the corresponding POT file
+#~ ## (with the same domain).
+#~ ##
+#~ ## Use `mix gettext.extract --merge` or `mix gettext.merge`
+#~ ## to merge POT files into PO files.
+#~ msgid ""
+#~ msgstr ""
+#~ "Language: de\n"
+#: lib/burp_web/templates/layout/app.html.eex:66
+msgid "%{name} is creating the content on this site."
+msgstr "%{name} verunstaltet diese Seite mit Inhalt."
+
+#: lib/burp_web/templates/layout/app.html.eex:56
+#: lib/burp_web/templates/session/new.html.eex:20
+msgid "Login"
+msgstr "Einloggen"
+
+#: lib/burp_web/templates/layout/app.html.eex:53
+msgid "Logout"
+msgstr "Ausloggen"
+
+#: lib/burp_web/templates/layout/app.html.eex:60
+msgid "Look at"
+msgstr "Besuchen Sie"
+
+#: lib/burp_web/templates/layout/app.html.eex:34
+msgid "Nobody cares what is written here…"
+msgstr "Niemanden interessiert, was hier steht…"
+
+#: lib/burp_web/templates/session/new.html.eex:15
+msgid "Remember me"
+msgstr "Login merken"
+
+#: lib/burp_web/templates/layout/app.html.eex:64
+msgid "The Software powering this platform is CKs <a href=\"http://github.com/ckruse/Burp\">Burp</a>."
+msgstr "Die verwendete Software ist CKs <a href=\"http://github.com/ckruse/Burp\">Burp</a>."
+
+#: lib/burp_web/templates/layout/app.html.eex:63
+msgid "This is a Wayne blog, only <a href=\"http://kennst-du-wayne.de/\">Wayne is interested</a>."
+msgstr "Dies ist ein Wayne-Blog, es <a href=\"http://kennst-du-wayne.de/\">interessiert nur Wayne</a>."
+
+#: lib/burp_web/templates/session/new.html.eex:3
+msgid "Username or email"
+msgstr "Benutzername oder Email"
+
+#: lib/burp_web/controllers/session_controller.ex:39
+msgid "Username or password wrong"
+msgstr "Benutzername oder Passwort ist falsch."
+
+#: lib/burp_web/templates/page/index.html.eex:1
+msgid "Welcome to %{name}!"
+msgstr ""
+
+#: lib/burp_web/templates/layout/app.html.eex:69
+msgid "When having technical issues, contact <a href=\"mailto:christian@kruse.cool\">christian@kruse.cool</a>."
+msgstr "Bei technischen Problemen kontaktieren sie <a href=\"mailto:christian@kruse.cool\">christian@kruse.cool</a>."
+
+#: lib/burp_web/views/layout_view.ex:13 lib/burp_web/views/layout_view.ex:40
+msgid "Who knows Wayne?"
+msgstr "Wer kennt Wayne?"
+
+#: lib/burp_web/plug/ensure_anonymous.ex:29
+#: lib/burp_web/plug/ensure_authenticated.ex:16
+#: lib/burp_web/plug/ensure_authenticated_action.ex:27
+msgid "You don't have access to this page!"
+msgstr "Sie dürfen auf diese Seite nicht zugreifen!"
+
+#: lib/burp_web/controllers/session_controller.ex:34
+msgid "You logged in successfully"
+msgstr "Sie haben sich erfolgreich eingeloggt."
+
+#: lib/burp_web/controllers/session_controller.ex:47
+msgid "You logged out successfully"
+msgstr "Sie haben sich erfolgreich ausgeloggt."
+
+#: lib/burp_web/templates/layout/app.html.eex:60
+msgid "a list of"
+msgstr "eine Liste von"
+
+#: lib/burp_web/templates/session/new.html.eex:4
+msgid "luke@example.org"
+msgstr ""
+
+#: lib/burp_web/templates/layout/app.html.eex:60
+msgid "or"
+msgstr "oder"
+
+#: lib/burp_web/templates/session/new.html.eex:8
+#: lib/burp_web/templates/session/new.html.eex:9
+msgid "password"
+msgstr "Passwort"
+
+#: lib/burp_web/templates/layout/app.html.eex:60
+msgid "tags"
+msgstr "Tags"
+
+#: lib/burp_web/templates/layout/app.html.eex:60
+msgid "the archive"
+msgstr "das Archiv"
+
+#: lib/burp_web/templates/admin/post/index.html.eex:22
+#: lib/burp_web/templates/admin/post/index.html.eex:23
+msgid "%Y-%m-%d"
+msgstr "%d. %m. %Y"
+
+#: lib/burp_web/templates/admin/post/index.html.eex:27
+msgid "Are you sure?"
+msgstr "Sind Sie sicher?"
+
+#: lib/burp_web/templates/admin/post/index.html.eex:8
+msgid "comments allowed"
+msgstr "Kommentare"
+
+#: lib/burp_web/templates/admin/post/index.html.eex:10
+msgid "created at"
+msgstr "erstellt"
+
+#: lib/burp_web/templates/admin/post/index.html.eex:27
+msgid "delete"
+msgstr "löschen"
+
+#: lib/burp_web/templates/admin/post/index.html.eex:26
+msgid "edit"
+msgstr "bearbeiten"
+
+#: lib/burp_web/templates/admin/post/index.html.eex:19
+#: lib/burp_web/templates/admin/post/index.html.eex:20
+msgid "no"
+msgstr "nein"
+
+#: lib/burp_web/templates/admin/post/index.html.eex:9
+msgid "published at"
+msgstr "veröffentlicht"
+
+#: lib/burp_web/templates/admin/post/form.html.eex:7
+#: lib/burp_web/templates/admin/post/index.html.eex:6
+msgid "subject"
+msgstr "Betreff"
+
+#: lib/burp_web/templates/admin/post/form.html.eex:21
+#: lib/burp_web/templates/admin/post/index.html.eex:7
+msgid "visible"
+msgstr "sichtbar"
+
+#: lib/burp_web/templates/admin/post/index.html.eex:19
+#: lib/burp_web/templates/admin/post/index.html.eex:20
+msgid "yes"
+msgstr "ja"
+
+#: lib/burp_web/templates/admin/post/edit.html.eex:1
+msgid "Edit post „%{subject}“"
+msgstr "Artikel „%{subject}“ editieren"
+
+#: lib/burp_web/templates/admin/post/form.html.eex:3
+msgid "Oops, something went wrong! Please check the errors below."
+msgstr "Uups, etwas ist schief gelaufen! Bitte prüfen Sie die Fehler unten."
+
+#: lib/burp_web/templates/admin/post/index.html.eex:1
+#: lib/burp_web/templates/admin/subnav.html.eex:2
+msgid "Posts"
+msgstr "Artikel"
+
+#: lib/burp_web/templates/admin/post/form.html.eex:32
+msgid "content"
+msgstr "Inhalt"
+
+#: lib/burp_web/templates/admin/post/form.html.eex:26
+msgid "excerpt"
+msgstr "Exzerpt"
+
+#: lib/burp_web/templates/admin/post/form.html.eex:13
+msgid "slug"
+msgstr "Slug"
+
+#: lib/burp_web/templates/admin/post/form.html.eex:39
+msgid "cancel"
+msgstr "abbrechen"
+
+#: lib/burp_web/templates/admin/post/form.html.eex:38
+msgid "submit"
+msgstr "speichern"
+
+#: lib/burp_web/templates/layout/app.html.eex:54
+msgid "Administration"
+msgstr "Administration"
+
+#: lib/burp_web/templates/admin/post/new.html.eex:1
+#: lib/burp_web/templates/admin/post/subnav.html.eex:2
+msgid "New Post"
+msgstr "Neuer Artikel"
+
+#: lib/burp_web/controllers/admin/post_controller.ex:23
+msgid "Post created successfully."
+msgstr "Artikel erfolgreich erstellt."
+
+#: lib/burp_web/controllers/admin/post_controller.ex:56
+msgid "Post deleted successfully."
+msgstr "Artikel erfolgreich gelöscht."
+
+#: lib/burp_web/controllers/admin/post_controller.ex:43
+msgid "Post updated successfully."
+msgstr "Artikel erfolgreich geändert."

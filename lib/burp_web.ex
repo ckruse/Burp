@@ -23,13 +23,16 @@ defmodule BurpWeb do
       import Plug.Conn
       import BurpWeb.Router.Helpers
       import BurpWeb.Gettext
+
+      import BurpWeb.Paginator
     end
   end
 
   def view do
     quote do
-      use Phoenix.View, root: "lib/burp_web/templates",
-                        namespace: BurpWeb
+      use Phoenix.View,
+        root: "lib/burp_web/templates",
+        namespace: BurpWeb
 
       # Import convenience functions from controllers
       import Phoenix.Controller, only: [get_flash: 2, view_module: 1]
@@ -40,6 +43,15 @@ defmodule BurpWeb do
       import BurpWeb.Router.Helpers
       import BurpWeb.ErrorHelpers
       import BurpWeb.Gettext
+
+      import Phoenix.Controller,
+        only: [
+          get_csrf_token: 0,
+          get_flash: 2,
+          view_module: 1,
+          action_name: 1,
+          controller_module: 1
+        ]
     end
   end
 

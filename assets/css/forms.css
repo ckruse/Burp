@@ -1,0 +1,58 @@
+/*
+ * forms
+ */
+
+.fgroup {
+  margin-bottom:1.25em;
+}
+
+.fgroup label {
+  display:block;
+  margin-bottom:0.25rem;
+}
+
+.fgroup input, .fgroup textarea {
+  display: block;
+  width: 100%;
+  padding: .375rem .75rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #495057;
+  background-color: #fff;
+  background-image: none;
+  background-clip: padding-box;
+  border: 1px solid #ced4da;
+  border-radius: .25rem;
+  transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+}
+
+.fgroup input[type="checkbox"] {
+  display:inline;
+  width:1rem;
+  box-sizing: border-box;
+}
+
+textarea.post-content {
+  height:80vh;
+  max-height:40rem;
+}
+
+textarea.post-excerpt {
+  height:30vh;
+  max-height:15rem;
+}
+
+.fgroup .error-text {
+  margin-top: .25rem;
+  font-size: .875rem;
+  color: #dc3545;
+  display:block;
+}
+
+
+.fgroup input:invalid,
+.fgroup textarea:invalid,
+.fgroup input.invalid,
+.fgroup textarea.invalid {
+    border-color: #dc3545;
+}
