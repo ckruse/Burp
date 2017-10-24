@@ -5,7 +5,7 @@ defmodule BurpWeb.Admin.PostController do
   alias Burp.Blog.Post
 
   def index(conn, params) do
-    count = Blog.count_posts()
+    count = Blog.count_posts(conn.assigns[:current_blog], false)
     paging = paginate(count, page: params["p"])
     posts = Blog.list_posts(conn.assigns[:current_blog], false, limit: paging.params)
     render(conn, "index.html", posts: posts)
