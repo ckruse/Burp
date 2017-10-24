@@ -3,6 +3,8 @@ defmodule BurpWeb.Paginator do
 
   alias BurpWeb.Paginator
 
+  import BurpWeb.Gettext
+
   use Phoenix.HTML
 
   def paginate(data_count, opts \\ []) do
@@ -32,7 +34,7 @@ defmodule BurpWeb.Paginator do
   end
 
   def pagination(conn, page, path_helper, opts \\ []) do
-    content_tag :nav, class: "cf-pages" do
+    content_tag :nav, class: "pages" do
       content_tag :ul do
         [first_tag(path_helper, conn, page, opts), previous_tag(path_helper, conn, page, opts)] ++
           pages_list(conn, page, path_helper, opts) ++
@@ -43,7 +45,7 @@ defmodule BurpWeb.Paginator do
 
   defp first_tag(path_helper, conn, page, opts) do
     classes = if page.page == 1, do: "first disabled", else: "first"
-    label = opts[:first] || "««"
+    label = opts[:first] || gettext("first page")
 
     content_tag :li, class: classes do
       page(label, path_helper, conn, 1, opts)
@@ -53,7 +55,7 @@ defmodule BurpWeb.Paginator do
   defp previous_tag(path_helper, conn, page, opts) do
     classes = if page.page == 1, do: "prev disabled", else: "prev"
     p_num = if page.page - 1 < 1, do: 1, else: page.page - 1
-    label = opts[:prev] || "«"
+    label = opts[:prev] || gettext("previous page")
 
     content_tag :li, class: classes do
       page(label, path_helper, conn, p_num, opts)
@@ -63,7 +65,7 @@ defmodule BurpWeb.Paginator do
   defp next_tag(path_helper, conn, page, opts) do
     classes = if page.page == page.pages_count, do: "next disabled", else: "next"
     p_num = if page.page + 1 > page.pages_count, do: page.pages_count, else: page.page + 1
-    label = opts[:next] || "»"
+    label = opts[:next] || gettext("next page")
 
     content_tag :li, class: classes do
       page(label, path_helper, conn, p_num, opts)
@@ -72,7 +74,7 @@ defmodule BurpWeb.Paginator do
 
   defp last_tag(path_helper, conn, page, opts) do
     classes = if page.page == page.pages_count, do: "last disabled", else: "last"
-    label = opts[:last] || "»»"
+    label = opts[:last] || gettext("last page")
 
     content_tag :li, class: classes do
       page(label, path_helper, conn, page.pages_count, opts)

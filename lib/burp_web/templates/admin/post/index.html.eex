@@ -30,3 +30,5 @@
 <% end %>
   </tbody>
 </table>
+
+<%= pagination @conn, @paging, &admin_post_path/3 %>

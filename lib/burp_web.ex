@@ -52,6 +52,8 @@ defmodule BurpWeb do
           action_name: 1,
           controller_module: 1
         ]
+
+      import BurpWeb.Paginator
     end
   end
 
