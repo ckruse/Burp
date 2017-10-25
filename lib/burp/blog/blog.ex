@@ -26,11 +26,6 @@ defmodule Burp.Blog do
     |> Repo.all()
   end
 
-  defp only_published(q, true), do: from(p in q, where: p.visible == true)
-  defp only_published(q, _), do: q
-  defp from_blog(q, nil), do: q
-  defp from_blog(q, blog), do: from(p in q, where: p.blog_id == ^blog.id)
-
   def count_posts(blog \\ nil, published \\ true) do
     from(post in Post)
     |> only_published(published)
@@ -136,8 +131,21 @@ defmodule Burp.Blog do
       [%Comment{}, ...]
 
   """
-  def list_comments do
-    Repo.all(Comment)
+  def list_comments(blog \\ nil, published \\ true, query_params \\ [order: nil, limit: nil]) do
+    from(comment in Comment)
+    |> only_published(published)
+    |> from_blog(blog, :comments)
+    |> Burp.PagingApi.set_limit(query_params[:limit])
+    |> Burp.OrderApi.set_ordering(query_params[:order], desc: :inserted_at)
+    |> Repo.all()
+  end
+
+  def count_comments(blog \\ nil, published \\ true) do
+    from(comment in Comment)
+    |> only_published(published)
+    |> from_blog(blog, :comments)
+    |> select(count("*"))
+    |> Repo.one()
   end
 
   @doc """
@@ -154,7 +162,12 @@ defmodule Burp.Blog do
       ** (Ecto.NoResultsError)
 
   """
-  def get_comment!(id), do: Repo.get!(Comment, id)
+  def get_comment!(id, blog \\ nil, published \\ true) do
+    from(c in Comment, where: c.id == ^id, preload: [:post])
+    |> only_published(published)
+    |> from_blog(blog, :comments)
+    |> Repo.one!()
+  end
 
   @doc """
   Creates a comment.
@@ -315,5 +328,16 @@ defmodule Burp.Blog do
   """
   def change_tag(%Tag{} = tag) do
     Tag.changeset(tag, %{})
+  end
+
+  defp only_published(q, true), do: from(p in q, where: p.visible == true)
+  defp only_published(q, _), do: q
+
+  defp from_blog(q, nil), do: q
+  defp from_blog(q, blog), do: from(p in q, where: p.blog_id == ^blog.id)
+  defp from_blog(q, nil, _), do: q
+
+  defp from_blog(q, blog, :comments) do
+    from(c in q, join: p in Post, on: [id: c.post_id], where: p.blog_id == ^blog.id)
   end
 end

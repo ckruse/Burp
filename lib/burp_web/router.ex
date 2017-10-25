@@ -35,6 +35,7 @@ defmodule BurpWeb.Router do
     pipe_through([:browser, :require_login])
 
     resources("/posts", PostController, except: [:show])
+    resources("/comments", CommentController, except: [:show, :new, :create])
   end
 
   # Other scopes may use custom stacks.

@@ -107,6 +107,7 @@ msgstr ""
 msgid "%Y-%m-%d"
 msgstr ""
 
+#: lib/burp_web/templates/admin/comment/index.html.eex:27
 #: lib/burp_web/templates/admin/post/index.html.eex:27
 msgid "Are you sure?"
 msgstr ""
@@ -119,14 +120,17 @@ msgstr ""
 msgid "created at"
 msgstr ""
 
+#: lib/burp_web/templates/admin/comment/index.html.eex:27
 #: lib/burp_web/templates/admin/post/index.html.eex:27
 msgid "delete"
 msgstr ""
 
+#: lib/burp_web/templates/admin/comment/index.html.eex:26
 #: lib/burp_web/templates/admin/post/index.html.eex:26
 msgid "edit"
 msgstr ""
 
+#: lib/burp_web/templates/admin/comment/index.html.eex:22
 #: lib/burp_web/templates/admin/post/index.html.eex:19
 #: lib/burp_web/templates/admin/post/index.html.eex:20
 msgid "no"
@@ -141,11 +145,13 @@ msgstr ""
 msgid "subject"
 msgstr ""
 
+#: lib/burp_web/templates/admin/comment/form.html.eex:29
 #: lib/burp_web/templates/admin/post/form.html.eex:21
 #: lib/burp_web/templates/admin/post/index.html.eex:7
 msgid "visible"
 msgstr ""
 
+#: lib/burp_web/templates/admin/comment/index.html.eex:22
 #: lib/burp_web/templates/admin/post/index.html.eex:19
 #: lib/burp_web/templates/admin/post/index.html.eex:20
 msgid "yes"
@@ -155,6 +161,7 @@ msgstr ""
 msgid "Edit post „%{subject}“"
 msgstr ""
 
+#: lib/burp_web/templates/admin/comment/form.html.eex:4
 #: lib/burp_web/templates/admin/post/form.html.eex:3
 msgid "Oops, something went wrong! Please check the errors below."
 msgstr ""
@@ -176,10 +183,12 @@ msgstr ""
 msgid "slug"
 msgstr ""
 
+#: lib/burp_web/templates/admin/comment/form.html.eex:41
 #: lib/burp_web/templates/admin/post/form.html.eex:39
 msgid "cancel"
 msgstr ""
 
+#: lib/burp_web/templates/admin/comment/form.html.eex:40
 #: lib/burp_web/templates/admin/post/form.html.eex:38
 msgid "submit"
 msgstr ""
@@ -203,4 +212,68 @@ msgstr ""
 
 #: lib/burp_web/controllers/admin/post_controller.ex:43
 msgid "Post updated successfully."
+msgstr ""
+
+#: lib/burp_web/templates/admin/comment/form.html.eex:9
+#: lib/burp_web/templates/admin/comment/index.html.eex:8
+msgid "Author"
+msgstr ""
+
+#: lib/burp_web/templates/admin/comment/index.html.eex:1
+#: lib/burp_web/templates/admin/subnav.html.eex:3
+msgid "Comments"
+msgstr ""
+
+#: lib/burp_web/templates/admin/comment/form.html.eex:15
+#: lib/burp_web/templates/admin/comment/index.html.eex:9
+msgid "Email"
+msgstr ""
+
+#: lib/burp_web/templates/admin/comment/new.html.eex:1
+msgid "New Comment"
+msgstr ""
+
+#: lib/burp_web/templates/admin/comment/form.html.eex:21
+#: lib/burp_web/templates/admin/comment/index.html.eex:10
+msgid "URL"
+msgstr ""
+
+#: lib/burp_web/templates/admin/comment/index.html.eex:11
+msgid "Visible"
+msgstr ""
+
+#: lib/burp_web/templates/admin/comment/index.html.eex:25
+msgid "show post"
+msgstr ""
+
+#: lib/burp_web/templates/admin/comment/form.html.eex:34
+msgid "Content"
+msgstr ""
+
+#: lib/burp_web/templates/admin/comment/edit.html.eex:1
+msgid "Edit Comment"
+msgstr ""
+
+#: lib/burp_web/paginator.ex:48
+msgid "first page"
+msgstr ""
+
+#: lib/burp_web/paginator.ex:77
+msgid "last page"
+msgstr ""
+
+#: lib/burp_web/paginator.ex:68
+msgid "next page"
+msgstr ""
+
+#: lib/burp_web/paginator.ex:58
+msgid "previous page"
+msgstr ""
+
+#: lib/burp_web/controllers/admin/comment_controller.ex:39
+msgid "Comment deleted successfully."
+msgstr ""
+
+#: lib/burp_web/controllers/admin/comment_controller.ex:26
+msgid "Comment updated successfully."
 msgstr ""

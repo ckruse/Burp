@@ -1,0 +1,4 @@
+<h2><%= gettext("Edit Comment") %></h2>
+
+<%= render "form.html", Map.put(assigns, :action, admin_comment_path(@conn, :update, @comment)) %>
+

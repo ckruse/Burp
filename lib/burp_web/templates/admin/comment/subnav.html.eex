@@ -1,0 +1,1 @@
+<%= render(BurpWeb.AdminView, "subnav.html", assigns) %>
