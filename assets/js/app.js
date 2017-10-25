@@ -21,19 +21,19 @@ import Urlify from "urlify/dist/urlify-dev";
 
 // import socket from "./socket"
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener("DOMContentLoaded", function() {
   let subj = document.getElementById("post_subject");
   let urlify = Urlify.create({
-    spaces: '-',
+    spaces: "-",
     toLower: true,
-    nonPrintable: '-',
+    nonPrintable: "-",
     trim: true,
     addEToUmlauts: true
   });
 
-  if(subj) {
+  if (subj) {
     subj.addEventListener("change", function() {
-      if(this.value != "") {
+      if (this.value != "") {
         document.getElementById("post_slug").value = urlify(subj.value);
       }
     });
