@@ -1,0 +1,7 @@
+<h2><%= gettext("Archive %{year}", year: @year) %></h2>
+
+<ol>
+  <%= for {month, articles} <- @months do %>
+    <li><%= link "#{month_link_text(month)} (#{articles})", to: archive_path(@conn, :index, @year, month_link_month(month)) %></li>
+  <% end %>
+</ol>

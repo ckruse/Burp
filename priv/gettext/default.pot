@@ -51,15 +51,12 @@ msgstr ""
 msgid "Username or password wrong"
 msgstr ""
 
-#: lib/burp_web/templates/page/index.html.eex:1
-msgid "Welcome to %{name}!"
-msgstr ""
-
 #: lib/burp_web/templates/layout/app.html.eex:69
 msgid "When having technical issues, contact <a href=\"mailto:christian@kruse.cool\">christian@kruse.cool</a>."
 msgstr ""
 
-#: lib/burp_web/views/layout_view.ex:13 lib/burp_web/views/layout_view.ex:40
+#: lib/burp_web/views/layout_view.ex:13 lib/burp_web/views/layout_view.ex:43
+#: lib/burp_web/views/layout_view.ex:45
 msgid "Who knows Wayne?"
 msgstr ""
 
@@ -108,6 +105,7 @@ msgid "%Y-%m-%d"
 msgstr ""
 
 #: lib/burp_web/templates/admin/comment/index.html.eex:27
+#: lib/burp_web/templates/admin/medium/index.html.eex:23
 #: lib/burp_web/templates/admin/post/index.html.eex:27
 msgid "Are you sure?"
 msgstr ""
@@ -121,11 +119,13 @@ msgid "created at"
 msgstr ""
 
 #: lib/burp_web/templates/admin/comment/index.html.eex:27
+#: lib/burp_web/templates/admin/medium/index.html.eex:23
 #: lib/burp_web/templates/admin/post/index.html.eex:27
 msgid "delete"
 msgstr ""
 
 #: lib/burp_web/templates/admin/comment/index.html.eex:26
+#: lib/burp_web/templates/admin/medium/index.html.eex:22
 #: lib/burp_web/templates/admin/post/index.html.eex:26
 msgid "edit"
 msgstr ""
@@ -137,6 +137,7 @@ msgid "no"
 msgstr ""
 
 #: lib/burp_web/templates/admin/post/index.html.eex:9
+#: lib/burp_web/templates/post/post.html.eex:6
 msgid "published at"
 msgstr ""
 
@@ -162,7 +163,9 @@ msgid "Edit post „%{subject}“"
 msgstr ""
 
 #: lib/burp_web/templates/admin/comment/form.html.eex:4
+#: lib/burp_web/templates/admin/medium/form.html.eex:4
 #: lib/burp_web/templates/admin/post/form.html.eex:3
+#: lib/burp_web/templates/comment/form.html.eex:3
 msgid "Oops, something went wrong! Please check the errors below."
 msgstr ""
 
@@ -172,6 +175,7 @@ msgid "Posts"
 msgstr ""
 
 #: lib/burp_web/templates/admin/post/form.html.eex:32
+#: lib/burp_web/templates/comment/form.html.eex:25
 msgid "content"
 msgstr ""
 
@@ -189,7 +193,9 @@ msgid "cancel"
 msgstr ""
 
 #: lib/burp_web/templates/admin/comment/form.html.eex:40
+#: lib/burp_web/templates/admin/medium/form.html.eex:21
 #: lib/burp_web/templates/admin/post/form.html.eex:38
+#: lib/burp_web/templates/comment/form.html.eex:32
 msgid "submit"
 msgstr ""
 
@@ -221,6 +227,7 @@ msgstr ""
 
 #: lib/burp_web/templates/admin/comment/index.html.eex:1
 #: lib/burp_web/templates/admin/subnav.html.eex:3
+#: lib/burp_web/templates/post/post.html.eex:40
 msgid "Comments"
 msgstr ""
 
@@ -235,6 +242,7 @@ msgstr ""
 
 #: lib/burp_web/templates/admin/comment/form.html.eex:21
 #: lib/burp_web/templates/admin/comment/index.html.eex:10
+#: lib/burp_web/templates/admin/medium/index.html.eex:7
 msgid "URL"
 msgstr ""
 
@@ -276,4 +284,129 @@ msgstr ""
 
 #: lib/burp_web/controllers/admin/comment_controller.ex:26
 msgid "Comment updated successfully."
+msgstr ""
+
+#: lib/burp_web/templates/admin/medium/edit.html.eex:1
+msgid "Edit Medium „%{name}”"
+msgstr ""
+
+#: lib/burp_web/templates/admin/medium/index.html.eex:1
+msgid "Listing Media"
+msgstr ""
+
+#: lib/burp_web/templates/admin/medium/index.html.eex:8
+msgid "MIME type"
+msgstr ""
+
+#: lib/burp_web/templates/admin/subnav.html.eex:4
+msgid "Media"
+msgstr ""
+
+#: lib/burp_web/controllers/admin/medium_controller.ex:21
+msgid "Medium created successfully."
+msgstr ""
+
+#: lib/burp_web/controllers/admin/medium_controller.ex:59
+msgid "Medium deleted successfully."
+msgstr ""
+
+#: lib/burp_web/controllers/admin/medium_controller.ex:46
+msgid "Medium updated successfully."
+msgstr ""
+
+#: lib/burp_web/templates/admin/medium/index.html.eex:6
+msgid "Name"
+msgstr ""
+
+#: lib/burp_web/templates/admin/medium/new.html.eex:1
+#: lib/burp_web/templates/admin/medium/subnav.html.eex:2
+msgid "New Medium"
+msgstr ""
+
+#: lib/burp_web/templates/post/index.html.eex:13
+msgid "Sorry, no posts found yet"
+msgstr ""
+
+#: lib/burp_web/templates/admin/medium/index.html.eex:21
+msgid "show"
+msgstr ""
+
+#: lib/burp_web/templates/post/post.html.eex:8
+msgid "by"
+msgstr ""
+
+#: lib/burp_web/templates/comment/form.html.eex:13
+msgid "email"
+msgstr ""
+
+#: lib/burp_web/templates/post/post.html.eex:15
+msgid "filed under:"
+msgstr ""
+
+#: lib/burp_web/templates/comment/form.html.eex:7
+msgid "name"
+msgstr ""
+
+#: lib/burp_web/templates/post/post.html.eex:47
+msgid "new comment"
+msgstr ""
+
+#: lib/burp_web/templates/post/post.html.eex:9
+msgid "updated at"
+msgstr ""
+
+#: lib/burp_web/templates/comment/form.html.eex:19
+msgid "url"
+msgstr ""
+
+#: lib/burp_web/templates/post/index.html.eex:4
+msgid "older articles"
+msgstr ""
+
+#: lib/burp_web/templates/post/comment.html.eex:8
+#: lib/burp_web/templates/post/post.html.eex:7
+#: lib/burp_web/templates/post/post.html.eex:10
+msgid "%Y-%m-%d %H:%M"
+msgstr ""
+
+#: lib/burp_web/templates/comment/form.html.eex:26
+msgid "Use <a href=\"https://en.wikipedia.org/wiki/Markdown\">Markdown</a> to format your comment"
+msgstr ""
+
+#: lib/burp_web/templates/post/comment.html.eex:8
+msgid "permanent link to this comment"
+msgstr ""
+
+#: lib/burp_web/templates/post/comment.html.eex:7
+msgid "wrote at"
+msgstr ""
+
+#: lib/burp_web/templates/post/index.html.eex:10
+msgid "You can find more articles in the <a href=\"%{archive_link}\">achive</a>."
+msgstr ""
+
+#: lib/burp_web/templates/post/post.html.eex:10
+msgid "%{count} comment"
+msgid_plural "%{count} comments"
+msgstr[0] ""
+msgstr[1] ""
+
+#: lib/burp_web/templates/archive/years.html.eex:1
+msgid "Archive"
+msgstr ""
+
+#: lib/burp_web/templates/archive/index.html.eex:1
+msgid "Archive %{year_mon}"
+msgstr ""
+
+#: lib/burp_web/templates/archive/months.html.eex:1
+msgid "Archive %{year}"
+msgstr ""
+
+#: lib/burp_web/views/archive_view.ex:5
+msgid "Archive — %{name}"
+msgstr ""
+
+#: lib/burp_web/views/archive_view.ex:4
+msgid "Archive — Who knows Wayne?"
 msgstr ""

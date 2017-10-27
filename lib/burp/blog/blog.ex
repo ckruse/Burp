@@ -34,6 +34,17 @@ defmodule Burp.Blog do
     |> Repo.one()
   end
 
+  def get_last_post(blog \\ nil, published \\ true) do
+    from(post in Post, order_by: [desc: post.published_at], limit: 1, preload: [
+      :author,
+      :comments,
+      :tags
+    ])
+    |> only_published(published)
+    |> from_blog(blog)
+    |> Repo.one()
+  end
+
   @doc """
   Gets a single post.
 
@@ -50,6 +61,13 @@ defmodule Burp.Blog do
   """
   def get_post!(id, blog \\ nil, published \\ true) do
     from(p in Post, where: p.id == ^id, preload: [:author, :comments, :tags])
+    |> only_published(published)
+    |> from_blog(blog)
+    |> Repo.one!()
+  end
+
+  def get_post_by_slug!(slug, blog \\ nil, published \\ true) do
+    from(p in Post, where: p.slug == ^slug, preload: [:author, :comments, :tags])
     |> only_published(published)
     |> from_blog(blog)
     |> Repo.one!()
@@ -333,11 +351,91 @@ defmodule Burp.Blog do
   defp only_published(q, true), do: from(p in q, where: p.visible == true)
   defp only_published(q, _), do: q
 
+  defp only_published(q, true, _), do: where(q, [_, posts], posts.visible == true)
+  defp only_published(q, _, _), do: q
+
   defp from_blog(q, nil), do: q
   defp from_blog(q, blog), do: from(p in q, where: p.blog_id == ^blog.id)
   defp from_blog(q, nil, _), do: q
 
-  defp from_blog(q, blog, :comments) do
-    from(c in q, join: p in Post, on: [id: c.post_id], where: p.blog_id == ^blog.id)
+  defp from_blog(q, blog, :comments),
+    do: from(c in q, join: p in Post, on: [id: c.post_id], where: p.blog_id == ^blog.id)
+
+  defp from_blog(q, blog, :tags), do: where(q, [_, posts], posts.blog_id == ^blog.id)
+
+  def list_years(blog, published \\ true) do
+    from(
+      post in Post,
+      select: {fragment("EXTRACT(YEAR FROM inserted_at) AS year"), count("*")},
+      group_by: fragment("EXTRACT(YEAR FROM inserted_at)"),
+      order_by: fragment("year DESC")
+    )
+    |> from_blog(blog)
+    |> only_published(published)
+    |> Repo.all()
+  end
+
+  def list_months(year, blog, published \\ true) do
+    from(
+      post in Post,
+      select: {fragment("DATE_TRUNC('month', ?) AS mon", post.inserted_at), count("*")},
+      where: fragment("EXTRACT(year from ?) = ?", post.inserted_at, ^year),
+      group_by: fragment("DATE_TRUNC('month', ?)", post.inserted_at),
+      order_by: fragment("DATE_TRUNC('month', ?)", post.inserted_at)
+    )
+    |> from_blog(blog)
+    |> only_published(published)
+    |> Repo.all()
+  end
+
+  def list_posts_by_year_and_month(
+        year,
+        month,
+        blog,
+        published \\ true,
+        query_params \\ [order: nil, limit: nil]
+      ) do
+    starts = Timex.beginning_of_month(year, month)
+    ends = Timex.end_of_month(year, month)
+
+    from(
+      post in Post,
+      where: post.inserted_at >= ^starts and post.inserted_at <= ^ends,
+      order_by: [desc: post.inserted_at],
+      preload: [:author, :comments, :tags]
+    )
+    |> only_published(published)
+    |> from_blog(blog)
+    |> Burp.PagingApi.set_limit(query_params[:limit])
+    |> Burp.OrderApi.set_ordering(query_params[:order], desc: :inserted_at)
+    |> Repo.all()
+  end
+
+  def list_tags(blog, published \\ true) do
+    from(
+      tag in Tag,
+      select: {fragment("LOWER(?) AS tag_name", tag.tag_name), count("*")},
+      inner_join: p in Post,
+      where: p.id == tag.post_id,
+      group_by: fragment("LOWER(?)", tag.tag_name),
+      order_by: fragment("LOWER(?)", tag.tag_name)
+    )
+    |> from_blog(blog, :tags)
+    |> only_published(published, :tags)
+    |> Repo.all()
+  end
+
+  def list_posts_by_tag(tag, blog, published \\ true, query_params \\ [order: nil, limit: nil]) do
+    from(
+      post in Post,
+      where: post.id in fragment("SELECT post_id FROM tags WHERE LOWER(tag_name) = ?", ^tag),
+      order_by: [desc: post.inserted_at],
+      preload: [:author, :comments, :tags]
+    )
+    |> only_published(published)
+    |> from_blog(blog)
+    |> Burp.PagingApi.set_limit(query_params[:limit])
+    |> Burp.OrderApi.set_ordering(query_params[:order], desc: :inserted_at)
+    |> Repo.all()
   end
 end

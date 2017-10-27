@@ -3,6 +3,8 @@ defmodule Burp.Blog.Comment do
   import Ecto.Changeset
   alias Burp.Blog.Comment
 
+  @timestamps_opts [type: Timex.Ecto.DateTime]
+
   schema "comments" do
     field(:attrs, :map, default: %{})
     field(:author, :string)

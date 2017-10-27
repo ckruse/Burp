@@ -44,6 +44,8 @@ defmodule BurpWeb do
       import BurpWeb.ErrorHelpers
       import BurpWeb.Gettext
 
+      import Burp.Helpers
+
       import Phoenix.Controller,
         only: [
           get_csrf_token: 0,

@@ -3,6 +3,8 @@ defmodule Burp.Meta.Author do
   import Ecto.Changeset
   alias Burp.Meta.Author
 
+  @timestamps_opts [type: Timex.Ecto.DateTime]
+
   schema "authors" do
     field(:admin, :boolean, default: false)
     field(:email, :string)

@@ -10,6 +10,7 @@ defmodule BurpWeb.Router do
 
     plug(BurpWeb.Plug.CurrentUser)
     plug(BurpWeb.Plug.CurrentBlog)
+    plug(BurpWeb.Plug.SetLocale)
   end
 
   pipeline :require_login do
@@ -20,6 +21,14 @@ defmodule BurpWeb.Router do
     plug(:accepts, ["json"])
   end
 
+  scope "/admin", as: :admin, alias: BurpWeb.Admin do
+    pipe_through([:browser, :require_login])
+
+    resources("/posts", PostController, except: [:show])
+    resources("/comments", CommentController, except: [:show, :new, :create])
+    resources("/media", MediumController, except: [:show])
+  end
+
   scope "/", BurpWeb do
     # Use the default browser stack
     pipe_through(:browser)
@@ -28,14 +37,24 @@ defmodule BurpWeb.Router do
     post("/login", SessionController, :create)
     get("/logout", SessionController, :delete)
 
-    get("/", PageController, :index)
-  end
+    get("/media/:slug", MediumController, :show)
 
-  scope "/admin", as: :admin, alias: BurpWeb.Admin do
-    pipe_through([:browser, :require_login])
+    get("/", PostController, :index)
 
-    resources("/posts", PostController, except: [:show])
-    resources("/comments", CommentController, except: [:show, :new, :create])
+    get("/tags", TagController, :index)
+    get("/tags/:tag", TagController, :show)
+
+    get("/feed.atom", PostController, :index_atom)
+    get("/feed.rss", PostController, :index_rss)
+    get("/rss-feed", PostController, :redirect_rss)
+    get("/atom-feed", PostController, :redirect_atom)
+
+    get("/archive", ArchiveController, :years)
+    get("/:year", ArchiveController, :months)
+    get("/:year/:mon", ArchiveController, :index)
+
+    get("/:year/:mon/:slug", PostController, :show)
+    post("/:year/:mon/:slug", CommentController, :create)
   end
 
   # Other scopes may use custom stacks.

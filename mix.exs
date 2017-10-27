@@ -44,6 +44,8 @@ defmodule Burp.Mixfile do
       {:comeonin, "~> 3.0"},
       {:timex, "~> 3.1"},
       {:timex_ecto, "~> 3.0"},
+      {:cmark, "~> 0.7"},
+      {:xml_builder, github: "joshnuss/xml_builder"},
       {:ex_machina, "~> 2.1", only: :test}
     ]
   end

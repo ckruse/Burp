@@ -17,9 +17,15 @@ defmodule Burp.Media do
       [%Medium{}, ...]
 
   """
-  def list_media do
+  def list_media(blog \\ nil) do
+    from(medium in Medium, order_by: [asc: :name])
+    |> from_blog(blog)
+
     Repo.all(Medium)
   end
+
+  defp from_blog(q, nil), do: q
+  defp from_blog(q, blog), do: from(p in q, where: p.blog_id == ^blog.id)
 
   @doc """
   Gets a single medium.
@@ -37,6 +43,8 @@ defmodule Burp.Media do
   """
   def get_medium!(id), do: Repo.get!(Medium, id)
 
+  def get_medium_by_slug!(slug), do: Repo.get_by!(Medium, url: slug)
+
   @doc """
   Creates a medium.
 
@@ -49,10 +57,22 @@ defmodule Burp.Media do
       {:error, %Ecto.Changeset{}}
 
   """
-  def create_medium(attrs \\ %{}) do
-    %Medium{}
-    |> Medium.changeset(attrs)
-    |> Repo.insert()
+  def create_medium(attrs \\ %{}, blog) do
+    {:ok, fname} = copy_file(attrs["file"])
+
+    ret =
+      %Medium{path: fname, url: attrs["file"].filename, media_type: attrs["file"].content_type}
+      |> Medium.changeset(attrs, blog)
+      |> Repo.insert()
+
+    case ret do
+      {:ok, medium} ->
+        {:ok, medium}
+
+      {:error, changeset} ->
+        remove_file(%Medium{path: fname})
+        {:error, changeset}
+    end
   end
 
   @doc """
@@ -68,9 +88,22 @@ defmodule Burp.Media do
 
   """
   def update_medium(%Medium{} = medium, attrs) do
-    medium
-    |> Medium.changeset(attrs)
-    |> Repo.update()
+    ret =
+      medium
+      |> Medium.changeset(attrs)
+      |> Repo.update()
+
+    case ret do
+      {:ok, medium} ->
+        if attrs["file"] do
+          File.cp!(attrs["file"].path, "#{storage_dir()}/#{medium.path}")
+        end
+
+        {:ok, medium}
+
+      {:error, changeset} ->
+        {:error, changeset}
+    end
   end
 
   @doc """
@@ -86,7 +119,14 @@ defmodule Burp.Media do
 
   """
   def delete_medium(%Medium{} = medium) do
-    Repo.delete(medium)
+    case Repo.delete(medium) do
+      {:ok, medium} ->
+        remove_file(medium)
+        {:ok, medium}
+
+      ret ->
+        ret
+    end
   end
 
   @doc """
@@ -101,4 +141,16 @@ defmodule Burp.Media do
   def change_medium(%Medium{} = medium) do
     Medium.changeset(medium, %{})
   end
+
+  defp storage_dir(), do: Application.get_env(:burp, :storage_path)
+  def filename(medium), do: "#{storage_dir()}/#{medium.path}"
+
+  def copy_file(upload) do
+    fname = Ecto.UUID.generate()
+    File.cp!(upload.path, "#{storage_dir()}/#{fname}")
+
+    {:ok, fname}
+  end
+
+  def remove_file(medium), do: File.rm!(filename(medium))
 end

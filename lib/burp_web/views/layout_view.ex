@@ -33,11 +33,17 @@ defmodule BurpWeb.LayoutView do
     end
   end
 
-  def default_page_title(_conn, %{post: %{title: title}}) when not is_nil(title) and title != "",
-    do: title
+  def default_page_title(_conn, %{post: %{subject: subject}})
+      when not is_nil(subject) and subject != "",
+      do: subject
 
-  def default_page_title(_conn, %{current_blog: blog}) when not is_nil(blog), do: blog.name
+  def default_page_title(conn, %{current_blog: blog} = assigns) when not is_nil(blog),
+    do: "#{h1(conn, assigns)} — #{blog.name}"
+
   def default_page_title(_conn, _assigns), do: gettext("Who knows Wayne?")
+
+  def h1(conn, %{current_blog: nil}), do: gettext("Who knows Wayne?")
+  def h1(_conn, %{current_blog: blog}), do: blog.name
 
   def subnav(conn, assigns) do
     # try do

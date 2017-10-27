@@ -9,12 +9,12 @@
     <meta name="author" content="<%= page_author(@conn, assigns) %>">
     <meta name="keywords" content="<%= page_keywords(@conn, assigns) %>">
 
-    <link rel="alternate" type="application/rss+xml" title="RSS" href="<%# TODO feed_url(:rss) %>">
-    <link rel="alternate" type="application/atom+xml" title="Atom" href="<%# TODO feed_url(:atom) %>">
+    <link rel="alternate" type="application/rss+xml" title="RSS" href="<%= post_path(@conn, :index_rss) %>">
+    <link rel="alternate" type="application/atom+xml" title="Atom" href="<%= post_path(@conn, :index_atom) %>">
 
     <link rel="shortcut icon" href="<%= static_path(@conn, "/images/favicon.png") %>">
 
-    <title>Hello Burp!</title>
+    <title><%= page_title(@conn, assigns) %></title>
     <link rel="stylesheet" href="<%= static_path(@conn, "/css/app.css") %>">
 
     <meta property="og:title" content="<%= page_title(@conn, assigns) %>">
@@ -30,7 +30,7 @@
 
   <body>
     <header id="site-header">
-      <h1><%= link page_title(@conn, assigns), to: page_path(@conn, :index) %></h1>
+      <h1><%= link h1(@conn, assigns), to: post_path(@conn, :index) %></h1>
       <p><%= if assigns[:current_blog], do: @current_blog.description, else: gettext("Nobody cares what is written here…") %></p>
     </header>
 
@@ -57,7 +57,7 @@
         <% end %>
       </p>
 
-      <nav id="site-nav"><%= gettext("Look at") %> <%= gettext("a list of") %> <%= link gettext("tags"), to: "/" # TODO %> <%= gettext("or") %> <%= link gettext("the archive"), to: "/" # TODO %></li>.</nav>
+      <nav id="site-nav"><%= gettext("Look at") %> <%= gettext("a list of") %> <%= link gettext("tags"), to: tag_path(@conn, :index) %> <%= gettext("or") %> <%= link gettext("the archive"), to: archive_path(@conn, :years) %></li>.</nav>
 
       <p class="about">
         <%= {:safe, gettext("This is a Wayne blog, only <a href=\"http://kennst-du-wayne.de/\">Wayne is interested</a>.")} %>

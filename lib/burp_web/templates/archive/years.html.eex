@@ -1,0 +1,7 @@
+<h2><%= gettext("Archive") %></h2>
+
+<ol>
+  <%= for {year, comments} <- @years do %>
+    <li><%= link "#{round year} (#{comments})", to: archive_path(@conn, :months, round year) %></li>
+  <% end %>
+</ol>

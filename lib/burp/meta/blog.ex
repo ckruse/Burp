@@ -3,6 +3,8 @@ defmodule Burp.Meta.Blog do
   import Ecto.Changeset
   alias Burp.Meta.Blog
 
+  @timestamps_opts [type: Timex.Ecto.DateTime]
+
   schema "blogs" do
     field(:attrs, :map, default: %{})
     field(:description, :string)

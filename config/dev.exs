@@ -60,3 +60,5 @@ config :burp, Burp.Repo,
   database: "burp_dev",
   hostname: "localhost",
   pool_size: 10
+
+config :burp, :storage_path, "/Users/ckruse/sites/burp_rails/public/media"
