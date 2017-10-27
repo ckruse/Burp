@@ -29,6 +29,11 @@ defmodule BurpWeb.PostController do
     render(conn, "show.html", post: post)
   end
 
+  def index_rss(conn, _params) do
+    posts = Blog.list_posts(conn.assigns[:current_blog], true, limit: [quantity: 10])
+    render(conn, "index.rss", posts: posts)
+  end
+
   def index_atom(conn, _params) do
     posts = Blog.list_posts(conn.assigns[:current_blog], true, limit: [quantity: 10])
     render(conn, "index.atom", posts: posts)

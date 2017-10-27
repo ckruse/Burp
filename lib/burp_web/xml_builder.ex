@@ -1,4 +1,4 @@
-defmodule BurpWeb.AtomBuilder do
+defmodule BurpWeb.XmlBuilder do
   import BurpWeb.Gettext
   import BurpWeb.Router.Helpers
 
@@ -27,8 +27,8 @@ defmodule BurpWeb.AtomBuilder do
   def title(nil), do: gettext("Who knows Wayne?")
   def title(%Burp.Meta.Blog{} = blog), do: {:title, nil, blog.name}
 
-  def subtitle(nil), do: {:subtitle, nil, gettext("Nobody cares what is written here…")}
-  def subtitle(blog), do: {:subtitle, nil, blog.description}
+  def description(type, nil), do: {type, nil, gettext("Nobody cares what is written here…")}
+  def description(type, blog), do: {type, nil, blog.description}
 
   def self_link(conn, _), do: {:link, %{rel: "self", href: post_url(conn, :index)}, nil}
 
@@ -66,5 +66,27 @@ defmodule BurpWeb.AtomBuilder do
 
   def entries(conn, [head | posts], current_blog) do
     [entry(conn, head, current_blog) | entries(conn, posts, current_blog)]
+  end
+
+  def item(conn, post, _) do
+    {:safe, cnt} = PostView.as_html(post, post.content)
+
+    {
+      :item,
+      nil,
+      [
+        {:title, nil, post.subject},
+        {:description, nil, cnt},
+        {:pubDate, nil, Timex.format!(post.published_at, "{RFC1123}")},
+        {:link, nil, PostView.posting_url(conn, post)},
+        {:guid, nil, post.guid}
+      ]
+    }
+  end
+
+  def items(_, [], _), do: []
+
+  def items(conn, [head | posts], current_blog) do
+    [item(conn, head, current_blog) | items(conn, posts, current_blog)]
   end
 end
