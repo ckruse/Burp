@@ -93,7 +93,7 @@ defmodule Burp.Blog do
       :author,
       :blog,
       comments: from(Comment, order_by: [asc: :inserted_at]) |> only_published(published),
-      tags: from(Tag, order_by: [desc: :tag_name])
+      tags: from(Tag, order_by: [asc: :tag_name])
     ])
   end
 
