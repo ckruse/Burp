@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"PO-Revision-Date: 2017-10-27 10:07+0200\n"
+"PO-Revision-Date: 2017-10-31 07:38+0100\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -40,7 +40,7 @@ msgstr "Ausloggen"
 msgid "Look at"
 msgstr "Besuchen Sie"
 
-#: lib/burp_web/templates/layout/app.html.eex:34
+#: lib/burp_web/templates/layout/app.html.eex:34 lib/burp_web/xml_builder.ex:30
 msgid "Nobody cares what is written here…"
 msgstr "Niemanden interessiert, was hier steht…"
 
@@ -69,7 +69,7 @@ msgid "When having technical issues, contact <a href=\"mailto:christian@kruse.co
 msgstr "Bei technischen Problemen kontaktieren sie <a href=\"mailto:christian@kruse.cool\">christian@kruse.cool</a>."
 
 #: lib/burp_web/views/layout_view.ex:13 lib/burp_web/views/layout_view.ex:43
-#: lib/burp_web/views/layout_view.ex:45
+#: lib/burp_web/views/layout_view.ex:45 lib/burp_web/xml_builder.ex:27
 msgid "Who knows Wayne?"
 msgstr "Wer kennt Wayne?"
 
@@ -176,6 +176,7 @@ msgid "Edit post „%{subject}“"
 msgstr "Artikel „%{subject}“ editieren"
 
 #: lib/burp_web/templates/admin/comment/form.html.eex:4
+#: lib/burp_web/templates/admin/config/form.html.eex:4
 #: lib/burp_web/templates/admin/medium/form.html.eex:4
 #: lib/burp_web/templates/admin/post/form.html.eex:3
 #: lib/burp_web/templates/comment/form.html.eex:3
@@ -183,7 +184,7 @@ msgid "Oops, something went wrong! Please check the errors below."
 msgstr "Uups, etwas ist schief gelaufen! Bitte prüfen Sie die Fehler unten."
 
 #: lib/burp_web/templates/admin/post/index.html.eex:1
-#: lib/burp_web/templates/admin/subnav.html.eex:2
+#: lib/burp_web/templates/admin/subnav.html.eex:3
 msgid "Posts"
 msgstr "Artikel"
 
@@ -206,6 +207,7 @@ msgid "cancel"
 msgstr "abbrechen"
 
 #: lib/burp_web/templates/admin/comment/form.html.eex:40
+#: lib/burp_web/templates/admin/config/form.html.eex:70
 #: lib/burp_web/templates/admin/medium/form.html.eex:21
 #: lib/burp_web/templates/admin/post/form.html.eex:38
 #: lib/burp_web/templates/comment/form.html.eex:32
@@ -239,7 +241,7 @@ msgid "Author"
 msgstr "Autor"
 
 #: lib/burp_web/templates/admin/comment/index.html.eex:1
-#: lib/burp_web/templates/admin/subnav.html.eex:3
+#: lib/burp_web/templates/admin/subnav.html.eex:4
 #: lib/burp_web/templates/post/post.html.eex:40
 msgid "Comments"
 msgstr "Kommentare"
@@ -311,7 +313,7 @@ msgstr "Medien-Liste"
 msgid "MIME type"
 msgstr "MIME-Typ"
 
-#: lib/burp_web/templates/admin/subnav.html.eex:4
+#: lib/burp_web/templates/admin/subnav.html.eex:5
 msgid "Media"
 msgstr "Medien"
 
@@ -336,7 +338,7 @@ msgstr "Name"
 msgid "New Medium"
 msgstr "Neues Medium"
 
-#: lib/burp_web/templates/post/index.html.eex:13
+#: lib/burp_web/templates/post/index.html.eex:11
 msgid "Sorry, no posts found yet"
 msgstr "Sorry, noch keine Artikel vorhanden…"
 
@@ -394,10 +396,6 @@ msgstr "permanenter Link zu diesem Kommentar"
 msgid "wrote at"
 msgstr "schrieb am"
 
-#: lib/burp_web/templates/post/index.html.eex:10
-msgid "You can find more articles in the <a href=\"%{archive_link}\">achive</a>."
-msgstr "Sie können mehr Artikel im <a href=\"%{archive_link}\">Archiv</a> finden."
-
 #: lib/burp_web/templates/post/post.html.eex:10
 msgid "%{count} comment"
 msgid_plural "%{count} comments"
@@ -423,3 +421,79 @@ msgstr "Archiv — %{name}"
 #: lib/burp_web/views/archive_view.ex:4
 msgid "Archive — Who knows Wayne?"
 msgstr "Archiv — Wer kennt Wayne?"
+
+#: lib/burp_web/views/archive_view.ex:17
+msgid "Archive %{year_mon} — %{name}"
+msgstr "Archiv %{year_mon} — %{name}"
+
+#: lib/burp_web/views/archive_view.ex:14
+msgid "Archive %{year_mon} — Who knows Wayne?"
+msgstr "Archiv %{year_mon} — Wer kennt Wayne?"
+
+#: lib/burp_web/views/archive_view.ex:11
+msgid "Archive %{year} — %{name}"
+msgstr "Archiv %{year} — %{name}"
+
+#: lib/burp_web/views/archive_view.ex:8
+msgid "Archive %{year} — Who knows Wayne?"
+msgstr "Archiv %{year} — Wer kennt Wayne?"
+
+#: lib/burp_web/templates/admin/subnav.html.eex:2
+msgid "Configuration"
+msgstr "Konfiguration"
+
+#: lib/burp_web/controllers/admin/config_controller.ex:15
+msgid "Configuration updated successfully."
+msgstr "Konfiguration erfolgreich geändert."
+
+#: lib/burp_web/templates/admin/config/edit.html.eex:1
+msgid "Configuration „%{name}”"
+msgstr "Konfiguration „%{name}“"
+
+#: lib/burp_web/templates/tag/show.html.eex:1
+msgid "Tag „%{tag}”"
+msgstr "Tag „%{tag}“"
+
+#: lib/burp_web/templates/tag/index.html.eex:1
+msgid "Tags"
+msgstr "Tags"
+
+#: lib/burp_web/templates/admin/config/form.html.eex:27
+msgid "blog hostname"
+msgstr "Hostname"
+
+#: lib/burp_web/templates/admin/config/form.html.eex:9
+msgid "blog name"
+msgstr "Name"
+
+#: lib/burp_web/templates/admin/config/form.html.eex:33
+msgid "blog url"
+msgstr "Blog-URL"
+
+#: lib/burp_web/templates/admin/config/form.html.eex:46
+msgid "comments disabled"
+msgstr "Kommentare deaktiviert"
+
+#: lib/burp_web/templates/admin/config/form.html.eex:42
+msgid "comments enabled"
+msgstr "Kommentare aktiviert"
+
+#: lib/burp_web/templates/admin/config/form.html.eex:53
+msgid "comments moderated"
+msgstr "Kommentare moderiert"
+
+#: lib/burp_web/templates/admin/config/form.html.eex:57
+msgid "comments unmoderated"
+msgstr "Kommentare unmoderiert"
+
+#: lib/burp_web/templates/admin/config/form.html.eex:15
+msgid "description"
+msgstr "Beschreibung"
+
+#: lib/burp_web/templates/admin/config/form.html.eex:21
+msgid "keywords"
+msgstr "Schlüsselwörter"
+
+#: lib/burp_web/templates/admin/config/form.html.eex:62
+msgid "notification mails on new comments to this address"
+msgstr "Benachrichtigungsemail bei neuen Kommentaren an diese Adresse"
