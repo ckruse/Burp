@@ -26,5 +26,9 @@ defmodule Burp.Blog.Comment do
     comment
     |> cast(attrs, [:post_id, :visible, :author, :email, :url, :content])
     |> validate_required([:post_id, :visible, :author, :content])
+    |> validate_length(:author, max: 255)
+    |> validate_length(:email, max: 255)
+    |> validate_length(:url, max: 255)
+    |> validate_length(:content, max: 12288)
   end
 end
