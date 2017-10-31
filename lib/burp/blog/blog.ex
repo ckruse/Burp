@@ -229,7 +229,7 @@ defmodule Burp.Blog do
   end
 
   defp maybe_moderate(changeset, post) do
-    case post.attrs["comments_moderated"] do
+    case post.blog.attrs["comments_moderated"] do
       "yes" ->
         Ecto.Changeset.put_change(changeset, :visible, false)
 
