@@ -27,6 +27,9 @@ defmodule BurpWeb.Router do
     resources("/posts", PostController, except: [:show])
     resources("/comments", CommentController, except: [:show, :new, :create])
     resources("/media", MediumController, except: [:show])
+
+    get("/config", ConfigController, :edit)
+    put("/config", ConfigController, :update)
   end
 
   scope "/", BurpWeb do

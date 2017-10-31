@@ -33,21 +33,21 @@ defmodule Burp.Meta.Blog do
          :description,
          :keywords,
          :url,
-         :image_url,
+         # :image_url,
          :lang,
          :host,
-         :attrs,
-         :author_id
+         :attrs
+         # :author_id
        ])
     |> validate_required([
          :name,
          :description,
          :keywords,
          :url,
-         :image_url,
+         # :image_url,
          :lang,
-         :host,
-         :author_id
+         :host
+         # :author_id
        ])
     |> unique_constraint(:host)
   end
