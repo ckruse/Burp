@@ -18,7 +18,11 @@ defmodule Burp.Blog do
 
   """
   def list_posts(blog \\ nil, published \\ true, query_params \\ [order: nil, limit: nil]) do
-    from(post in Post, order_by: [desc: post.inserted_at], preload: [:author, :comments, :tags])
+    from(
+      post in Post,
+      order_by: [desc: post.inserted_at],
+      preload: [:author, :comments, :tags, :blog]
+    )
     |> only_published(published)
     |> from_blog(blog)
     |> Burp.PagingApi.set_limit(query_params[:limit])
@@ -35,11 +39,17 @@ defmodule Burp.Blog do
   end
 
   def get_last_post(blog \\ nil, published \\ true) do
-    from(post in Post, order_by: [desc: post.published_at], limit: 1, preload: [
-      :author,
-      :comments,
-      :tags
-    ])
+    from(
+      post in Post,
+      order_by: [desc: post.published_at],
+      limit: 1,
+      preload: [
+        :author,
+        :comments,
+        :tags,
+        :blog
+      ]
+    )
     |> only_published(published)
     |> from_blog(blog)
     |> Repo.one()
@@ -60,14 +70,14 @@ defmodule Burp.Blog do
 
   """
   def get_post!(id, blog \\ nil, published \\ true) do
-    from(p in Post, where: p.id == ^id, preload: [:author, :comments, :tags])
+    from(p in Post, where: p.id == ^id, preload: [:author, :comments, :tags, :blog])
     |> only_published(published)
     |> from_blog(blog)
     |> Repo.one!()
   end
 
   def get_post_by_slug!(slug, blog \\ nil, published \\ true) do
-    from(p in Post, where: p.slug == ^slug, preload: [:author, :comments, :tags])
+    from(p in Post, where: p.slug == ^slug, preload: [:author, :comments, :tags, :blog])
     |> only_published(published)
     |> from_blog(blog)
     |> Repo.one!()
@@ -402,7 +412,7 @@ defmodule Burp.Blog do
       post in Post,
       where: post.inserted_at >= ^starts and post.inserted_at <= ^ends,
       order_by: [desc: post.inserted_at],
-      preload: [:author, :comments, :tags]
+      preload: [:author, :comments, :tags, :blog]
     )
     |> only_published(published)
     |> from_blog(blog)
@@ -430,7 +440,7 @@ defmodule Burp.Blog do
       post in Post,
       where: post.id in fragment("SELECT post_id FROM tags WHERE LOWER(tag_name) = ?", ^tag),
       order_by: [desc: post.inserted_at],
-      preload: [:author, :comments, :tags]
+      preload: [:author, :comments, :tags, :blog]
     )
     |> only_published(published)
     |> from_blog(blog)
