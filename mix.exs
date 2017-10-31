@@ -46,6 +46,8 @@ defmodule Burp.Mixfile do
       {:timex_ecto, "~> 3.0"},
       {:cmark, "~> 0.7"},
       {:xml_builder, github: "joshnuss/xml_builder"},
+      {:bamboo, "~> 0.8"},
+      {:bamboo_smtp, "~> 1.4.0"},
       {:ex_machina, "~> 2.1", only: :test}
     ]
   end

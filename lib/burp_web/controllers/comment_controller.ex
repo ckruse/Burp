@@ -11,6 +11,9 @@ defmodule BurpWeb.CommentController do
 
     case Blog.create_comment(comment_params, post) do
       {:ok, comment} ->
+        BurpWeb.NewCommentMailer.new_comment_mail(post, comment)
+        |> Burp.Mailer.deliver_later()
+
         conn
         |> put_notification(comment)
         |> redirect(to: posting_path(conn, post))

@@ -15,3 +15,5 @@ config :burp, Burp.Repo,
   database: "burp_test",
   hostname: "localhost",
   pool: Ecto.Adapters.SQL.Sandbox
+
+config :burp, Burp.Mailer, adapter: Bamboo.TestAdapter

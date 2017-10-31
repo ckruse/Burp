@@ -1,0 +1,11 @@
+<p><%= gettext("Hi there, %{name}!", name: @post.author.name) %></p>
+
+<p><%= gettext("A new comment has been posted for the post „%{subject}“:", subject: @post.subject) %></p>
+
+<p><%= as_html(@comment, @comment.content) %></p>
+
+<p><%= gettext("You can moderate this comment under this URL:") %>
+
+<p><%= link gettext("moderate comment"), to: admin_comment_url(BurpWeb.Endpoint, :edit, @comment) %>
+
+<p><%= gettext("Best regards, Burp") %></p>

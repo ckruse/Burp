@@ -62,3 +62,4 @@ config :burp, Burp.Repo,
   pool_size: 10
 
 config :burp, :storage_path, "/Users/ckruse/sites/burp_rails/public/media"
+config :burp, Burp.Mailer, adapter: Bamboo.LocalAdapter
