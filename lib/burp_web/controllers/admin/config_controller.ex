@@ -10,7 +10,7 @@ defmodule BurpWeb.Admin.ConfigController do
 
   def update(conn, %{"blog" => blog_params}) do
     case Meta.update_blog(conn.assigns[:current_blog], blog_params) do
-      {:ok, blog} ->
+      {:ok, _blog} ->
         conn
         |> put_flash(:info, gettext("Configuration updated successfully."))
         |> redirect(to: admin_config_path(conn, :edit))

@@ -2,7 +2,6 @@ defmodule BurpWeb.PostController do
   use BurpWeb, :controller
 
   alias Burp.Blog
-  alias Burp.Blog.Comment
 
   def index(conn, _params) do
     # last_post = Blog.get_last_post(conn.assigns[:current_blog])
@@ -15,9 +14,6 @@ defmodule BurpWeb.PostController do
 
         [head | tail] ->
           {head, tail}
-
-        [head] ->
-          {head, []}
       end
 
     render(conn, "index.html", last_post: last_post, posts: posts)

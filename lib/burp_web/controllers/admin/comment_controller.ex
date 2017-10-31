@@ -2,7 +2,6 @@ defmodule BurpWeb.Admin.CommentController do
   use BurpWeb, :controller
 
   alias Burp.Blog
-  alias Burp.Blog.Comment
 
   def index(conn, params) do
     count = Blog.count_comments(conn.assigns[:current_blog], false)

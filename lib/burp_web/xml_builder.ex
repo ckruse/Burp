@@ -1,8 +1,7 @@
 defmodule BurpWeb.XmlBuilder do
   import BurpWeb.Gettext
   import BurpWeb.Router.Helpers
-
-  alias BurpWeb.PostView
+  import BurpWeb.Helpers
 
   def maybe_add(nodes, _, nil, nil), do: nodes
   def maybe_add(nodes, type, attrs, value), do: nodes ++ [{type, attrs, value}]
@@ -41,9 +40,9 @@ defmodule BurpWeb.XmlBuilder do
 
   def categories([head | tags]), do: [{:category, %{term: head.tag_name}, nil} | categories(tags)]
 
-  def entry(conn, post, current_blog) do
-    {:safe, cnt} = PostView.as_html(post, post.content)
-    {:safe, excerpt} = PostView.as_html(post, post.excerpt)
+  def entry(conn, post, _current_blog) do
+    {:safe, cnt} = as_html(post, post.content)
+    {:safe, excerpt} = as_html(post, post.excerpt)
 
     {
       :entry,
@@ -54,7 +53,7 @@ defmodule BurpWeb.XmlBuilder do
         updated(post),
         published(post),
         author(post),
-        {:link, %{rel: "alternate", href: PostView.posting_url(conn, post)}, nil},
+        {:link, %{rel: "alternate", href: posting_url(conn, post)}, nil},
         categories(post.tags),
         {:summary, %{type: "html"}, excerpt},
         {:content, %{type: "html"}, cnt}
@@ -69,7 +68,7 @@ defmodule BurpWeb.XmlBuilder do
   end
 
   def item(conn, post, _) do
-    {:safe, cnt} = PostView.as_html(post, post.content)
+    {:safe, cnt} = as_html(post, post.content)
 
     {
       :item,
@@ -78,7 +77,7 @@ defmodule BurpWeb.XmlBuilder do
         {:title, nil, post.subject},
         {:description, nil, cnt},
         {:pubDate, nil, Timex.format!(post.published_at, "{RFC1123}")},
-        {:link, nil, PostView.posting_url(conn, post)},
+        {:link, nil, posting_url(conn, post)},
         {:guid, nil, post.guid}
       ]
     }

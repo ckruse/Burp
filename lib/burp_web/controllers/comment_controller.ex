@@ -13,7 +13,7 @@ defmodule BurpWeb.CommentController do
       {:ok, comment} ->
         conn
         |> put_notification(comment)
-        |> redirect(to: BurpWeb.PostView.posting_path(conn, post))
+        |> redirect(to: posting_path(conn, post))
 
       {:error, %Ecto.Changeset{} = changeset} ->
         render(conn, "new.html", changeset: changeset, post: post)

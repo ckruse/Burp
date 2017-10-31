@@ -3,13 +3,6 @@ defmodule BurpWeb.PostView do
 
   import BurpWeb.XmlBuilder
 
-  def posting_url(conn, post), do: post_url(conn, :index) <> post.slug
-
-  def posting_path(conn, post), do: post_path(conn, :index) <> post.slug
-
-  def as_html(%{posting_format: "html"}, html), do: {:safe, html}
-  def as_html(_, markdown), do: {:safe, Cmark.to_html(markdown)}
-
   def comment_changeset do
     Burp.Blog.change_comment(%Burp.Blog.Comment{})
   end

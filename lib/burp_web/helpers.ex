@@ -29,4 +29,21 @@ defmodule BurpWeb.Helpers do
 
     fun.(forms)
   end
+
+  def comment_url(conn, comment), do: posting_url(conn, comment.post) <> "#comment-#{comment.id}"
+
+  def comment_url(conn, comment, post), do: posting_url(conn, post) <> "#comment-#{comment.id}"
+
+  def new_comment_url(conn, post), do: posting_url(conn, post)
+
+  def posting_url(conn, post), do: BurpWeb.Router.Helpers.post_url(conn, :index) <> post.slug
+
+  def posting_path(conn, post), do: BurpWeb.Router.Helpers.post_path(conn, :index) <> post.slug
+
+  alias Burp.Blog.Post
+  alias Burp.Blog.Comment
+
+  def as_html(%Post{posting_format: "html"}, html), do: {:safe, html}
+  def as_html(%Post{}, markdown), do: {:safe, Cmark.to_html(markdown)}
+  def as_html(%Comment{}, markdown), do: {:safe, Cmark.to_html(markdown, [:safe, :smart])}
 end

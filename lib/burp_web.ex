@@ -24,6 +24,9 @@ defmodule BurpWeb do
       import BurpWeb.Router.Helpers
       import BurpWeb.Gettext
 
+      import Burp.Helpers
+      import BurpWeb.Helpers
+
       import BurpWeb.Paginator
     end
   end

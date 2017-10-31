@@ -42,7 +42,7 @@ defmodule BurpWeb.LayoutView do
 
   def default_page_title(_conn, _assigns), do: gettext("Who knows Wayne?")
 
-  def h1(conn, %{current_blog: nil}), do: gettext("Who knows Wayne?")
+  def h1(_conn, %{current_blog: nil}), do: gettext("Who knows Wayne?")
   def h1(_conn, %{current_blog: blog}), do: blog.name
 
   def subnav(conn, assigns) do

@@ -5,10 +5,10 @@
       <details open>
         <summary>
           <%= gettext("wrote at") %>
-          <%= link to: BurpWeb.Admin.CommentView.comment_url(@conn, @comment, @post), title: gettext("permanent link to this comment") do %><time pubdate datetime="<%= Timex.format!(@comment.inserted_at || Timex.local(), "{ISO:Extended}") %>"><%= Timex.format!(@comment.inserted_at || Timex.local(), gettext("%Y-%m-%d %H:%M"), :strftime) %></time><% end %>
+          <%= link to: comment_url(@conn, @comment, @post), title: gettext("permanent link to this comment") do %><time pubdate datetime="<%= Timex.format!(@comment.inserted_at || Timex.local(), "{ISO:Extended}") %>"><%= Timex.format!(@comment.inserted_at || Timex.local(), gettext("%Y-%m-%d %H:%M"), :strftime) %></time><% end %>
         </summary>
       </details>
   </header>
 
-  <%= BurpWeb.CommentView.comment_html(@comment) %>
+  <%= as_html(@comment, @comment.content) %>
 </article>
