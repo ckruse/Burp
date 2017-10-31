@@ -1,0 +1,4 @@
+<h2><%= gettext("New Medium") %></h2>
+
+<%= render "form.html", Map.put(assigns, :action, admin_medium_path(@conn, :create)) %>
+

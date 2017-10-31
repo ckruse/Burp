@@ -1,0 +1,32 @@
+.index-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.index-table .action-column,
+.index-table .numeric,
+.index-table .date,
+.index-table .right {
+  text-align: right;
+}
+
+.index-table thead th {
+  border-bottom: 1px solid #dfdfdf;
+}
+
+.index-table th,
+.index-table td {
+  border-right: 1px solid #dfdfdf;
+  padding: 0.125rem 0.25rem;
+}
+
+.index-table th:last-of-type,
+.index-table td:last-of-type {
+  border-right: 0;
+  padding-right: 0;
+}
+
+.index-table th:first-of-type,
+.index-table td:first-of-type {
+  padding-left: 0;
+}

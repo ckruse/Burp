@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="<%= if assigns[:current_blog], do: @current_blog.lang, else: Gettext.get_locale(BurpWeb.Gettext) %>" prefix="og: http://ogp.me/ns#">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="description" content="<%= page_description(@conn, assigns) %>">
+    <meta name="author" content="<%= page_author(@conn, assigns) %>">
+    <meta name="keywords" content="<%= page_keywords(@conn, assigns) %>">
+
+    <link rel="alternate" type="application/rss+xml" title="RSS" href="<%= post_path(@conn, :index_rss) %>">
+    <link rel="alternate" type="application/atom+xml" title="Atom" href="<%= post_path(@conn, :index_atom) %>">
+
+    <link rel="shortcut icon" href="<%= static_path(@conn, "/images/favicon.png") %>">
+
+    <title><%= page_title(@conn, assigns) %></title>
+    <link rel="stylesheet" href="<%= static_path(@conn, "/css/app.css") %>">
+
+    <meta property="og:title" content="<%= page_title(@conn, assigns) %>">
+    <meta property="og:description" content="<%= page_description(@conn, assigns) %>">
+    <meta property="og:type" content="<%= if assigns[:post], do: "article", else: "website" %>">
+    <%= if assigns[:post] do %>
+      <meta property="article:published_time" content="<%= Timex.format!(Timex.Timezone.convert(@post.published_at, "Europe/Berlin"), "{ISO:Extended}") %>">
+      <meta property="article:modified_time" content="<%= Timex.format!(Timex.Timezone.convert(@post.updated_at, "Europe/Berlin"), "{ISO:Extended}") %>">
+      <meta property="article:author" content="<%= @post.author.name %>">
+      <meta property="article:tag" content="<%= page_keywords(@conn, assigns) %>">
+    <% end %>
+  </head>
+
+  <body>
+    <header id="site-header">
+      <h1><%= link h1(@conn, assigns), to: post_path(@conn, :index) %></h1>
+      <p><%= if assigns[:current_blog], do: @current_blog.description, else: gettext("Nobody cares what is written here…") %></p>
+    </header>
+
+    <main role="main">
+      <%= if has_subnav?(@conn, assigns) do %>
+        <nav class="btn-toolbar" role="toolbar">
+          <%= subnav(@conn, assigns) %>
+        </nav>
+      <% end %>
+
+      <%= if get_flash(@conn, :info) do %><p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p><% end %>
+      <%= if get_flash(@conn, :error) do %><p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p><% end %>
+
+      <%= render @view_module, @view_template, assigns %>
+    </main>
+
+    <footer>
+      <p class="admin-nav">
+        <%= if assigns[:current_user] do %>
+          <%= link gettext("Logout"), to: session_path(@conn, :delete), rel: "nofollow" %>
+          <%= link gettext("Administration"), to: admin_post_path(@conn, :index) %>
+        <% else %>
+          <%= link gettext("Login"), to: session_path(@conn, :new), rel: "nofollow" %>
+        <% end %>
+      </p>
+
+      <nav id="site-nav"><%= gettext("Look at") %> <%= gettext("a list of") %> <%= link gettext("tags"), to: tag_path(@conn, :index) %> <%= gettext("or") %> <%= link gettext("the archive"), to: archive_path(@conn, :years) %></li>.</nav>
+
+      <p class="about">
+        <%= {:safe, gettext("This is a Wayne blog, only <a href=\"http://kennst-du-wayne.de/\">Wayne is interested</a>.")} %>
+        <%= {:safe, gettext("The Software powering this platform is CKs <a href=\"http://github.com/ckruse/Burp\">Burp</a>.")} %>
+        <%= if assigns[:current_blog] do %>
+          <%= gettext("%{name} is creating the content on this site.", name: @current_blog.author.name) %>
+        <% end %>
+
+        <%= {:safe, gettext("When having technical issues, contact <a href=\"mailto:christian@kruse.cool\">christian@kruse.cool</a>.")} %>
+      </p>
+
+    </footer>
+
+    <script src="<%= static_path(@conn, "/js/app.js") %>"></script>
+  </body>
+</html>

@@ -1,0 +1,28 @@
+<h2><%= gettext("Listing Media") %></h2>
+
+<table class="index-table">
+  <thead>
+    <tr>
+      <th><%= gettext("Name") %></th>
+      <th><%= gettext("URL") %></th>
+      <th><%= gettext("MIME type") %></th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for medium <- @media do %>
+    <tr>
+      <td><%= medium.name %></td>
+      <td><%= medium_url(@conn, :show, medium) %></td>
+      <td><%= medium.media_type %></td>
+
+      <td class="action-column">
+        <%= link gettext("show"), to: medium_path(@conn, :show, medium), class: "btn btn-secondary btn-xs" %>
+        <%= link gettext("edit"), to: admin_medium_path(@conn, :edit, medium), class: "btn btn-secondary btn-xs" %>
+        <%= link gettext("delete"), to: admin_medium_path(@conn, :delete, medium), method: :delete, data: [confirm: gettext("Are you sure?")], class: "btn btn-danger btn-xs" %>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>

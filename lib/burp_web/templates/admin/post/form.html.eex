@@ -1,0 +1,41 @@
+<%= form_for @changeset, @action, fn f -> %>
+  <%= if @changeset.action do %>
+    <div class="alert alert-danger"><%= gettext("Oops, something went wrong! Please check the errors below.") %></div>
+  <% end %>
+
+  <div class="fgroup">
+    <%= label f, :subject, gettext("subject") %>
+    <%= text_input f, :subject, class: error_class(f, :subject) %>
+    <%= error_tag f, :subject %>
+  </div>
+
+  <div class="fgroup">
+    <%= label f, :slug, gettext("slug") %>
+    <%= text_input f, :slug, class: error_class(f, :slug) %>
+    <%= error_tag f, :slug %>
+  </div>
+
+  <div class="fgroup">
+    <%= label f, :visible, class: "checkbox" do %>
+      <%= checkbox f, :visible %>
+      <%= gettext("visible") %>
+    <% end %>
+  </div>
+
+  <div class="fgroup">
+    <%= label f, :excerpt, gettext("excerpt") %>
+    <%= textarea f, :excerpt, class: "post-excerpt #{error_class(f, :excerpt)}" %>
+    <%= error_tag f, :excerpt %>
+  </div>
+
+  <div class="fgroup">
+    <%= label f, :content, gettext("content") %>
+    <%= textarea f, :content, class: "post-content #{error_class(f, :excerpt)}" %>
+    <%= error_tag f, :content %>
+  </div>
+
+  <div>
+    <%= submit gettext("submit"), class: "btn btn-primary" %>
+    <%= link gettext("cancel"), to: admin_post_path(@conn, :index), class: "btn btn-secondary" %>
+  </div>
+<% end %>

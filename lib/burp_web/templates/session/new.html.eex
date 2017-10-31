@@ -1,0 +1,22 @@
+<%= form_for @changeset, session_path(@conn, :create), [method: :post], fn f -> %>
+  <div class="fgroup">
+    <%= label f, :login, gettext("Username or email") %>
+    <%= text_input f, :login, placeholder: gettext("luke@example.org"), autofocus: true %>
+  </div>
+
+  <div class="fgroup">
+    <%= label f, :password, gettext("password") %>
+    <%= password_input f, :password, placeholder: gettext("password") %>
+  </div>
+
+  <div class="fgroup">
+    <%= label f, :remember_me, class: "checkbox" do %>
+      <%= checkbox f, :remember_me %>
+      <%= gettext("Remember me") %>
+    <% end %>
+  </div>
+
+  <p class="form-actions">
+    <%= submit gettext("Login"), class: "btn btn-primary" %>
+  </p>
+<% end %>

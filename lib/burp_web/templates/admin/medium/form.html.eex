@@ -1,0 +1,23 @@
+<%= form_for @changeset, @action, [multipart: true], fn f -> %>
+  <%= if @changeset.action do %>
+    <div class="alert alert-danger">
+      <%= gettext("Oops, something went wrong! Please check the errors below.") %>
+    </div>
+  <% end %>
+
+  <div class="fgroup">
+    <%= label f, :name %>
+    <%= text_input f, :name, class: error_class(f, :name) %>
+    <%= error_tag f, :name %>
+  </div>
+
+  <div class="fgroup">
+    <%= label f, :file %>
+    <%= file_input f, :file, class: error_class(f, :file) %>
+    <%= error_tag f, :file %>
+  </div>
+
+  <div class="form-group">
+    <%= submit gettext("submit"), class: "btn btn-primary" %>
+  </div>
+<% end %>

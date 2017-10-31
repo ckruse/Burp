@@ -1,0 +1,5 @@
+<div class="btn-group" role="group">
+  <%= link gettext("New Post"), to: admin_post_path(@conn, :new), class: "btn btn-primary" %>
+</div>
+
+<%= render(BurpWeb.AdminView, "subnav.html", assigns) %>

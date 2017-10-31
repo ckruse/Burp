@@ -1,0 +1,54 @@
+<article class="post">
+  <header>
+    <h2><%= link @post.subject, to: posting_url(@conn, @post) %></h2>
+    <details open>
+      <summary>
+        <%= gettext("published at") %>
+        <time pubdate datetime="<%= Timex.format!(@post.published_at, "{ISO:Extended}") %>"><%= Timex.format!(@post.published_at, gettext("%Y-%m-%d %H:%M"), :strftime) %></time>
+        <%= gettext("by") %> <%= link @post.author.name, to: "mailto:" <> @post.author.email %><%= if Timex.after?(@post.updated_at, @post.published_at) do %>,
+          <%= gettext("updated at") %>
+          <time datetime="<%= Timex.format!(@post.updated_at, "{ISO:Extended}") %>"><%= Timex.format!(@post.updated_at, gettext("%Y-%m-%d %H:%M"), :strftime) %></time><% end %><%= if length(@post.comments) > 0 do %>, <%= ngettext("%{count} comment", "%{count} comments", length(@post.comments)) %><% end %>
+      </summary>
+
+      <%= if !blank?(@post.tags) do %>
+        <div class="tags">
+          <%= gettext("filed under:") %>
+          <ul>
+            <%= for tag <- @post.tags do %>
+              <li><%= link tag.tag_name, to: tag_path(@conn, :show, tag.tag_name) %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+    </details>
+  </header>
+
+  <%= if !blank?(@post.excerpt) do %>
+    <div class="excerpt">
+      <%= as_html(@post, @post.excerpt) %>
+    </div>
+  <% end %>
+
+  <%= if !assigns[:hide_body] do %>
+    <div class="content">
+      <%= as_html(@post, @post.content) %>
+    </div>
+
+    <%= if @post.attrs["hide_comments"] != "yes" && !assigns[:hide_comments] do %>
+      <section id="comments" class="comments">
+        <%= if !blank?(@post.comments) do %>
+          <h3><%= gettext("Comments") %></h3>
+
+          <%= for comment <- @post.comments do %>
+            <%= render "comment.html", post: @post, conn: @conn, comment: comment %>
+          <% end %>
+        <% end %>
+
+        <%= if @post.attrs["comments"] != "disabled" && @post.blog.attrs["comments"] != "disabled" do %>
+          <h3><%= gettext("new comment") %></h3>
+          <%= render BurpWeb.CommentView, "form.html", changeset: comment_changeset(), post: @post, conn: @conn, action: new_comment_url(@conn, @post) %>
+        <% end %>
+      </section>
+    <% end %>
+  <% end %>
+</article>

@@ -1,0 +1,543 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR Free Software Foundation, Inc.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"PO-Revision-Date: 2017-10-31 15:27+0100\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#~ ## `msgid`s in this file come from POT (.pot) files.
+#~ ##
+#~ ## Do not add, change, or remove `msgid`s manually here as
+#~ ## they're tied to the ones in the corresponding POT file
+#~ ## (with the same domain).
+#~ ##
+#~ ## Use `mix gettext.extract --merge` or `mix gettext.merge`
+#~ ## to merge POT files into PO files.
+#~ msgid ""
+#~ msgstr ""
+#~ "Language: de\n"
+#: lib/burp_web/templates/layout/app.html.eex:66
+msgid "%{name} is creating the content on this site."
+msgstr "%{name} verunstaltet diese Seite mit Inhalt."
+
+#: lib/burp_web/templates/layout/app.html.eex:56
+#: lib/burp_web/templates/session/new.html.eex:20
+msgid "Login"
+msgstr "Einloggen"
+
+#: lib/burp_web/templates/layout/app.html.eex:53
+msgid "Logout"
+msgstr "Ausloggen"
+
+#: lib/burp_web/templates/layout/app.html.eex:60
+msgid "Look at"
+msgstr "Besuchen Sie"
+
+#: lib/burp_web/templates/layout/app.html.eex:34 lib/burp_web/xml_builder.ex:29
+msgid "Nobody cares what is written here…"
+msgstr "Niemanden interessiert, was hier steht…"
+
+#: lib/burp_web/templates/session/new.html.eex:15
+msgid "Remember me"
+msgstr "Login merken"
+
+#: lib/burp_web/templates/layout/app.html.eex:64
+msgid "The Software powering this platform is CKs <a href=\"http://github.com/ckruse/Burp\">Burp</a>."
+msgstr "Die verwendete Software ist CKs <a href=\"http://github.com/ckruse/Burp\">Burp</a>."
+
+#: lib/burp_web/templates/layout/app.html.eex:63
+msgid "This is a Wayne blog, only <a href=\"http://kennst-du-wayne.de/\">Wayne is interested</a>."
+msgstr "Dies ist ein Wayne-Blog, es <a href=\"http://kennst-du-wayne.de/\">interessiert nur Wayne</a>."
+
+#: lib/burp_web/templates/session/new.html.eex:3
+msgid "Username or email"
+msgstr "Benutzername oder Email"
+
+#: lib/burp_web/controllers/session_controller.ex:39
+msgid "Username or password wrong"
+msgstr "Benutzername oder Passwort ist falsch."
+
+#: lib/burp_web/templates/layout/app.html.eex:69
+msgid "When having technical issues, contact <a href=\"mailto:christian@kruse.cool\">christian@kruse.cool</a>."
+msgstr "Bei technischen Problemen kontaktieren sie <a href=\"mailto:christian@kruse.cool\">christian@kruse.cool</a>."
+
+#: lib/burp_web/views/layout_view.ex:13 lib/burp_web/views/layout_view.ex:43
+#: lib/burp_web/views/layout_view.ex:45 lib/burp_web/xml_builder.ex:26
+msgid "Who knows Wayne?"
+msgstr "Wer kennt Wayne?"
+
+#: lib/burp_web/plug/ensure_anonymous.ex:29
+#: lib/burp_web/plug/ensure_authenticated.ex:16
+#: lib/burp_web/plug/ensure_authenticated_action.ex:27
+msgid "You don't have access to this page!"
+msgstr "Sie dürfen auf diese Seite nicht zugreifen!"
+
+#: lib/burp_web/controllers/session_controller.ex:34
+msgid "You logged in successfully"
+msgstr "Sie haben sich erfolgreich eingeloggt."
+
+#: lib/burp_web/controllers/session_controller.ex:47
+msgid "You logged out successfully"
+msgstr "Sie haben sich erfolgreich ausgeloggt."
+
+#: lib/burp_web/templates/layout/app.html.eex:60
+msgid "a list of"
+msgstr "eine Liste von"
+
+#: lib/burp_web/templates/session/new.html.eex:4
+msgid "luke@example.org"
+msgstr ""
+
+#: lib/burp_web/templates/layout/app.html.eex:60
+msgid "or"
+msgstr "oder"
+
+#: lib/burp_web/templates/session/new.html.eex:8
+#: lib/burp_web/templates/session/new.html.eex:9
+msgid "password"
+msgstr "Passwort"
+
+#: lib/burp_web/templates/layout/app.html.eex:60
+msgid "tags"
+msgstr "Tags"
+
+#: lib/burp_web/templates/layout/app.html.eex:60
+msgid "the archive"
+msgstr "das Archiv"
+
+#: lib/burp_web/templates/admin/post/index.html.eex:22
+#: lib/burp_web/templates/admin/post/index.html.eex:23
+msgid "%Y-%m-%d"
+msgstr "%d. %m. %Y"
+
+#: lib/burp_web/templates/admin/comment/index.html.eex:27
+#: lib/burp_web/templates/admin/medium/index.html.eex:23
+#: lib/burp_web/templates/admin/post/index.html.eex:27
+msgid "Are you sure?"
+msgstr "Sind Sie sicher?"
+
+#: lib/burp_web/templates/admin/post/index.html.eex:8
+msgid "comments allowed"
+msgstr "Kommentare"
+
+#: lib/burp_web/templates/admin/post/index.html.eex:10
+msgid "created at"
+msgstr "erstellt"
+
+#: lib/burp_web/templates/admin/comment/index.html.eex:27
+#: lib/burp_web/templates/admin/medium/index.html.eex:23
+#: lib/burp_web/templates/admin/post/index.html.eex:27
+msgid "delete"
+msgstr "löschen"
+
+#: lib/burp_web/templates/admin/comment/index.html.eex:26
+#: lib/burp_web/templates/admin/medium/index.html.eex:22
+#: lib/burp_web/templates/admin/post/index.html.eex:26
+msgid "edit"
+msgstr "bearbeiten"
+
+#: lib/burp_web/templates/admin/comment/index.html.eex:22
+#: lib/burp_web/templates/admin/post/index.html.eex:19
+#: lib/burp_web/templates/admin/post/index.html.eex:20
+msgid "no"
+msgstr "nein"
+
+#: lib/burp_web/templates/admin/post/index.html.eex:9
+#: lib/burp_web/templates/post/post.html.eex:6
+msgid "published at"
+msgstr "veröffentlicht"
+
+#: lib/burp_web/templates/admin/post/form.html.eex:7
+#: lib/burp_web/templates/admin/post/index.html.eex:6
+msgid "subject"
+msgstr "Betreff"
+
+#: lib/burp_web/templates/admin/comment/form.html.eex:29
+#: lib/burp_web/templates/admin/post/form.html.eex:21
+#: lib/burp_web/templates/admin/post/index.html.eex:7
+msgid "visible"
+msgstr "sichtbar"
+
+#: lib/burp_web/templates/admin/comment/index.html.eex:22
+#: lib/burp_web/templates/admin/post/index.html.eex:19
+#: lib/burp_web/templates/admin/post/index.html.eex:20
+msgid "yes"
+msgstr "ja"
+
+#: lib/burp_web/templates/admin/post/edit.html.eex:1
+msgid "Edit post „%{subject}“"
+msgstr "Artikel „%{subject}“ editieren"
+
+#: lib/burp_web/templates/admin/comment/form.html.eex:4
+#: lib/burp_web/templates/admin/config/form.html.eex:4
+#: lib/burp_web/templates/admin/medium/form.html.eex:4
+#: lib/burp_web/templates/admin/post/form.html.eex:3
+#: lib/burp_web/templates/comment/form.html.eex:3
+msgid "Oops, something went wrong! Please check the errors below."
+msgstr "Uups, etwas ist schief gelaufen! Bitte prüfen Sie die Fehler unten."
+
+#: lib/burp_web/templates/admin/post/index.html.eex:1
+#: lib/burp_web/templates/admin/subnav.html.eex:3
+msgid "Posts"
+msgstr "Artikel"
+
+#: lib/burp_web/templates/admin/post/form.html.eex:32
+#: lib/burp_web/templates/comment/form.html.eex:25
+msgid "content"
+msgstr "Inhalt"
+
+#: lib/burp_web/templates/admin/post/form.html.eex:26
+msgid "excerpt"
+msgstr "Exzerpt"
+
+#: lib/burp_web/templates/admin/post/form.html.eex:13
+msgid "slug"
+msgstr "Slug"
+
+#: lib/burp_web/templates/admin/comment/form.html.eex:41
+#: lib/burp_web/templates/admin/post/form.html.eex:39
+#: lib/burp_web/templates/comment/form.html.eex:33
+msgid "cancel"
+msgstr "abbrechen"
+
+#: lib/burp_web/templates/admin/comment/form.html.eex:40
+#: lib/burp_web/templates/admin/config/form.html.eex:70
+#: lib/burp_web/templates/admin/medium/form.html.eex:21
+#: lib/burp_web/templates/admin/post/form.html.eex:38
+#: lib/burp_web/templates/comment/form.html.eex:32
+msgid "submit"
+msgstr "speichern"
+
+#: lib/burp_web/templates/layout/app.html.eex:54
+msgid "Administration"
+msgstr "Administration"
+
+#: lib/burp_web/templates/admin/post/new.html.eex:1
+#: lib/burp_web/templates/admin/post/subnav.html.eex:2
+msgid "New Post"
+msgstr "Neuer Artikel"
+
+#: lib/burp_web/controllers/admin/post_controller.ex:23
+msgid "Post created successfully."
+msgstr "Artikel erfolgreich erstellt."
+
+#: lib/burp_web/controllers/admin/post_controller.ex:56
+msgid "Post deleted successfully."
+msgstr "Artikel erfolgreich gelöscht."
+
+#: lib/burp_web/controllers/admin/post_controller.ex:43
+msgid "Post updated successfully."
+msgstr "Artikel erfolgreich geändert."
+
+#: lib/burp_web/templates/admin/comment/form.html.eex:9
+#: lib/burp_web/templates/admin/comment/index.html.eex:8
+msgid "Author"
+msgstr "Autor"
+
+#: lib/burp_web/templates/admin/comment/index.html.eex:1
+#: lib/burp_web/templates/admin/subnav.html.eex:4
+#: lib/burp_web/templates/post/post.html.eex:40
+msgid "Comments"
+msgstr "Kommentare"
+
+#: lib/burp_web/templates/admin/comment/form.html.eex:15
+#: lib/burp_web/templates/admin/comment/index.html.eex:9
+msgid "Email"
+msgstr "Email"
+
+#: lib/burp_web/templates/admin/comment/new.html.eex:1
+#: lib/burp_web/templates/comment/new.html.eex:1
+msgid "New Comment"
+msgstr "Neuer Kommentar"
+
+#: lib/burp_web/templates/admin/comment/form.html.eex:21
+#: lib/burp_web/templates/admin/comment/index.html.eex:10
+#: lib/burp_web/templates/admin/medium/index.html.eex:7
+msgid "URL"
+msgstr "URL"
+
+#: lib/burp_web/templates/admin/comment/index.html.eex:11
+msgid "Visible"
+msgstr "Sichtbar"
+
+#: lib/burp_web/templates/admin/comment/index.html.eex:25
+msgid "show post"
+msgstr "Artikel anzeigen"
+
+#: lib/burp_web/templates/admin/comment/form.html.eex:34
+msgid "Content"
+msgstr "Inhalt"
+
+#: lib/burp_web/templates/admin/comment/edit.html.eex:1
+msgid "Edit Comment"
+msgstr "Kommentar editieren"
+
+#: lib/burp_web/paginator.ex:48
+msgid "first page"
+msgstr "erste Seite"
+
+#: lib/burp_web/paginator.ex:77
+msgid "last page"
+msgstr "letzte Seite"
+
+#: lib/burp_web/paginator.ex:68
+msgid "next page"
+msgstr "nächste Seite"
+
+#: lib/burp_web/paginator.ex:58
+msgid "previous page"
+msgstr "vorherige Seite"
+
+#: lib/burp_web/controllers/admin/comment_controller.ex:38
+msgid "Comment deleted successfully."
+msgstr "Kommentar wurde erfolgreich gelöscht."
+
+#: lib/burp_web/controllers/admin/comment_controller.ex:25
+msgid "Comment updated successfully."
+msgstr "Kommentar wurde erfolgreich geändert."
+
+#: lib/burp_web/templates/admin/medium/edit.html.eex:1
+msgid "Edit Medium „%{name}”"
+msgstr "Medium „%{name}” bearbeiten"
+
+#: lib/burp_web/templates/admin/medium/index.html.eex:1
+msgid "Listing Media"
+msgstr "Medien-Liste"
+
+#: lib/burp_web/templates/admin/medium/index.html.eex:8
+msgid "MIME type"
+msgstr "MIME-Typ"
+
+#: lib/burp_web/templates/admin/subnav.html.eex:5
+msgid "Media"
+msgstr "Medien"
+
+#: lib/burp_web/controllers/admin/medium_controller.ex:21
+msgid "Medium created successfully."
+msgstr "Medium erfolgreich erstellt."
+
+#: lib/burp_web/controllers/admin/medium_controller.ex:59
+msgid "Medium deleted successfully."
+msgstr "Medium erfolgreich gelöscht."
+
+#: lib/burp_web/controllers/admin/medium_controller.ex:46
+msgid "Medium updated successfully."
+msgstr "Medium erfolgreich geändert."
+
+#: lib/burp_web/templates/admin/medium/index.html.eex:6
+msgid "Name"
+msgstr "Name"
+
+#: lib/burp_web/templates/admin/medium/new.html.eex:1
+#: lib/burp_web/templates/admin/medium/subnav.html.eex:2
+msgid "New Medium"
+msgstr "Neues Medium"
+
+#: lib/burp_web/templates/post/index.html.eex:11
+msgid "Sorry, no posts found yet"
+msgstr "Sorry, noch keine Artikel vorhanden…"
+
+#: lib/burp_web/templates/admin/medium/index.html.eex:21
+msgid "show"
+msgstr "anzeigen"
+
+#: lib/burp_web/templates/post/post.html.eex:8
+msgid "by"
+msgstr "von"
+
+#: lib/burp_web/templates/comment/form.html.eex:13
+msgid "email"
+msgstr "E-Mail"
+
+#: lib/burp_web/templates/post/post.html.eex:15
+msgid "filed under:"
+msgstr "eingeordnet unter"
+
+#: lib/burp_web/templates/comment/form.html.eex:7
+msgid "name"
+msgstr "Name"
+
+#: lib/burp_web/templates/post/post.html.eex:48
+msgid "new comment"
+msgstr "neuer Kommentar"
+
+#: lib/burp_web/templates/post/post.html.eex:9
+msgid "updated at"
+msgstr "geändert am"
+
+#: lib/burp_web/templates/comment/form.html.eex:19
+msgid "url"
+msgstr "URL"
+
+#: lib/burp_web/templates/post/index.html.eex:4
+msgid "older articles"
+msgstr "ältere Artikel"
+
+#: lib/burp_web/templates/post/comment.html.eex:8
+#: lib/burp_web/templates/post/post.html.eex:7
+#: lib/burp_web/templates/post/post.html.eex:10
+msgid "%Y-%m-%d %H:%M"
+msgstr "%d.%m.%Y, %H:%M"
+
+#: lib/burp_web/templates/comment/form.html.eex:26
+msgid "Use <a href=\"https://en.wikipedia.org/wiki/Markdown\">Markdown</a> to format your comment"
+msgstr "Nutzen Sie <a href=\"https://de.wikipedia.org/wiki/Markdown\">Markdown</a>, um Ihren Kommentar zu formatieren."
+
+#: lib/burp_web/templates/post/comment.html.eex:8
+msgid "permanent link to this comment"
+msgstr "permanenter Link zu diesem Kommentar"
+
+#: lib/burp_web/templates/post/comment.html.eex:7
+msgid "wrote at"
+msgstr "schrieb am"
+
+#: lib/burp_web/templates/post/post.html.eex:10
+msgid "%{count} comment"
+msgid_plural "%{count} comments"
+msgstr[0] "%{count} Kommentar"
+msgstr[1] "%{count} Kommentare"
+
+#: lib/burp_web/templates/archive/years.html.eex:1
+msgid "Archive"
+msgstr "Archiv"
+
+#: lib/burp_web/templates/archive/index.html.eex:1
+msgid "Archive %{year_mon}"
+msgstr "Archiv %{year_mon}"
+
+#: lib/burp_web/templates/archive/months.html.eex:1
+msgid "Archive %{year}"
+msgstr "Archiv %{year}"
+
+#: lib/burp_web/views/archive_view.ex:5
+msgid "Archive — %{name}"
+msgstr "Archiv — %{name}"
+
+#: lib/burp_web/views/archive_view.ex:4
+msgid "Archive — Who knows Wayne?"
+msgstr "Archiv — Wer kennt Wayne?"
+
+#: lib/burp_web/views/archive_view.ex:17
+msgid "Archive %{year_mon} — %{name}"
+msgstr "Archiv %{year_mon} — %{name}"
+
+#: lib/burp_web/views/archive_view.ex:14
+msgid "Archive %{year_mon} — Who knows Wayne?"
+msgstr "Archiv %{year_mon} — Wer kennt Wayne?"
+
+#: lib/burp_web/views/archive_view.ex:11
+msgid "Archive %{year} — %{name}"
+msgstr "Archiv %{year} — %{name}"
+
+#: lib/burp_web/views/archive_view.ex:8
+msgid "Archive %{year} — Who knows Wayne?"
+msgstr "Archiv %{year} — Wer kennt Wayne?"
+
+#: lib/burp_web/templates/admin/subnav.html.eex:2
+msgid "Configuration"
+msgstr "Konfiguration"
+
+#: lib/burp_web/controllers/admin/config_controller.ex:15
+msgid "Configuration updated successfully."
+msgstr "Konfiguration erfolgreich geändert."
+
+#: lib/burp_web/templates/admin/config/edit.html.eex:1
+msgid "Configuration „%{name}”"
+msgstr "Konfiguration „%{name}“"
+
+#: lib/burp_web/templates/tag/show.html.eex:1
+msgid "Tag „%{tag}”"
+msgstr "Tag „%{tag}“"
+
+#: lib/burp_web/templates/tag/index.html.eex:1
+msgid "Tags"
+msgstr "Tags"
+
+#: lib/burp_web/templates/admin/config/form.html.eex:27
+msgid "blog hostname"
+msgstr "Hostname"
+
+#: lib/burp_web/templates/admin/config/form.html.eex:9
+msgid "blog name"
+msgstr "Name"
+
+#: lib/burp_web/templates/admin/config/form.html.eex:33
+msgid "blog url"
+msgstr "Blog-URL"
+
+#: lib/burp_web/templates/admin/config/form.html.eex:46
+msgid "comments disabled"
+msgstr "Kommentare deaktiviert"
+
+#: lib/burp_web/templates/admin/config/form.html.eex:42
+msgid "comments enabled"
+msgstr "Kommentare aktiviert"
+
+#: lib/burp_web/templates/admin/config/form.html.eex:53
+msgid "comments moderated"
+msgstr "Kommentare moderiert"
+
+#: lib/burp_web/templates/admin/config/form.html.eex:57
+msgid "comments unmoderated"
+msgstr "Kommentare unmoderiert"
+
+#: lib/burp_web/templates/admin/config/form.html.eex:15
+msgid "description"
+msgstr "Beschreibung"
+
+#: lib/burp_web/templates/admin/config/form.html.eex:21
+msgid "keywords"
+msgstr "Schlüsselwörter"
+
+#: lib/burp_web/templates/admin/config/form.html.eex:62
+msgid "notification mails on new comments to this address"
+msgstr "Benachrichtigungsemail bei neuen Kommentaren an diese Adresse"
+
+#: lib/burp_web/controllers/comment_controller.ex:27
+msgid "Comment created successfully."
+msgstr "Der Kommentar wurde erfolgreich erstellt."
+
+#: lib/burp_web/controllers/comment_controller.ex:30
+msgid "Comment created successfully. Please await moderation."
+msgstr "Der Kommentar wurde erfolgreich erstellt. Bitte warten Sie die Moderation ab."
+
+#: lib/burp_web/plug/comment_allowed.ex:25
+msgid "Comments aren't allowed!"
+msgstr "Kommentare sind nicht erlaubt!"
+
+#: lib/burp_web/mailers/new_comment_mailer.ex:10
+msgid "A new comment has been posted"
+msgstr "Ein neuer Kommentar wurde gepostet"
+
+#: lib/burp_web/templates/new_comment_mailer/new_comment_mail.html.eex:3
+#: lib/burp_web/templates/new_comment_mailer/new_comment_mail.text.eex:3
+msgid "A new comment has been posted for the post „%{subject}“:"
+msgstr "Ein neuer Kommentar wurde unter dem Artikel „%{subject}“ gepostet:"
+
+#: lib/burp_web/templates/new_comment_mailer/new_comment_mail.html.eex:11
+#: lib/burp_web/templates/new_comment_mailer/new_comment_mail.text.eex:11
+msgid "Best regards, Burp"
+msgstr ""
+"Viele Grüße,\n"
+"  Burp"
+
+#: lib/burp_web/templates/new_comment_mailer/new_comment_mail.html.eex:1
+#: lib/burp_web/templates/new_comment_mailer/new_comment_mail.text.eex:1
+msgid "Hi there, %{name}!"
+msgstr "Hallo, %{name}!"
+
+#: lib/burp_web/templates/new_comment_mailer/new_comment_mail.html.eex:7
+#: lib/burp_web/templates/new_comment_mailer/new_comment_mail.text.eex:7
+msgid "You can moderate this comment under this URL:"
+msgstr "Sie können den Kommentar unter dieser URL moderieren:"
+
+#: lib/burp_web/templates/new_comment_mailer/new_comment_mail.html.eex:9
+msgid "moderate comment"
+msgstr "Kommentar moderieren"

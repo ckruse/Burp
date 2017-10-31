@@ -1,0 +1,14 @@
+<article id="comment-<%= @comment.id %>" class="comment">
+  <header>
+    <img class="gravatar" src="<%= if @comment.attrs["gravatar"] do %>http://www.gravatar.com/avatar/<%= @comment.attrs["gravatar"] %>?s=80&amp;d=<%= static_path(@conn, "/images/gravatar.jpg") %><% else %><%= static_path(@conn, "/images/gravatar.jpg") %><% end %>" alt="">
+      <h4><%= @comment.author %></h4>
+      <details open>
+        <summary>
+          <%= gettext("wrote at") %>
+          <%= link to: comment_url(@conn, @comment, @post), title: gettext("permanent link to this comment") do %><time pubdate datetime="<%= Timex.format!(@comment.inserted_at || Timex.local(), "{ISO:Extended}") %>"><%= Timex.format!(@comment.inserted_at || Timex.local(), gettext("%Y-%m-%d %H:%M"), :strftime) %></time><% end %>
+        </summary>
+      </details>
+  </header>
+
+  <%= as_html(@comment, @comment.content) %>
+</article>

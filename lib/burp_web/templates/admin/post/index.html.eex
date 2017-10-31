@@ -1,0 +1,34 @@
+<h2><%= gettext("Posts") %></h2>
+
+<table class="index-table">
+  <thead>
+    <tr>
+      <th><%= gettext("subject") %></th>
+      <th><%= gettext("visible") %></th>
+      <th colspan="2"><%= gettext("comments allowed") %></th>
+      <th><%= gettext("published at") %></th>
+      <th><%= gettext("created at") %></th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for post <- @posts do %>
+    <tr>
+      <td><%= post.subject %></td>
+      <td class="right"><%= if post.visible, do: gettext("yes"), else: gettext("no") %></td>
+      <td class="right"><%= if post.attrs["comments"] == "closed", do: gettext("no"), else: gettext("yes") %></td>
+      <td class="numeric"><%= length(post.comments) %></td>
+      <td class="date"><%= Timex.format!(post.published_at, gettext("%Y-%m-%d"), :strftime) %></td>
+      <td class="date"><%= Timex.format!(post.inserted_at, gettext("%Y-%m-%d"), :strftime) %></td>
+
+      <td class="action-column">
+        <%= link gettext("edit"), to: admin_post_path(@conn, :edit, post), class: "btn btn-secondary btn-xs" %>
+        <%= link gettext("delete"), to: admin_post_path(@conn, :delete, post), method: :delete, data: [confirm: gettext("Are you sure?")], class: "btn btn-danger btn-xs" %>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+<%= pagination @conn, @paging, &admin_post_path/3 %>
