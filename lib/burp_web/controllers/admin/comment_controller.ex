@@ -12,13 +12,13 @@ defmodule BurpWeb.Admin.CommentController do
   end
 
   def edit(conn, %{"id" => id}) do
-    comment = Blog.get_comment!(id)
+    comment = Blog.get_comment!(id, conn.assigns[:current_blog], false)
     changeset = Blog.change_comment(comment)
     render(conn, "edit.html", comment: comment, changeset: changeset)
   end
 
   def update(conn, %{"id" => id, "comment" => comment_params}) do
-    comment = Blog.get_comment!(id)
+    comment = Blog.get_comment!(id, conn.assigns[:current_blog], false)
 
     case Blog.update_comment(comment, comment_params) do
       {:ok, comment} ->
@@ -32,7 +32,7 @@ defmodule BurpWeb.Admin.CommentController do
   end
 
   def delete(conn, %{"id" => id}) do
-    comment = Blog.get_comment!(id)
+    comment = Blog.get_comment!(id, conn.assigns[:current_blog], false)
     {:ok, _comment} = Blog.delete_comment(comment)
 
     conn
