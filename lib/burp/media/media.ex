@@ -20,8 +20,7 @@ defmodule Burp.Media do
   def list_media(blog \\ nil) do
     from(medium in Medium, order_by: [asc: :name])
     |> from_blog(blog)
-
-    Repo.all(Medium)
+    |> Repo.all()
   end
 
   defp from_blog(q, nil), do: q
