@@ -487,14 +487,42 @@ msgstr ""
 msgid "notification mails on new comments to this address"
 msgstr ""
 
-#: lib/burp_web/controllers/comment_controller.ex:24
+#: lib/burp_web/controllers/comment_controller.ex:27
 msgid "Comment created successfully."
 msgstr ""
 
-#: lib/burp_web/controllers/comment_controller.ex:27
+#: lib/burp_web/controllers/comment_controller.ex:30
 msgid "Comment created successfully. Please await moderation."
 msgstr ""
 
 #: lib/burp_web/plug/comment_allowed.ex:25
 msgid "Comments aren't allowed!"
+msgstr ""
+
+#: lib/burp_web/mailers/new_comment_mailer.ex:10
+msgid "A new comment has been posted"
+msgstr ""
+
+#: lib/burp_web/templates/new_comment_mailer/new_comment_mail.html.eex:3
+#: lib/burp_web/templates/new_comment_mailer/new_comment_mail.text.eex:3
+msgid "A new comment has been posted for the post „%{subject}“:"
+msgstr ""
+
+#: lib/burp_web/templates/new_comment_mailer/new_comment_mail.html.eex:11
+#: lib/burp_web/templates/new_comment_mailer/new_comment_mail.text.eex:11
+msgid "Best regards, Burp"
+msgstr ""
+
+#: lib/burp_web/templates/new_comment_mailer/new_comment_mail.html.eex:1
+#: lib/burp_web/templates/new_comment_mailer/new_comment_mail.text.eex:1
+msgid "Hi there, %{name}!"
+msgstr ""
+
+#: lib/burp_web/templates/new_comment_mailer/new_comment_mail.html.eex:7
+#: lib/burp_web/templates/new_comment_mailer/new_comment_mail.text.eex:7
+msgid "You can moderate this comment under this URL:"
+msgstr ""
+
+#: lib/burp_web/templates/new_comment_mailer/new_comment_mail.html.eex:9
+msgid "moderate comment"
 msgstr ""
