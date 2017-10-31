@@ -1,0 +1,3 @@
+<h2><%= gettext("New Comment") %></h2>
+
+<%= render "form.html", Map.put(assigns, :action, BurpWeb.PostView.posting_url(@conn, @post)) %>

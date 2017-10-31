@@ -45,6 +45,7 @@ defmodule BurpWeb do
       import BurpWeb.Gettext
 
       import Burp.Helpers
+      import BurpWeb.Helpers
 
       import Phoenix.Controller,
         only: [

@@ -4,9 +4,9 @@
   <% end %>
 
   <div class="fgroup">
-    <%= label f, :name, gettext("name") %>
-    <%= text_input f, :name, class: error_class(f, :name) %>
-    <%= error_tag f, :name %>
+    <%= label f, :author, gettext("name") %>
+    <%= text_input f, :author, class: error_class(f, :author) %>
+    <%= error_tag f, :author %>
   </div>
 
   <div class="fgroup">
@@ -30,6 +30,7 @@
 
   <div class="fgroup">
     <%= submit gettext("submit"), class: "btn btn-primary" %>
+    <%= link gettext("cancel"), to: BurpWeb.PostView.posting_url(@conn, @post), class: "btn btn-secondary" %>
   </div>
 
 <% end %>

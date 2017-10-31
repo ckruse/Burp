@@ -44,8 +44,10 @@
           <% end %>
         <% end %>
 
-        <h3><%= gettext("new comment") %></h3>
-        <%= render BurpWeb.CommentView, "form.html", changeset: comment_changeset(), post: @post, conn: @conn, action: posting_url(@conn, @post) %>
+        <%= if @post.attrs["comments"] != "disabled" && @post.blog.attrs["comments"] != "disabled" do %>
+          <h3><%= gettext("new comment") %></h3>
+          <%= render BurpWeb.CommentView, "form.html", changeset: comment_changeset(), post: @post, conn: @conn, action: posting_url(@conn, @post) %>
+        <% end %>
       </section>
     <% end %>
   <% end %>
