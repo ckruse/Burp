@@ -27,7 +27,8 @@
   transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
 }
 
-.fgroup input[type="checkbox"] {
+.fgroup input[type="checkbox"],
+.fgroup input[type="radio"] {
   display: inline;
   width: 1rem;
   box-sizing: border-box;
