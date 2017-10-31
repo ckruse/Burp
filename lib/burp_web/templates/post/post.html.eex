@@ -15,7 +15,7 @@
           <%= gettext("filed under:") %>
           <ul>
             <%= for tag <- @post.tags do %>
-              <li><%= link tag.tag_name, to: "" # TODO link to tags %></li>
+              <li><%= link tag.tag_name, to: tag_path(@conn, :show, tag.tag_name) %></li>
             <% end %>
           </ul>
         </div>

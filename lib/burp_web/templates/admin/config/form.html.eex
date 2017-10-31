@@ -1,37 +1,37 @@
 <%= form_for @changeset, @action, fn f -> %>
   <%= if @changeset.action do %>
     <div class="alert alert-danger">
-      <p><%= gettext("Oops, something went wrong! Please check the errors below.") %></p>
+      <%= gettext("Oops, something went wrong! Please check the errors below.") %>
     </div>
   <% end %>
 
   <div class="fgroup">
     <%= label f, :name, gettext("blog name") %>
-    <%= text_input f, :name %>
+    <%= text_input f, :name, class: error_class(f, :name) %>
     <%= error_tag f, :name %>
   </div>
 
   <div class="fgroup">
     <%= label f, :description, gettext("description") %>
-    <%= text_input f, :description %>
+    <%= text_input f, :description, class: error_class(f, :description) %>
     <%= error_tag f, :description %>
   </div>
 
   <div class="fgroup">
     <%= label f, :keywords, gettext("keywords") %>
-    <%= text_input f, :keywords %>
+    <%= text_input f, :keywords, class: error_class(f, :keywords) %>
     <%= error_tag f, :keywords %>
   </div>
 
   <div class="fgroup">
     <%= label f, :host, gettext("blog hostname") %>
-    <%= text_input f, :host %>
+    <%= text_input f, :host, class: error_class(f, :host) %>
     <%= error_tag f, :host %>
   </div>
 
   <div class="fgroup">
     <%= label f, :url, gettext("blog url") %>
-    <%= text_input f, :url %>
+    <%= text_input f, :url, class: error_class(f, :url) %>
     <%= error_tag f, :url %>
   </div>
 

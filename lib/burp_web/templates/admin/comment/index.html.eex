@@ -22,7 +22,7 @@
       <td><%= if comment.visible, do: gettext("yes"), else: gettext("no") %></td>
 
       <td class="action-column">
-        <%= link gettext("show post"), to: "", class: "btn btn-secondary btn-xs" # TODO link to article %>
+        <%= link gettext("show post"), to: comment_url(@conn, comment), class: "btn btn-secondary btn-xs" %>
         <%= link gettext("edit"), to: admin_comment_path(@conn, :edit, comment), class: "btn btn-secondary btn-xs" %>
         <%= link gettext("delete"), to: admin_comment_path(@conn, :delete, comment), method: :delete, data: [confirm: gettext("Are you sure?")], class: "btn btn-danger btn-xs" %>
       </td>
