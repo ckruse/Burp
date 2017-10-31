@@ -7,6 +7,8 @@ defmodule Burp.Blog do
   alias Burp.Repo
 
   alias Burp.Blog.Post
+  alias Burp.Blog.Comment
+  alias Burp.Blog.Tag
 
   @doc """
   Returns the list of posts.
@@ -20,14 +22,14 @@ defmodule Burp.Blog do
   def list_posts(blog \\ nil, published \\ true, query_params \\ [order: nil, limit: nil]) do
     from(
       post in Post,
-      order_by: [desc: post.inserted_at],
-      preload: [:author, :comments, :tags, :blog]
+      order_by: [desc: post.inserted_at]
     )
     |> only_published(published)
     |> from_blog(blog)
     |> Burp.PagingApi.set_limit(query_params[:limit])
     |> Burp.OrderApi.set_ordering(query_params[:order], desc: :inserted_at)
     |> Repo.all()
+    |> std_post_preloads()
   end
 
   def count_posts(blog \\ nil, published \\ true) do
@@ -42,17 +44,12 @@ defmodule Burp.Blog do
     from(
       post in Post,
       order_by: [desc: post.published_at],
-      limit: 1,
-      preload: [
-        :author,
-        :comments,
-        :tags,
-        :blog
-      ]
+      limit: 1
     )
     |> only_published(published)
     |> from_blog(blog)
     |> Repo.one()
+    |> std_post_preloads()
   end
 
   @doc """
@@ -70,17 +67,34 @@ defmodule Burp.Blog do
 
   """
   def get_post!(id, blog \\ nil, published \\ true) do
-    from(p in Post, where: p.id == ^id, preload: [:author, :comments, :tags, :blog])
+    from(
+      p in Post,
+      where: p.id == ^id
+    )
     |> only_published(published)
     |> from_blog(blog)
     |> Repo.one!()
+    |> std_post_preloads()
   end
 
   def get_post_by_slug!(slug, blog \\ nil, published \\ true) do
-    from(p in Post, where: p.slug == ^slug, preload: [:author, :comments, :tags, :blog])
+    from(
+      p in Post,
+      where: p.slug == ^slug
+    )
     |> only_published(published)
     |> from_blog(blog)
     |> Repo.one!()
+    |> std_post_preloads()
+  end
+
+  defp std_post_preloads(q) do
+    Repo.preload(q, [
+      :author,
+      :blog,
+      comments: from(Comment, order_by: [asc: :inserted_at]),
+      tags: from(Tag, order_by: [desc: :tag_name])
+    ])
   end
 
   @doc """
@@ -148,8 +162,6 @@ defmodule Burp.Blog do
     Post.changeset(post, %{})
   end
 
-  alias Burp.Blog.Comment
-
   @doc """
   Returns the list of comments.
 
@@ -209,10 +221,21 @@ defmodule Burp.Blog do
       {:error, %Ecto.Changeset{}}
 
   """
-  def create_comment(attrs \\ %{}) do
-    %Comment{}
+  def create_comment(attrs \\ %{}, post) do
+    %Comment{post_id: post.id}
     |> Comment.changeset(attrs)
+    |> maybe_moderate(post)
     |> Repo.insert()
+  end
+
+  defp maybe_moderate(changeset, post) do
+    case post.attrs["comments_moderated"] do
+      "yes" ->
+        Ecto.Changeset.put_change(changeset, :visible, false)
+
+      _ ->
+        Ecto.Changeset.put_change(changeset, :visible, true)
+    end
   end
 
   @doc """
@@ -261,8 +284,6 @@ defmodule Burp.Blog do
   def change_comment(%Comment{} = comment) do
     Comment.changeset(comment, %{})
   end
-
-  alias Burp.Blog.Tag
 
   @doc """
   Returns the list of tags.
@@ -411,14 +432,14 @@ defmodule Burp.Blog do
     from(
       post in Post,
       where: post.inserted_at >= ^starts and post.inserted_at <= ^ends,
-      order_by: [desc: post.inserted_at],
-      preload: [:author, :comments, :tags, :blog]
+      order_by: [desc: post.inserted_at]
     )
     |> only_published(published)
     |> from_blog(blog)
     |> Burp.PagingApi.set_limit(query_params[:limit])
     |> Burp.OrderApi.set_ordering(query_params[:order], desc: :inserted_at)
     |> Repo.all()
+    |> std_post_preloads()
   end
 
   def list_tags(blog, published \\ true) do
@@ -439,13 +460,13 @@ defmodule Burp.Blog do
     from(
       post in Post,
       where: post.id in fragment("SELECT post_id FROM tags WHERE LOWER(tag_name) = ?", ^tag),
-      order_by: [desc: post.inserted_at],
-      preload: [:author, :comments, :tags, :blog]
+      order_by: [desc: post.inserted_at]
     )
     |> only_published(published)
     |> from_blog(blog)
     |> Burp.PagingApi.set_limit(query_params[:limit])
     |> Burp.OrderApi.set_ordering(query_params[:order], desc: :inserted_at)
     |> Repo.all()
+    |> std_post_preloads()
   end
 end
