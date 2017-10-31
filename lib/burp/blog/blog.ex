@@ -29,7 +29,7 @@ defmodule Burp.Blog do
     |> Burp.PagingApi.set_limit(query_params[:limit])
     |> Burp.OrderApi.set_ordering(query_params[:order], desc: :inserted_at)
     |> Repo.all()
-    |> std_post_preloads()
+    |> std_post_preloads(published)
   end
 
   def count_posts(blog \\ nil, published \\ true) do
@@ -49,7 +49,7 @@ defmodule Burp.Blog do
     |> only_published(published)
     |> from_blog(blog)
     |> Repo.one()
-    |> std_post_preloads()
+    |> std_post_preloads(published)
   end
 
   @doc """
@@ -74,7 +74,7 @@ defmodule Burp.Blog do
     |> only_published(published)
     |> from_blog(blog)
     |> Repo.one!()
-    |> std_post_preloads()
+    |> std_post_preloads(published)
   end
 
   def get_post_by_slug!(slug, blog \\ nil, published \\ true) do
@@ -85,14 +85,14 @@ defmodule Burp.Blog do
     |> only_published(published)
     |> from_blog(blog)
     |> Repo.one!()
-    |> std_post_preloads()
+    |> std_post_preloads(published)
   end
 
-  defp std_post_preloads(q) do
+  defp std_post_preloads(q, published) do
     Repo.preload(q, [
       :author,
       :blog,
-      comments: from(Comment, order_by: [asc: :inserted_at]),
+      comments: from(Comment, order_by: [asc: :inserted_at]) |> only_published(published),
       tags: from(Tag, order_by: [desc: :tag_name])
     ])
   end
@@ -439,7 +439,7 @@ defmodule Burp.Blog do
     |> Burp.PagingApi.set_limit(query_params[:limit])
     |> Burp.OrderApi.set_ordering(query_params[:order], desc: :inserted_at)
     |> Repo.all()
-    |> std_post_preloads()
+    |> std_post_preloads(published)
   end
 
   def list_tags(blog, published \\ true) do
@@ -467,6 +467,6 @@ defmodule Burp.Blog do
     |> Burp.PagingApi.set_limit(query_params[:limit])
     |> Burp.OrderApi.set_ordering(query_params[:order], desc: :inserted_at)
     |> Repo.all()
-    |> std_post_preloads()
+    |> std_post_preloads(published)
   end
 end
