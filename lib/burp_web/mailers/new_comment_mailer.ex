@@ -3,7 +3,7 @@ defmodule BurpWeb.NewCommentMailer do
   import BurpWeb.Gettext
 
   def new_comment_mail(post, comment) do
-    new_email
+    new_email()
     |> from("Burp <christian@kruse.cool>")
     |> put_html_layout({BurpWeb.LayoutView, "email.html"})
     |> to(post.blog.attrs["mail_notify"])
