@@ -61,5 +61,5 @@ config :burp, Burp.Repo,
   hostname: "localhost",
   pool_size: 10
 
-config :burp, :storage_path, "/Users/ckruse/sites/burp_rails/public/media"
+config :burp, :storage_path, "#{System.get_env("HOME")}/sites/burp_media"
 config :burp, Burp.Mailer, adapter: Bamboo.LocalAdapter
