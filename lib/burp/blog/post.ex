@@ -46,7 +46,7 @@ defmodule Burp.Blog.Post do
        ])
     |> put_change(:posting_format, "markdown")
     |> put_change(:format, "markdown")
-    |> put_change(:published_at, Timex.now())
+    |> maybe_reset_published_at()
     |> put_blog(blog)
     |> put_author(user)
     |> update_slug()
@@ -81,11 +81,11 @@ defmodule Burp.Blog.Post do
   defp put_tags_str(%Ecto.Changeset{valid?: true} = changeset) do
     case Ecto.Changeset.get_field(changeset, :tags) do
       v when v == nil or v == [] ->
-        Ecto.Changeset.put_change(changeset, :tags_str, "")
+        put_change(changeset, :tags_str, "")
 
       tags ->
         str = Enum.map(tags, & &1.tag_name) |> Enum.join(", ")
-        Ecto.Changeset.put_change(changeset, :tags_str, str)
+        put_change(changeset, :tags_str, str)
     end
   end
 
@@ -136,4 +136,15 @@ defmodule Burp.Blog.Post do
         changeset
     end
   end
+
+  # set published_at on creation
+  defp maybe_reset_published_at(%Ecto.Changeset{valid?: true, action: :insert} = changeset),
+    do: put_change(changeset, :published_at, Timex.now())
+
+  # set published_at on visibility change
+  defp maybe_reset_published_at(%Ecto.Changeset{valid?: true, changes: %{visible: true}} = changeset),
+    do: put_change(changeset, :published_at, Timex.now())
+
+  # don't touch published_at otherwise
+  defp maybe_reset_published_at(changeset), do: changeset
 end
