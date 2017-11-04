@@ -5,6 +5,9 @@ defmodule BurpWeb.MediumController do
 
   def show(conn, %{"slug" => slug}) do
     medium = Media.get_medium_by_slug!(slug)
-    send_file(conn, 200, Media.filename(medium))
+
+    conn
+    |> put_resp_header("Content-Type", medium.media_type)
+    |> send_file(200, Media.filename(medium))
   end
 end
