@@ -21,6 +21,14 @@
   display: inline;
 }
 
+.post header .tags li::after {
+  content: ", ";
+}
+
+.post header .tags li:last-of-type::after {
+  content: "";
+}
+
 .comments header img {
   float: right;
 }
