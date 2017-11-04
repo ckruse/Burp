@@ -1,16 +1,15 @@
 .btn {
   border: 1px solid transparent;
-  padding: 0.375rem 0.75rem;
-  font-size: 1rem;
+  padding: 0.375em 0.75em;
+  font-size: 1em;
   line-height: 1.5;
-  border-radius: 0.25rem;
-  transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out,
-    box-shadow 0.15s ease-in-out;
+  border-radius: 0.25em;
+  transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 .btn.focus,
 .btn:focus {
   outline: 0;
-  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+  box-shadow: 0 0 0 0.2em rgba(0, 123, 255, 0.25);
 }
 .btn.active:not([disabled]):not(.disabled),
 .btn:active:not([disabled]):not(.disabled) {
@@ -38,11 +37,11 @@ a.btn-primary {
   color: #fff;
   background-color: #0062cc;
   border-color: #005cbf;
-  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.5);
+  box-shadow: 0 0 0 0.2em rgba(0, 123, 255, 0.5);
 }
 .btn-primary.focus,
 .btn-primary:focus {
-  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.5);
+  box-shadow: 0 0 0 0.2em rgba(0, 123, 255, 0.5);
 }
 .btn-primary.disabled,
 .btn-primary:disabled {
@@ -67,11 +66,11 @@ a.btn-secondary {
   color: #fff;
   background-color: #6c757d;
   border-color: #666e76;
-  box-shadow: 0 0 0 0.2rem rgba(134, 142, 150, 0.5);
+  box-shadow: 0 0 0 0.2em rgba(134, 142, 150, 0.5);
 }
 .btn-secondary.focus,
 .btn-secondary:focus {
-  box-shadow: 0 0 0 0.2rem rgba(134, 142, 150, 0.5);
+  box-shadow: 0 0 0 0.2em rgba(134, 142, 150, 0.5);
 }
 .btn-secondary.disabled,
 .btn-secondary:disabled {
@@ -96,11 +95,11 @@ a.btn-danger {
   color: #fff;
   background-color: #bd2130;
   border-color: #b21f2d;
-  box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.5);
+  box-shadow: 0 0 0 0.2em rgba(220, 53, 69, 0.5);
 }
 .btn-danger.focus,
 .btn-danger:focus {
-  box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.5);
+  box-shadow: 0 0 0 0.2em rgba(220, 53, 69, 0.5);
 }
 .btn-danger.disabled,
 .btn-danger:disabled {
@@ -109,10 +108,10 @@ a.btn-danger {
 }
 
 .btn-xs {
-  padding: 0.1rem 0.1rem;
-  font-size: 0.75rem;
+  padding: 0.1em 0.1em;
+  font-size: 0.75em;
   line-height: 1.5;
-  border-radius: 0.2rem;
+  border-radius: 0.2em;
 }
 
 .btn-toolbar {
@@ -120,12 +119,12 @@ a.btn-danger {
   flex-wrap: wrap;
   justify-content: flex-start;
   border-bottom: 1px solid #dfdfdf;
-  padding-bottom: 0.75rem;
-  margin-bottom: 0.75rem;
+  padding-bottom: 0.75em;
+  margin-bottom: 0.75em;
 }
 
 .btn-group {
-  margin-right: 0.5rem;
+  margin-right: 0.5em;
   position: relative;
   display: inline-flex;
   vertical-align: middle;

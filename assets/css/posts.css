@@ -1,10 +1,10 @@
 .post {
-  max-width: 50rem;
+  max-width: 50em;
   margin-left: auto;
   margin-right: auto;
 }
 .post header {
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.5em;
 }
 .post header h2 {
   text-align: left;
@@ -32,8 +32,8 @@
 }
 
 .comment {
-  margin-bottom: 0.75rem;
-  padding-bottom: 0.75rem;
+  margin-bottom: 0.75em;
+  padding-bottom: 0.75em;
   border-bottom: 1px solid #dfdfdf;
 }
 
@@ -50,11 +50,11 @@
 }
 
 .section-divider {
-  margin-top: 0.75rem;
-  padding-top: 0.75rem;
+  margin-top: 0.75em;
+  padding-top: 0.75em;
   border-top: 1px solid #dfdfdf;
 
-  margin-bottom: 0.75rem;
-  padding-bottom: 0.75rem;
+  margin-bottom: 0.75em;
+  padding-bottom: 0.75em;
   border-bottom: 1px solid #dfdfdf;
 }

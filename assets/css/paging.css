@@ -1,25 +1,25 @@
 .pages {
-  margin-top: 2rem;
-  margin-bottom: 2rem;
+  margin-top: 2em;
+  margin-bottom: 2em;
 }
 .pages ul {
   display: flex;
   padding-left: 0;
   list-style: none;
-  border-radius: 0.25rem;
+  border-radius: 0.25em;
   justify-content: center;
 }
 
 .pages li:first-child a {
   margin-left: 0;
-  border-top-left-radius: 0.25rem;
-  border-bottom-left-radius: 0.25rem;
+  border-top-left-radius: 0.25em;
+  border-bottom-left-radius: 0.25em;
 }
 .pages li a,
 .pages li span {
   position: relative;
   display: block;
-  padding: 0.5rem 0.75rem;
+  padding: 0.5em 0.75em;
   margin-left: -1px;
   line-height: 1.25;
   background-color: #fff;

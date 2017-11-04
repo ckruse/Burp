@@ -17,7 +17,7 @@
 .index-table th,
 .index-table td {
   border-right: 1px solid #dfdfdf;
-  padding: 0.125rem 0.25rem;
+  padding: 0.125em 0.25em;
 }
 
 .index-table th:last-of-type,
