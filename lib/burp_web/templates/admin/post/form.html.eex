@@ -16,6 +16,13 @@
   </div>
 
   <div class="fgroup">
+    <%= label f, :tags_str, gettext("tags") %>
+    <%= text_input f, :tags_str, class: error_class(f, :tags_str) %>
+    <%= error_tag f, :tags_str %>
+  </div>
+
+
+  <div class="fgroup">
     <%= label f, :visible, class: "checkbox" do %>
       <%= checkbox f, :visible %>
       <%= gettext("visible") %>

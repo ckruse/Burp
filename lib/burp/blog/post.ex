@@ -20,11 +20,13 @@ defmodule Burp.Blog.Post do
     field(:subject, :string)
     field(:visible, :boolean, default: false)
 
+    field(:tags_str, :string, virtual: true)
+
     belongs_to(:blog, Burp.Meta.Blog)
     belongs_to(:author, Burp.Meta.Author)
 
     has_many(:comments, Burp.Blog.Comment)
-    has_many(:tags, Burp.Blog.Tag)
+    has_many(:tags, Burp.Blog.Tag, on_delete: :delete_all, on_replace: :delete)
 
     timestamps()
   end
@@ -39,7 +41,8 @@ defmodule Burp.Blog.Post do
          :excerpt,
          :content,
          :published_at,
-         :posting_format
+         :posting_format,
+         :tags_str
        ])
     |> put_change(:posting_format, "markdown")
     |> put_change(:format, "markdown")
@@ -48,6 +51,8 @@ defmodule Burp.Blog.Post do
     |> put_author(user)
     |> update_slug()
     |> put_guid(blog)
+    |> put_tags()
+    |> put_tags_str()
     |> validate_required([
          :slug,
          :guid,
@@ -62,19 +67,39 @@ defmodule Burp.Blog.Post do
     |> unique_constraint(:guid)
   end
 
-  defp update_slug(changeset) do
-    case changeset do
-      %Ecto.Changeset{valid?: true, changes: %{slug: slug}} ->
-        now = Timex.now()
-        month = Enum.at([nil] ++ ~w[jan feb mar apr may jun jul aug sep oct nov dec], now.month)
-        str = "#{now.year}/#{month}/#{slug}"
+  defp put_tags(%Ecto.Changeset{valid?: true, changes: %{tags_str: tags_str}} = changeset)
+       when tags_str == nil or tags_str == "",
+       do: put_assoc(changeset, :tags, [])
 
-        put_change(changeset, :slug, str)
+  defp put_tags(%Ecto.Changeset{valid?: true, changes: %{tags_str: tags_str}} = changeset) do
+    tags = String.split(tags_str, ~r{\s*,\s*}, trim: true)
+    put_assoc(changeset, :tags, Enum.map(tags, &%Burp.Blog.Tag{tag_name: &1}))
+  end
 
-      _ ->
-        changeset
+  defp put_tags(changeset), do: changeset
+
+  defp put_tags_str(%Ecto.Changeset{valid?: true} = changeset) do
+    case Ecto.Changeset.get_field(changeset, :tags) do
+      v when v == nil or v == [] ->
+        Ecto.Changeset.put_change(changeset, :tags_str, "")
+
+      tags ->
+        str = Enum.map(tags, & &1.tag_name) |> Enum.join(", ")
+        Ecto.Changeset.put_change(changeset, :tags_str, str)
     end
   end
+
+  defp put_tags_str(changeset), do: changeset
+
+  defp update_slug(%Ecto.Changeset{valid?: true, changes: %{slug: slug}} = changeset) do
+    now = Timex.now()
+    month = Enum.at([nil] ++ ~w[jan feb mar apr may jun jul aug sep oct nov dec], now.month)
+    str = "#{now.year}/#{month}/#{slug}"
+
+    put_change(changeset, :slug, str)
+  end
+
+  defp update_slug(changeset), do: changeset
 
   defp put_guid(changeset, nil), do: changeset
 
