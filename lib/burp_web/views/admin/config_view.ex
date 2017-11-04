@@ -3,6 +3,5 @@ defmodule BurpWeb.Admin.ConfigView do
 
   def has_subnav?(_, _), do: true
 
-  def subnav(_, conn, assigns),
-    do: render(BurpWeb.AdminView, "subnav.html", Map.put(assigns, :conn, conn))
+  def subnav(_, conn, assigns), do: render(BurpWeb.AdminView, "subnav.html", Map.put(assigns, :conn, conn))
 end

@@ -19,11 +19,9 @@ defmodule BurpWeb.Helpers do
         Map.put(map, String.to_atom(key), attr[key])
       end)
 
-    types =
-      Enum.reduce(Map.keys(symbolized_attr), %{}, fn key, map -> Map.put(map, key, :string) end)
+    types = Enum.reduce(Map.keys(symbolized_attr), %{}, fn key, map -> Map.put(map, key, :string) end)
 
-    changeset =
-      Ecto.Changeset.cast({symbolized_attr, types}, form.params, Map.keys(symbolized_attr))
+    changeset = Ecto.Changeset.cast({symbolized_attr, types}, form.params, Map.keys(symbolized_attr))
 
     forms = Phoenix.HTML.FormData.to_form(changeset, as: form.name <> "[#{field}]")
 

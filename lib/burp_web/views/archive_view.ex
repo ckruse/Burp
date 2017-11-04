@@ -14,20 +14,21 @@ defmodule BurpWeb.ArchiveView do
     do: gettext("Archive %{year_mon} — Who knows Wayne?", year_mon: month_link_text(month))
 
   def page_title(:index, %{current_blog: blog, month: month}),
-    do: gettext(
-      "Archive %{year_mon} — %{name}",
-      year_mon: month_link_text(month),
-      name: blog.name
-    )
+    do:
+      gettext(
+        "Archive %{year_mon} — %{name}",
+        year_mon: month_link_text(month),
+        name: blog.name
+      )
 
   def month_link_text(month),
-    do: Timex.lformat!(
-      Timex.to_date(month),
-      "%B %Y",
-      Gettext.get_locale(BurpWeb.Gettext),
-      :strftime
-    )
+    do:
+      Timex.lformat!(
+        Timex.to_date(month),
+        "%B %Y",
+        Gettext.get_locale(BurpWeb.Gettext),
+        :strftime
+      )
 
-  def month_link_month(month),
-    do: Timex.format!(Timex.to_date(month), "%b", :strftime) |> String.downcase()
+  def month_link_month(month), do: Timex.format!(Timex.to_date(month), "%b", :strftime) |> String.downcase()
 end

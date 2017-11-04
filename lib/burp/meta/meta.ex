@@ -126,9 +126,9 @@ defmodule Burp.Meta do
   def get_author_by_username_or_email_and_blog(login, nil) do
     from(
       author in Author,
-      where: (fragment("lower(?)", author.email) == fragment("lower(?)", ^login) or
-                fragment("lower(?)", author.username) == fragment("lower(?)", ^login)) and
-        author.admin == true
+      where:
+        (fragment("lower(?)", author.email) == fragment("lower(?)", ^login) or
+           fragment("lower(?)", author.username) == fragment("lower(?)", ^login)) and author.admin == true
     )
     |> Repo.one()
   end
@@ -136,9 +136,10 @@ defmodule Burp.Meta do
   def get_author_by_username_or_email_and_blog(login, blog) do
     from(
       author in Author,
-      where: (fragment("lower(?)", author.email) == fragment("lower(?)", ^login) or
-                fragment("lower(?)", author.username) == fragment("lower(?)", ^login)) and
-        (author.id == ^blog.author_id or author.admin == true)
+      where:
+        (fragment("lower(?)", author.email) == fragment("lower(?)", ^login) or
+           fragment("lower(?)", author.username) == fragment("lower(?)", ^login)) and
+          (author.id == ^blog.author_id or author.admin == true)
     )
     |> Repo.one()
   end

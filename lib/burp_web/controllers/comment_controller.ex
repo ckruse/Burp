@@ -23,8 +23,7 @@ defmodule BurpWeb.CommentController do
     end
   end
 
-  defp put_notification(conn, %{visible: true}),
-    do: put_flash(conn, :info, gettext("Comment created successfully."))
+  defp put_notification(conn, %{visible: true}), do: put_flash(conn, :info, gettext("Comment created successfully."))
 
   defp put_notification(conn, _),
     do: put_flash(conn, :info, gettext("Comment created successfully. Please await moderation."))
