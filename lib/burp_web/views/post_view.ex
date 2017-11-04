@@ -49,4 +49,6 @@ defmodule BurpWeb.PostView do
     }
     |> XmlBuilder.generate()
   end
+
+  def gravatar_hash(email), do: :crypto.hash(:md5, email) |> Base.encode16(case: :lower)
 end
