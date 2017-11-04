@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"PO-Revision-Date: 2017-10-31 15:27+0100\n"
+"PO-Revision-Date: 2017-11-04 09:42+0100\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -104,6 +104,7 @@ msgstr "oder"
 msgid "password"
 msgstr "Passwort"
 
+#: lib/burp_web/templates/admin/post/form.html.eex:19
 #: lib/burp_web/templates/layout/app.html.eex:60
 msgid "tags"
 msgstr "Tags"
@@ -160,7 +161,7 @@ msgid "subject"
 msgstr "Betreff"
 
 #: lib/burp_web/templates/admin/comment/form.html.eex:29
-#: lib/burp_web/templates/admin/post/form.html.eex:21
+#: lib/burp_web/templates/admin/post/form.html.eex:28
 #: lib/burp_web/templates/admin/post/index.html.eex:7
 msgid "visible"
 msgstr "sichtbar"
@@ -188,12 +189,12 @@ msgstr "Uups, etwas ist schief gelaufen! Bitte prüfen Sie die Fehler unten."
 msgid "Posts"
 msgstr "Artikel"
 
-#: lib/burp_web/templates/admin/post/form.html.eex:32
+#: lib/burp_web/templates/admin/post/form.html.eex:39
 #: lib/burp_web/templates/comment/form.html.eex:25
 msgid "content"
 msgstr "Inhalt"
 
-#: lib/burp_web/templates/admin/post/form.html.eex:26
+#: lib/burp_web/templates/admin/post/form.html.eex:33
 msgid "excerpt"
 msgstr "Exzerpt"
 
@@ -202,15 +203,15 @@ msgid "slug"
 msgstr "Slug"
 
 #: lib/burp_web/templates/admin/comment/form.html.eex:41
-#: lib/burp_web/templates/admin/post/form.html.eex:39
+#: lib/burp_web/templates/admin/post/form.html.eex:46
 #: lib/burp_web/templates/comment/form.html.eex:33
 msgid "cancel"
 msgstr "abbrechen"
 
 #: lib/burp_web/templates/admin/comment/form.html.eex:40
-#: lib/burp_web/templates/admin/config/form.html.eex:70
+#: lib/burp_web/templates/admin/config/form.html.eex:76
 #: lib/burp_web/templates/admin/medium/form.html.eex:21
-#: lib/burp_web/templates/admin/post/form.html.eex:38
+#: lib/burp_web/templates/admin/post/form.html.eex:45
 #: lib/burp_web/templates/comment/form.html.eex:32
 msgid "submit"
 msgstr "speichern"
@@ -424,7 +425,7 @@ msgstr "Archiv — %{name}"
 msgid "Archive — Who knows Wayne?"
 msgstr "Archiv — Wer kennt Wayne?"
 
-#: lib/burp_web/views/archive_view.ex:17
+#: lib/burp_web/views/archive_view.ex:18
 msgid "Archive %{year_mon} — %{name}"
 msgstr "Archiv %{year_mon} — %{name}"
 
@@ -460,7 +461,7 @@ msgstr "Tag „%{tag}“"
 msgid "Tags"
 msgstr "Tags"
 
-#: lib/burp_web/templates/admin/config/form.html.eex:27
+#: lib/burp_web/templates/admin/config/form.html.eex:33
 msgid "blog hostname"
 msgstr "Hostname"
 
@@ -468,43 +469,43 @@ msgstr "Hostname"
 msgid "blog name"
 msgstr "Name"
 
-#: lib/burp_web/templates/admin/config/form.html.eex:33
+#: lib/burp_web/templates/admin/config/form.html.eex:39
 msgid "blog url"
 msgstr "Blog-URL"
 
-#: lib/burp_web/templates/admin/config/form.html.eex:46
+#: lib/burp_web/templates/admin/config/form.html.eex:52
 msgid "comments disabled"
 msgstr "Kommentare deaktiviert"
 
-#: lib/burp_web/templates/admin/config/form.html.eex:42
+#: lib/burp_web/templates/admin/config/form.html.eex:48
 msgid "comments enabled"
 msgstr "Kommentare aktiviert"
 
-#: lib/burp_web/templates/admin/config/form.html.eex:53
+#: lib/burp_web/templates/admin/config/form.html.eex:59
 msgid "comments moderated"
 msgstr "Kommentare moderiert"
 
-#: lib/burp_web/templates/admin/config/form.html.eex:57
+#: lib/burp_web/templates/admin/config/form.html.eex:63
 msgid "comments unmoderated"
 msgstr "Kommentare unmoderiert"
 
-#: lib/burp_web/templates/admin/config/form.html.eex:15
+#: lib/burp_web/templates/admin/config/form.html.eex:21
 msgid "description"
 msgstr "Beschreibung"
 
-#: lib/burp_web/templates/admin/config/form.html.eex:21
+#: lib/burp_web/templates/admin/config/form.html.eex:27
 msgid "keywords"
 msgstr "Schlüsselwörter"
 
-#: lib/burp_web/templates/admin/config/form.html.eex:62
+#: lib/burp_web/templates/admin/config/form.html.eex:68
 msgid "notification mails on new comments to this address"
 msgstr "Benachrichtigungsemail bei neuen Kommentaren an diese Adresse"
 
-#: lib/burp_web/controllers/comment_controller.ex:27
+#: lib/burp_web/controllers/comment_controller.ex:26
 msgid "Comment created successfully."
 msgstr "Der Kommentar wurde erfolgreich erstellt."
 
-#: lib/burp_web/controllers/comment_controller.ex:30
+#: lib/burp_web/controllers/comment_controller.ex:29
 msgid "Comment created successfully. Please await moderation."
 msgstr "Der Kommentar wurde erfolgreich erstellt. Bitte warten Sie die Moderation ab."
 
@@ -541,3 +542,7 @@ msgstr "Sie können den Kommentar unter dieser URL moderieren:"
 #: lib/burp_web/templates/new_comment_mailer/new_comment_mail.html.eex:9
 msgid "moderate comment"
 msgstr "Kommentar moderieren"
+
+#: lib/burp_web/templates/admin/config/form.html.eex:15
+msgid "image url (quadratic, will get scaled to 300x300 at most)"
+msgstr "Bild-URL (quadratisch, wird auf höchstens 300x300 skaliert)"

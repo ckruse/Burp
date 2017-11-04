@@ -30,8 +30,13 @@
 
   <body>
     <header id="site-header">
-      <h1><%= link h1(@conn, assigns), to: post_path(@conn, :index) %></h1>
-      <p><%= if assigns[:current_blog], do: @current_blog.description, else: gettext("Nobody cares what is written here…") %></p>
+      <%= if assigns[:current_blog] && !blank?(@current_blog.image_url) do %>
+        <div class="logo"><img src="<%= @current_blog.image_url %>" alt=""></div>
+      <% end %>
+      <div>
+        <h1><%= link h1(@conn, assigns), to: post_path(@conn, :index) %></h1>
+        <p><%= if assigns[:current_blog], do: @current_blog.description, else: gettext("Nobody cares what is written here…") %></p>
+      </div>
     </header>
 
     <main role="main">

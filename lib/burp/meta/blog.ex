@@ -33,7 +33,7 @@ defmodule Burp.Meta.Blog do
          :description,
          :keywords,
          :url,
-         # :image_url,
+         :image_url,
          :lang,
          :host,
          :attrs

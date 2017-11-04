@@ -12,6 +12,12 @@
   </div>
 
   <div class="fgroup">
+    <%= label f, :image_url, gettext("image url (quadratic, will get scaled to 300x300 at most)") %>
+    <%= text_input f, :image_url, class: error_class(f, :image_url) %>
+    <%= error_tag f, :image_url %>
+  </div>
+
+  <div class="fgroup">
     <%= label f, :description, gettext("description") %>
     <%= text_input f, :description, class: error_class(f, :description) %>
     <%= error_tag f, :description %>
