@@ -27,12 +27,18 @@ defmodule BurpWeb.PostController do
 
   def index_rss(conn, _params) do
     posts = Blog.list_posts(conn.assigns[:current_blog], true, limit: [quantity: 10])
-    render(conn, "index.rss", posts: posts)
+
+    conn
+    |> put_resp_header("content-type", "application/rss+xml; charset=utf-8")
+    |> render("index.rss", posts: posts)
   end
 
   def index_atom(conn, _params) do
     posts = Blog.list_posts(conn.assigns[:current_blog], true, limit: [quantity: 10])
-    render(conn, "index.atom", posts: posts)
+
+    conn
+    |> put_resp_header("content-type", "application/atom+xml; charset=utf-8")
+    |> render("index.atom", posts: posts)
   end
 
   def redirect_atom(conn, _params), do: put_status(conn, 301) |> redirect(to: post_path(conn, :index_atom))
