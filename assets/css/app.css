@@ -121,6 +121,16 @@ h2 {
   text-align: center;
 }
 
+#comment-preview,
+#comment-preview-heading {
+  display: none;
+}
+
+#comment-preview.visible,
+#comment-preview-heading.visible {
+  display: block;
+}
+
 @media only screen and (min-width: 30em) {
   #site-header,
   footer,

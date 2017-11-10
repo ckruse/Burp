@@ -76,6 +76,8 @@
 
     </footer>
 
-    <script src="<%= static_path(@conn, "/js/app.js") %>"></script>
+    <%= if (controller_module(@conn) == Elixir.BurpWeb.PostController && action_name(@conn) == :show) || controller_module(@conn) == Elixir.BurpWeb.Admin.PostController do %>
+      <script src="<%= static_path(@conn, "/js/app.js") %>"></script>
+    <% end %>
   </body>
 </html>

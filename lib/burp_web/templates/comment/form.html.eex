@@ -28,6 +28,10 @@
     <%= error_tag f, :content %>
   </div>
 
+  <h3 id="comment-preview-heading"><%= gettext("Preview") %></h3>
+  <article id="comment-preview" class="comment">
+  </article>
+
   <div class="fgroup">
     <%= submit gettext("submit"), class: "btn btn-primary" %>
     <%= link gettext("cancel"), to: posting_url(@conn, @post), class: "btn btn-secondary" %>
