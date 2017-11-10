@@ -172,7 +172,7 @@ defmodule Burp.Blog do
 
   """
   def list_comments(blog \\ nil, published \\ true, query_params \\ [order: nil, limit: nil]) do
-    from(comment in Comment, preload: [:post])
+    from(comment in Comment, preload: [post: :blog])
     |> only_published(published)
     |> from_blog(blog, :comments)
     |> Burp.PagingApi.set_limit(query_params[:limit])
