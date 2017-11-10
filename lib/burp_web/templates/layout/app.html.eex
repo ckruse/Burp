@@ -62,7 +62,7 @@
         <% end %>
       </p>
 
-      <nav id="site-nav"><%= gettext("Look at") %> <%= gettext("a list of") %> <%= link gettext("tags"), to: tag_path(@conn, :index) %> <%= gettext("or") %> <%= link gettext("the archive"), to: archive_path(@conn, :years) %></li>.</nav>
+      <nav id="site-nav"><%= gettext("Look at") %> <%= gettext("a list of") %> <%= link gettext("tags"), to: tag_path(@conn, :index) %> <%= gettext("or") %> <%= link gettext("the archive"), to: archive_path(@conn, :years) %>.</nav>
 
       <p class="about">
         <%= {:safe, gettext("This is a Wayne blog, only <a href=\"http://kennst-du-wayne.de/\">Wayne is interested</a>.")} %>

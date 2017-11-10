@@ -29,7 +29,7 @@ defmodule BurpWeb.XmlBuilder do
   def description(type, nil), do: {type, nil, gettext("Nobody cares what is written here…")}
   def description(type, blog), do: {type, nil, blog.description}
 
-  def self_link(conn, current_blog), do: {:link, %{rel: "self", href: root_url(conn, current_blog)}, nil}
+  def self_link(conn, current_blog), do: {:link, %{rel: "self", href: "#{root_url(conn, current_blog)}feed.atom"}, nil}
 
   def updated(nil), do: []
   def updated(post), do: {:updated, nil, Timex.format!(post.updated_at, "{ISO:Extended}")}
