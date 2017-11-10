@@ -12,7 +12,7 @@ defmodule BurpWeb.PostView do
       :feed,
       %{xmlns: "http://www.w3.org/2005/Atom"},
       [
-        {:id, nil, "#{root_url(conn)}feed.atom"},
+        {:id, nil, "#{root_url(conn, current_blog)}feed.atom"},
         title(current_blog),
         description(:subtitle, current_blog),
         self_link(conn, current_blog),
@@ -36,10 +36,10 @@ defmodule BurpWeb.PostView do
           [
             title(current_blog),
             description(:description, current_blog),
-            {:link, nil, "#{root_url(conn)}feed.rss"},
+            {:link, nil, "#{root_url(conn, current_blog)}feed.rss"},
             {
               "atom:link",
-              %{href: "#{root_url(conn)}feed.rss", rel: "self", type: "application/rss+xml"},
+              %{href: "#{root_url(conn, current_blog)}feed.rss", rel: "self", type: "application/rss+xml"},
               nil
             },
             items(conn, posts, current_blog)

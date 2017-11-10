@@ -43,7 +43,9 @@ defmodule BurpWeb.Helpers do
     end
   end
 
-  def root_url(conn), do: "#{scheme()}://#{conn.host}#{get_port(conn)}/"
+  def root_url(conn, blog \\ nil)
+  def root_url(conn, nil), do: "#{scheme()}://#{conn.host}#{get_port(conn)}/"
+  def root_url(conn, %Burp.Meta.Blog{url: url}), do: "#{url}"
 
   def comment_url(conn, comment), do: posting_url(conn, comment.post) <> "#comment-#{comment.id}"
 
@@ -51,7 +53,7 @@ defmodule BurpWeb.Helpers do
 
   def new_comment_url(conn, post), do: posting_url(conn, post)
 
-  def posting_url(conn, post), do: root_url(conn) <> post.slug
+  def posting_url(conn, post), do: root_url(conn, post.blog) <> post.slug
 
   def posting_path(conn, post), do: BurpWeb.Router.Helpers.post_path(conn, :index) <> post.slug
 

@@ -14,7 +14,7 @@
 <%= for medium <- @media do %>
     <tr>
       <td><%= medium.name %></td>
-      <td><%= "#{root_url(@conn)}media/#{medium.url}" %></td>
+      <td><%= "#{root_url(@conn, assigns[:current_blog])}media/#{medium.url}" %></td>
       <td><%= medium.media_type %></td>
 
       <td class="action-column">
