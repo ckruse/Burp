@@ -15,6 +15,7 @@ defmodule Burp.Blog.Comment do
     field(:email, :string)
     field(:url, :string)
     field(:visible, :boolean, default: false)
+    field(:format, :string, default: "markdown")
 
     belongs_to(:post, Burp.Blog.Post)
 

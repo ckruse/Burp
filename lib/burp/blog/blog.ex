@@ -222,7 +222,7 @@ defmodule Burp.Blog do
 
   """
   def create_comment(attrs \\ %{}, post) do
-    %Comment{post_id: post.id}
+    %Comment{post_id: post.id, format: "markdown"}
     |> Comment.changeset(attrs)
     |> maybe_moderate(post)
     |> Repo.insert()
