@@ -25,12 +25,7 @@ config :burp, BurpWeb.Endpoint,
   version: Mix.Project.config()[:version]
 
 # Do not print debug messages in production
-config :logger, backends: [{LoggerFileBackend, :out_log}]
 config :logger, level: :info
-
-config :logger, :out_log,
-  path: "log/std.log",
-  level: :info
 
 # ## SSL Support
 #

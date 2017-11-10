@@ -4,7 +4,7 @@ defmodule Burp.Mixfile do
   def project do
     [
       app: :burp,
-      version: "0.0.7",
+      version: "0.0.8",
       elixir: "~> 1.4",
       elixirc_paths: elixirc_paths(Mix.env()),
       compilers: [:phoenix, :gettext] ++ Mix.compilers(),
@@ -50,7 +50,6 @@ defmodule Burp.Mixfile do
       {:bamboo_smtp, "~> 1.4.0"},
       {:edeliver, "~> 1.4.4"},
       {:distillery, "~> 1.5", runtime: false},
-      {:logger_file_backend, "~> 0.0.10", only: :prod},
       {:ex_machina, "~> 2.1", only: :test}
     ]
   end
