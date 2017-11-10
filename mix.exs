@@ -48,6 +48,9 @@ defmodule Burp.Mixfile do
       {:xml_builder, github: "joshnuss/xml_builder"},
       {:bamboo, "~> 0.8"},
       {:bamboo_smtp, "~> 1.4.0"},
+      {:edeliver, "~> 1.4.4"},
+      {:distillery, "~> 1.5", runtime: false},
+      {:logger_file_backend, "~> 0.0.10", only: :prod},
       {:ex_machina, "~> 2.1", only: :test}
     ]
   end
