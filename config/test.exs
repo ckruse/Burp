@@ -17,3 +17,4 @@ config :burp, Burp.Repo,
   pool: Ecto.Adapters.SQL.Sandbox
 
 config :burp, Burp.Mailer, adapter: Bamboo.TestAdapter
+config :burp, :scheme, "http"

@@ -28,13 +28,30 @@ defmodule BurpWeb.Helpers do
     fun.(forms)
   end
 
+  defp scheme(), do: Application.get_env(:burp, :scheme)
+
+  defp get_port(conn) do
+    s = scheme()
+    port = conn.port
+
+    cond do
+      (s == "http" && port == 80) || (s == "https" && port == "443") ->
+        ""
+
+      true ->
+        ":#{port}"
+    end
+  end
+
+  def root_url(conn), do: "#{scheme()}://#{conn.host}#{get_port(conn)}/"
+
   def comment_url(conn, comment), do: posting_url(conn, comment.post) <> "#comment-#{comment.id}"
 
   def comment_url(conn, comment, post), do: posting_url(conn, post) <> "#comment-#{comment.id}"
 
   def new_comment_url(conn, post), do: posting_url(conn, post)
 
-  def posting_url(conn, post), do: BurpWeb.Router.Helpers.post_url(conn, :index) <> post.slug
+  def posting_url(conn, post), do: root_url(conn) <> post.slug
 
   def posting_path(conn, post), do: BurpWeb.Router.Helpers.post_path(conn, :index) <> post.slug
 

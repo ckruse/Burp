@@ -6,6 +6,6 @@
 
 <%= gettext("You can moderate this comment under this URL:") %>
 
-<%= admin_comment_url(BurpWeb.Endpoint, :edit, @comment) %>
+<%= "#{@post.blog.url}admin/comments/#{@comment.id}/edit" %>
 
 <%= gettext("Best regards, Burp") %>
