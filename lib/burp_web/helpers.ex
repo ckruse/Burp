@@ -32,7 +32,7 @@ defmodule BurpWeb.Helpers do
 
   defp get_port(conn) do
     s = scheme()
-    port = conn.port
+    port = Application.get_env(:burp, :port) || conn.port
 
     cond do
       (s == "http" && port == 80) || (s == "https" && port == "443") ->

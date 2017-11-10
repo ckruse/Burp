@@ -72,6 +72,7 @@ config :logger, :out_log,
 
 config :burp, :storage_path, "/home/ckruse/.burp/media"
 config :burp, :scheme, "https"
+config :burp, :port, 443
 
 # Finally import the config/prod.secret.exs
 # which should be versioned separately.
