@@ -1,7 +1,7 @@
 <article id="comment-<%= @comment.id %>" class="comment">
   <header>
     <%= unless blank?(@comment.email) do %><img class="gravatar" src="https://www.gravatar.com/avatar/<%= gravatar_hash(@comment.email) %>?s=80&amp;d=blank" alt=""><% end %>
-    <h4><%= @comment.author %></h4>
+    <h4><%= if !blank?(@comment.url) && valid_url(@comment.url) do %><%= link @comment.author, to: @comment.url %><% else %><%= @comment.author %><% end %></h4>
     <details open>
       <summary>
         <%= gettext("wrote at") %>
