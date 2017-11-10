@@ -68,4 +68,10 @@ defmodule BurpWeb.Helpers do
     uri = URI.parse(url)
     uri.scheme == "http" || uri.scheme == "https"
   end
+
+  def iso_date(time) do
+    time
+    |> Timex.set(microsecond: {0, 0})
+    |> Timex.format!("{ISO:Extended}")
+  end
 end

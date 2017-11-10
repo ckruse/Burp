@@ -4,10 +4,10 @@
     <details open>
       <summary>
         <%= gettext("published at") %>
-        <time pubdate datetime="<%= Timex.format!(@post.published_at, "{ISO:Extended}") %>"><%= Timex.format!(@post.published_at, gettext("%Y-%m-%d %H:%M"), :strftime) %></time>
+        <time datetime="<%= iso_date(@post.published_at) %>"><%= Timex.format!(@post.published_at, gettext("%Y-%m-%d %H:%M"), :strftime) %></time>
         <%= gettext("by") %> <%= link @post.author.name, to: "mailto:" <> @post.author.email %><%= if Timex.after?(@post.updated_at, @post.published_at) do %>,
           <%= gettext("updated at") %>
-          <time datetime="<%= Timex.format!(@post.updated_at, "{ISO:Extended}") %>"><%= Timex.format!(@post.updated_at, gettext("%Y-%m-%d %H:%M"), :strftime) %></time><% end %><%= if length(@post.comments) > 0 do %>, <%= link ngettext("%{count} comment", "%{count} comments", length(@post.comments)), to: posting_url(@conn, @post) <> "#comments" %><% end %>
+          <time datetime="<%= iso_date(@post.updated_at) %>"><%= Timex.format!(@post.updated_at, gettext("%Y-%m-%d %H:%M"), :strftime) %></time><% end %><%= if length(@post.comments) > 0 do %>, <%= link ngettext("%{count} comment", "%{count} comments", length(@post.comments)), to: posting_url(@conn, @post) <> "#comments" %><% end %>
       </summary>
 
       <%= if !blank?(@post.tags) do %>
