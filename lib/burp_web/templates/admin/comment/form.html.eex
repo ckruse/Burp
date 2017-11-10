@@ -7,19 +7,19 @@
 
   <div class="fgroup">
     <%= label f, :author, gettext("Author") %>
-    <%= text_input f, :author, class: error_class(f, :author) %>
+    <%= text_input f, :author, class: error_class(f, :author), maxlength: "255", required: true %>
     <%= error_tag f, :author %>
   </div>
 
   <div class="fgroup">
     <%= label f, :email, gettext("Email") %>
-    <%= text_input f, :email, class: error_class(f, :email) %>
+    <%= text_input f, :email, class: error_class(f, :email), maxlength: "255" %>
     <%= error_tag f, :email %>
   </div>
 
   <div class="fgroup">
     <%= label f, :url, gettext("URL") %>
-    <%= text_input f, :url, class: error_class(f, :url) %>
+    <%= text_input f, :url, class: error_class(f, :url), maxlength: "255" %>
     <%= error_tag f, :url %>
   </div>
 
@@ -32,7 +32,7 @@
 
   <div class="fgroup">
     <%= label f, :content, gettext("Content") %>
-    <%= textarea f, :content, class: "post-content #{error_class(f, :content)}" %>
+    <%= textarea f, :content, class: "post-content #{error_class(f, :content)}", maxlength: "12288", required: true %>
     <%= error_tag f, :content %>
   </div>
 

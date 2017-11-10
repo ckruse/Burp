@@ -5,19 +5,19 @@
 
   <div class="fgroup">
     <%= label f, :subject, gettext("subject") %>
-    <%= text_input f, :subject, class: error_class(f, :subject) %>
+    <%= text_input f, :subject, class: error_class(f, :subject), required: true, maxlength: "255" %>
     <%= error_tag f, :subject %>
   </div>
 
   <div class="fgroup">
     <%= label f, :slug, gettext("slug") %>
-    <%= text_input f, :slug, class: error_class(f, :slug) %>
+    <%= text_input f, :slug, class: error_class(f, :slug), required: true, maxlength: "255" %>
     <%= error_tag f, :slug %>
   </div>
 
   <div class="fgroup">
     <%= label f, :tags_str, gettext("tags") %>
-    <%= text_input f, :tags_str, class: error_class(f, :tags_str) %>
+    <%= text_input f, :tags_str, class: error_class(f, :tags_str), required: true %>
     <%= error_tag f, :tags_str %>
   </div>
 
@@ -37,7 +37,7 @@
 
   <div class="fgroup">
     <%= label f, :content, gettext("content") %>
-    <%= textarea f, :content, class: "post-content #{error_class(f, :excerpt)}" %>
+    <%= textarea f, :content, class: "post-content #{error_class(f, :excerpt)}", required: true %>
     <%= error_tag f, :content %>
   </div>
 
