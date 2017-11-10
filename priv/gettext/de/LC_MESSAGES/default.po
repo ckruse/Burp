@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"PO-Revision-Date: 2017-11-04 09:42+0100\n"
+"PO-Revision-Date: 2017-11-10 07:12+0100\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -23,24 +23,24 @@ msgstr ""
 #~ msgid ""
 #~ msgstr ""
 #~ "Language: de\n"
-#: lib/burp_web/templates/layout/app.html.eex:66
+#: lib/burp_web/templates/layout/app.html.eex:71
 msgid "%{name} is creating the content on this site."
 msgstr "%{name} verunstaltet diese Seite mit Inhalt."
 
-#: lib/burp_web/templates/layout/app.html.eex:56
+#: lib/burp_web/templates/layout/app.html.eex:61
 #: lib/burp_web/templates/session/new.html.eex:20
 msgid "Login"
 msgstr "Einloggen"
 
-#: lib/burp_web/templates/layout/app.html.eex:53
+#: lib/burp_web/templates/layout/app.html.eex:58
 msgid "Logout"
 msgstr "Ausloggen"
 
-#: lib/burp_web/templates/layout/app.html.eex:60
+#: lib/burp_web/templates/layout/app.html.eex:65
 msgid "Look at"
 msgstr "Besuchen Sie"
 
-#: lib/burp_web/templates/layout/app.html.eex:34 lib/burp_web/xml_builder.ex:29
+#: lib/burp_web/templates/layout/app.html.eex:38 lib/burp_web/xml_builder.ex:29
 msgid "Nobody cares what is written here…"
 msgstr "Niemanden interessiert, was hier steht…"
 
@@ -48,11 +48,11 @@ msgstr "Niemanden interessiert, was hier steht…"
 msgid "Remember me"
 msgstr "Login merken"
 
-#: lib/burp_web/templates/layout/app.html.eex:64
+#: lib/burp_web/templates/layout/app.html.eex:69
 msgid "The Software powering this platform is CKs <a href=\"http://github.com/ckruse/Burp\">Burp</a>."
 msgstr "Die verwendete Software ist CKs <a href=\"http://github.com/ckruse/Burp\">Burp</a>."
 
-#: lib/burp_web/templates/layout/app.html.eex:63
+#: lib/burp_web/templates/layout/app.html.eex:68
 msgid "This is a Wayne blog, only <a href=\"http://kennst-du-wayne.de/\">Wayne is interested</a>."
 msgstr "Dies ist ein Wayne-Blog, es <a href=\"http://kennst-du-wayne.de/\">interessiert nur Wayne</a>."
 
@@ -64,7 +64,7 @@ msgstr "Benutzername oder Email"
 msgid "Username or password wrong"
 msgstr "Benutzername oder Passwort ist falsch."
 
-#: lib/burp_web/templates/layout/app.html.eex:69
+#: lib/burp_web/templates/layout/app.html.eex:74
 msgid "When having technical issues, contact <a href=\"mailto:christian@kruse.cool\">christian@kruse.cool</a>."
 msgstr "Bei technischen Problemen kontaktieren sie <a href=\"mailto:christian@kruse.cool\">christian@kruse.cool</a>."
 
@@ -87,7 +87,7 @@ msgstr "Sie haben sich erfolgreich eingeloggt."
 msgid "You logged out successfully"
 msgstr "Sie haben sich erfolgreich ausgeloggt."
 
-#: lib/burp_web/templates/layout/app.html.eex:60
+#: lib/burp_web/templates/layout/app.html.eex:65
 msgid "a list of"
 msgstr "eine Liste von"
 
@@ -95,7 +95,7 @@ msgstr "eine Liste von"
 msgid "luke@example.org"
 msgstr ""
 
-#: lib/burp_web/templates/layout/app.html.eex:60
+#: lib/burp_web/templates/layout/app.html.eex:65
 msgid "or"
 msgstr "oder"
 
@@ -105,11 +105,11 @@ msgid "password"
 msgstr "Passwort"
 
 #: lib/burp_web/templates/admin/post/form.html.eex:19
-#: lib/burp_web/templates/layout/app.html.eex:60
+#: lib/burp_web/templates/layout/app.html.eex:65
 msgid "tags"
 msgstr "Tags"
 
-#: lib/burp_web/templates/layout/app.html.eex:60
+#: lib/burp_web/templates/layout/app.html.eex:65
 msgid "the archive"
 msgstr "das Archiv"
 
@@ -203,7 +203,7 @@ msgid "slug"
 msgstr "Slug"
 
 #: lib/burp_web/templates/admin/comment/form.html.eex:41
-#: lib/burp_web/templates/admin/post/form.html.eex:46
+#: lib/burp_web/templates/admin/post/form.html.eex:50
 #: lib/burp_web/templates/comment/form.html.eex:33
 msgid "cancel"
 msgstr "abbrechen"
@@ -211,12 +211,12 @@ msgstr "abbrechen"
 #: lib/burp_web/templates/admin/comment/form.html.eex:40
 #: lib/burp_web/templates/admin/config/form.html.eex:76
 #: lib/burp_web/templates/admin/medium/form.html.eex:21
-#: lib/burp_web/templates/admin/post/form.html.eex:45
+#: lib/burp_web/templates/admin/post/form.html.eex:49
 #: lib/burp_web/templates/comment/form.html.eex:32
 msgid "submit"
 msgstr "speichern"
 
-#: lib/burp_web/templates/layout/app.html.eex:54
+#: lib/burp_web/templates/layout/app.html.eex:59
 msgid "Administration"
 msgstr "Administration"
 
@@ -546,3 +546,7 @@ msgstr "Kommentar moderieren"
 #: lib/burp_web/templates/admin/config/form.html.eex:15
 msgid "image url (quadratic, will get scaled to 300x300 at most)"
 msgstr "Bild-URL (quadratisch, wird auf höchstens 300x300 skaliert)"
+
+#: lib/burp_web/templates/admin/post/form.html.eex:44
+msgid "Preview"
+msgstr "Vorschau"
