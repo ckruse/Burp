@@ -63,6 +63,8 @@ defmodule Burp.Blog.Post do
          :published_at,
          :posting_format
        ])
+    |> validate_length(:subject, max: 255)
+    |> validate_length(:slug, max: 255)
     |> unique_constraint(:slug)
     |> unique_constraint(:guid)
   end
