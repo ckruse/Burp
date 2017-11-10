@@ -7,7 +7,7 @@
         <time pubdate datetime="<%= Timex.format!(@post.published_at, "{ISO:Extended}") %>"><%= Timex.format!(@post.published_at, gettext("%Y-%m-%d %H:%M"), :strftime) %></time>
         <%= gettext("by") %> <%= link @post.author.name, to: "mailto:" <> @post.author.email %><%= if Timex.after?(@post.updated_at, @post.published_at) do %>,
           <%= gettext("updated at") %>
-          <time datetime="<%= Timex.format!(@post.updated_at, "{ISO:Extended}") %>"><%= Timex.format!(@post.updated_at, gettext("%Y-%m-%d %H:%M"), :strftime) %></time><% end %><%= if length(@post.comments) > 0 do %>, <%= ngettext("%{count} comment", "%{count} comments", length(@post.comments)) %><% end %>
+          <time datetime="<%= Timex.format!(@post.updated_at, "{ISO:Extended}") %>"><%= Timex.format!(@post.updated_at, gettext("%Y-%m-%d %H:%M"), :strftime) %></time><% end %><%= if length(@post.comments) > 0 do %>, <%= link ngettext("%{count} comment", "%{count} comments", length(@post.comments)), to: posting_url(@conn, @post) <> "#comments" %><% end %>
       </summary>
 
       <%= if !blank?(@post.tags) do %>
