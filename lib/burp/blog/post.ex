@@ -35,15 +35,15 @@ defmodule Burp.Blog.Post do
   def changeset(%Post{} = post, attrs, blog \\ nil, user \\ nil) do
     post
     |> cast(attrs, [
-         :slug,
-         :visible,
-         :subject,
-         :excerpt,
-         :content,
-         :published_at,
-         :posting_format,
-         :tags_str
-       ])
+      :slug,
+      :visible,
+      :subject,
+      :excerpt,
+      :content,
+      :published_at,
+      :posting_format,
+      :tags_str
+    ])
     |> put_change(:posting_format, "markdown")
     |> put_change(:format, "markdown")
     |> maybe_reset_published_at()
@@ -54,15 +54,15 @@ defmodule Burp.Blog.Post do
     |> put_tags()
     |> put_tags_str()
     |> validate_required([
-         :slug,
-         :guid,
-         :visible,
-         :subject,
-         :content,
-         :format,
-         :published_at,
-         :posting_format
-       ])
+      :slug,
+      :guid,
+      :visible,
+      :subject,
+      :content,
+      :format,
+      :published_at,
+      :posting_format
+    ])
     |> validate_length(:subject, max: 255)
     |> validate_length(:slug, max: 255)
     |> unique_constraint(:slug)

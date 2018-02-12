@@ -29,26 +29,26 @@ defmodule Burp.Meta.Blog do
   def changeset(%Blog{} = blog, attrs) do
     blog
     |> cast(attrs, [
-         :name,
-         :description,
-         :keywords,
-         :url,
-         :image_url,
-         :lang,
-         :host,
-         :attrs
-         # :author_id
-       ])
+      :name,
+      :description,
+      :keywords,
+      :url,
+      :image_url,
+      :lang,
+      :host,
+      :attrs
+      # :author_id
+    ])
     |> validate_required([
-         :name,
-         :description,
-         :keywords,
-         :url,
-         # :image_url,
-         :lang,
-         :host
-         # :author_id
-       ])
+      :name,
+      :description,
+      :keywords,
+      :url,
+      # :image_url,
+      :lang,
+      :host
+      # :author_id
+    ])
     |> unique_constraint(:host)
   end
 end
