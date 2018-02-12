@@ -94,11 +94,15 @@ defmodule Burp.Blog.Post do
   defp put_tags_str(changeset), do: changeset
 
   defp update_slug(%Ecto.Changeset{valid?: true, changes: %{slug: slug}} = changeset) do
-    now = Timex.now()
-    month = Enum.at([nil] ++ ~w[jan feb mar apr may jun jul aug sep oct nov dec], now.month)
-    str = "#{now.year}/#{month}/#{slug}"
+    if slug =~ ~r/^\d+\/\w{3}\// do
+      changeset
+    else
+      now = Timex.now()
+      month = Enum.at([nil] ++ ~w[jan feb mar apr may jun jul aug sep oct nov dec], now.month)
+      str = "#{now.year}/#{month}/#{slug}"
 
-    put_change(changeset, :slug, str)
+      put_change(changeset, :slug, str)
+    end
   end
 
   defp update_slug(changeset), do: changeset
