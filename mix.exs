@@ -4,7 +4,7 @@ defmodule Burp.Mixfile do
   def project do
     [
       app: :burp,
-      version: "0.0.11",
+      version: "0.0.12",
       elixir: "~> 1.4",
       elixirc_paths: elixirc_paths(Mix.env()),
       compilers: [:phoenix, :gettext] ++ Mix.compilers(),
@@ -41,6 +41,7 @@ defmodule Burp.Mixfile do
       {:phoenix_live_reload, "~> 1.0", only: :dev},
       {:gettext, "~> 0.11"},
       {:cowboy, "~> 1.0"},
+      {:plug_cowboy, "~> 1.0"},
       {:comeonin, "~> 3.0"},
       {:timex, "~> 3.1"},
       {:timex_ecto, "~> 3.0"},
