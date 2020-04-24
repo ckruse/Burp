@@ -1,17 +1,6 @@
-// Brunch automatically concatenates all files in your
-// watched paths. Those paths can be configured at
-// config.paths.watched in "brunch-config.js".
-//
-// However, those files will only be executed if
-// explicitly imported. The only exception are files
-// in vendor, which are never wrapped in imports and
-// therefore are always executed.
-
-// Import dependencies
-//
-// If you no longer want to use a dependency, remember
-// to also remove its path from "config.paths.watched".
+import "../css/app.css";
 import "phoenix_html";
+
 import Urlify from "urlify/dist/urlify-dev";
 import PreviewRenderer from "./preview-renderer";
 import CommentPreviewRenderer from "./comment-preview-renderer";
@@ -23,18 +12,18 @@ import CommentPreviewRenderer from "./comment-preview-renderer";
 
 // import socket from "./socket"
 
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
   let subj = document.getElementById("post_subject");
   let urlify = Urlify.create({
     spaces: "-",
     toLower: true,
     nonPrintable: "-",
     trim: true,
-    addEToUmlauts: true
+    addEToUmlauts: true,
   });
 
   if (subj) {
-    subj.addEventListener("change", function() {
+    subj.addEventListener("change", function () {
       if (this.value != "") {
         document.getElementById("post_slug").value = urlify(subj.value);
       }

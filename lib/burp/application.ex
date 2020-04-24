@@ -4,14 +4,14 @@ defmodule Burp.Application do
   # See https://hexdocs.pm/elixir/Application.html
   # for more information on OTP Applications
   def start(_type, _args) do
-    import Supervisor.Spec
-
     # Define workers and child supervisors to be supervised
     children = [
       # Start the Ecto repository
-      supervisor(Burp.Repo, []),
+      Burp.Repo,
+      # Start the PubSub system
+      {Phoenix.PubSub, name: Burp.PubSub},
       # Start the endpoint when the application starts
-      supervisor(BurpWeb.Endpoint, [])
+      BurpWeb.Endpoint
       # Start your own worker by calling: Burp.Worker.start_link(arg1, arg2, arg3)
       # worker(Burp.Worker, [arg1, arg2, arg3]),
     ]

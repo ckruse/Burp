@@ -49,7 +49,7 @@
       <%= if get_flash(@conn, :info) do %><p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p><% end %>
       <%= if get_flash(@conn, :error) do %><p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p><% end %>
 
-      <%= render @view_module, @view_template, assigns %>
+      <%= @inner_content %>
     </main>
 
     <footer>
@@ -75,7 +75,7 @@
 
     </footer>
 
-    <%= if (controller_module(@conn) == Elixir.BurpWeb.PostController && action_name(@conn) == :show) || controller_module(@conn) == Elixir.BurpWeb.Admin.CommentController do %>
+    <%= if include_js?(@conn) do %>
       <script src="<%= Routes.static_path(@conn, "/js/app.js") %>"></script>
     <% end %>
   </body>

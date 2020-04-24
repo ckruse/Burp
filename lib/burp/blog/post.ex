@@ -31,16 +31,7 @@ defmodule Burp.Blog.Post do
   @doc false
   def changeset(%Post{} = post, attrs, blog \\ nil, user \\ nil) do
     post
-    |> cast(attrs, [
-      :slug,
-      :visible,
-      :subject,
-      :excerpt,
-      :content,
-      :published_at,
-      :posting_format,
-      :tags_str
-    ])
+    |> cast(attrs, [:slug, :visible, :subject, :excerpt, :content, :published_at, :posting_format, :tags_str])
     |> put_change(:posting_format, "markdown")
     |> put_change(:format, "markdown")
     |> maybe_reset_published_at()
@@ -50,16 +41,7 @@ defmodule Burp.Blog.Post do
     |> put_guid(blog)
     |> put_tags()
     |> put_tags_str()
-    |> validate_required([
-      :slug,
-      :guid,
-      :visible,
-      :subject,
-      :content,
-      :format,
-      :published_at,
-      :posting_format
-    ])
+    |> validate_required([:slug, :guid, :visible, :subject, :content, :format, :posting_format, :published_at])
     |> validate_length(:subject, max: 255)
     |> validate_length(:slug, max: 255)
     |> unique_constraint(:slug)
@@ -141,12 +123,12 @@ defmodule Burp.Blog.Post do
   end
 
   # set published_at on creation
-  defp maybe_reset_published_at(%Ecto.Changeset{valid?: true, action: :insert} = changeset),
-    do: put_change(changeset, :published_at, Timex.now())
+  defp maybe_reset_published_at(%Ecto.Changeset{valid?: true, data: %Post{published_at: nil}} = changeset),
+    do: put_change(changeset, :published_at, Timex.now() |> DateTime.truncate(:second))
 
   # set published_at on visibility change
   defp maybe_reset_published_at(%Ecto.Changeset{valid?: true, changes: %{visible: true}} = changeset),
-    do: put_change(changeset, :published_at, Timex.now())
+    do: put_change(changeset, :published_at, Timex.now() |> DateTime.truncate(:second))
 
   # don't touch published_at otherwise
   defp maybe_reset_published_at(changeset), do: changeset

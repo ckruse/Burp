@@ -61,4 +61,13 @@ defmodule BurpWeb.LayoutView do
       _ -> false
     end
   end
+
+  def include_js?(conn) do
+    controller_module(conn) in [
+      BurpWeb.PostController,
+      BurpWeb.Admin.CommentController,
+      BurpWeb.Admin.PostController,
+      BurpWeb.Admin.MediumController
+    ]
+  end
 end

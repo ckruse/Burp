@@ -7,7 +7,7 @@ defmodule BurpWeb.TagView do
   def get_size(count, min_count, max_count) do
     divider =
       case @f_max - @f_min do
-        0 -> 1
+        0.0 -> 1
         _ -> @f_max - @f_min
       end
 

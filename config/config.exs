@@ -13,7 +13,7 @@ config :burp, BurpWeb.Endpoint,
   url: [host: "localhost"],
   secret_key_base: "j2YoEHUYn9Yumlc8bloirqQF/bHfyMunZKha+rxw4DyxJSN0PYZ9OZYs4IquFhPQ",
   render_errors: [view: BurpWeb.ErrorView, accepts: ~w(html json)],
-  pubsub: [name: Burp.PubSub, adapter: Phoenix.PubSub.PG2]
+  pubsub_server: Burp.PubSub
 
 # Configures Elixir's Logger
 config :logger, :console,
