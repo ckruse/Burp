@@ -41,7 +41,7 @@ defmodule BurpWeb.PostController do
     |> render("index.atom", posts: posts)
   end
 
-  def redirect_atom(conn, _params), do: put_status(conn, 301) |> redirect(to: post_path(conn, :index_atom))
+  def redirect_atom(conn, _params), do: put_status(conn, 301) |> redirect(to: Routes.post_path(conn, :index_atom))
 
-  def redirect_rss(conn, _params), do: put_status(conn, 301) |> redirect(to: post_path(conn, :index_rss))
+  def redirect_rss(conn, _params), do: put_status(conn, 301) |> redirect(to: Routes.post_path(conn, :index_rss))
 end

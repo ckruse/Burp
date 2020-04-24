@@ -41,7 +41,7 @@
     <%= error_tag f, :url %>
   </div>
 
-  <%= sub_inputs f, :attrs, fn fs -> %>
+  <%= WebHelpers.sub_inputs f, :attrs, fn fs -> %>
     <div class="fgroup">
       <%= label fs, :comments, class: "radio", for: nil do %>
         <%= radio_button fs, :comments, "enabled" %>

@@ -55,10 +55,13 @@ config :logger, :console, format: "[$level] $message\n"
 # in production as building large stacktraces may be expensive.
 config :phoenix, :stacktrace_depth, 20
 
+# Initialize plugs at runtime for faster development compilation
+config :phoenix, :plug_init_mode, :runtime
+
 # Configure your database
 config :burp, Burp.Repo,
   adapter: Ecto.Adapters.Postgres,
-  database: "burp_dev",
+  database: "burp_development",
   hostname: "localhost",
   pool_size: 10
 

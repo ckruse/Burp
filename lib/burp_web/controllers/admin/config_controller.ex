@@ -13,7 +13,7 @@ defmodule BurpWeb.Admin.ConfigController do
       {:ok, _blog} ->
         conn
         |> put_flash(:info, gettext("Configuration updated successfully."))
-        |> redirect(to: admin_config_path(conn, :edit))
+        |> redirect(to: Routes.admin_config_path(conn, :edit))
 
       {:error, %Ecto.Changeset{} = changeset} ->
         render(conn, "edit.html", changeset: changeset)

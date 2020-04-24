@@ -14,13 +14,13 @@
 <%= for medium <- @media do %>
     <tr>
       <td><%= medium.name %></td>
-      <td><%= "#{root_url(@conn, assigns[:current_blog])}media/#{medium.url}" %></td>
+      <td><%= "#{WebHelpers.root_url(@conn, assigns[:current_blog])}media/#{medium.url}" %></td>
       <td><%= medium.media_type %></td>
 
       <td class="action-column">
-        <%= link gettext("show"), to: medium_path(@conn, :show, medium), class: "btn btn-secondary btn-xs" %>
-        <%= link gettext("edit"), to: admin_medium_path(@conn, :edit, medium), class: "btn btn-secondary btn-xs" %>
-        <%= link gettext("delete"), to: admin_medium_path(@conn, :delete, medium), method: :delete, data: [confirm: gettext("Are you sure?")], class: "btn btn-danger btn-xs" %>
+        <%= link gettext("show"), to: Routes.medium_path(@conn, :show, medium), class: "btn btn-secondary btn-xs" %>
+        <%= link gettext("edit"), to: Routes.admin_medium_path(@conn, :edit, medium), class: "btn btn-secondary btn-xs" %>
+        <%= link gettext("delete"), to: Routes.admin_medium_path(@conn, :delete, medium), method: :delete, data: [confirm: gettext("Are you sure?")], class: "btn btn-danger btn-xs" %>
       </td>
     </tr>
 <% end %>

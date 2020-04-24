@@ -1,4 +1,6 @@
 defmodule BurpWeb.Sortable do
+  alias Burp.Helpers
+
   def sortable(conn, text, field, path_helper, opts \\ []) do
     extra_args = opts[:link_args] || []
     action = Phoenix.Controller.action_name(conn)
@@ -31,14 +33,14 @@ defmodule BurpWeb.Sortable do
     cookie_key_dir = "burp_" <> controller_nam <> "-sort_dir"
 
     {set_cookie_col, sort_col} =
-      if Burp.Helpers.blank?(conn.params["sort"]) do
+      if Helpers.blank?(conn.params["sort"]) do
         {false, conn.cookies[cookie_key_col] || Atom.to_string(List.first(valid_fields))}
       else
         {true, conn.params["sort"]}
       end
 
     {set_cookie_dir, sort_dir} =
-      if Burp.Helpers.blank?(conn.params["dir"]) do
+      if Helpers.blank?(conn.params["dir"]) do
         {false, conn.cookies[cookie_key_dir] || defaults[:dir]}
       else
         {true, conn.params["dir"]}

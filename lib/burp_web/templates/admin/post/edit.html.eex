@@ -1,3 +1,3 @@
 <h2><%= gettext("Edit post „%{subject}“", subject: @post.subject) %></h2>
 
-<%= render "form.html", Map.put(assigns, :action, admin_post_path(@conn, :update, @post)) %>
+<%= render "form.html", Map.put(assigns, :action, Routes.admin_post_path(@conn, :update, @post)) %>

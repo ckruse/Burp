@@ -23,7 +23,7 @@ defmodule BurpWeb.Admin.CommentController do
       {:ok, comment} ->
         conn
         |> put_flash(:info, gettext("Comment updated successfully."))
-        |> redirect(to: admin_comment_path(conn, :edit, comment))
+        |> redirect(to: Routes.admin_comment_path(conn, :edit, comment))
 
       {:error, %Ecto.Changeset{} = changeset} ->
         render(conn, "edit.html", comment: comment, changeset: changeset)
@@ -36,6 +36,6 @@ defmodule BurpWeb.Admin.CommentController do
 
     conn
     |> put_flash(:info, gettext("Comment deleted successfully."))
-    |> redirect(to: admin_comment_path(conn, :index))
+    |> redirect(to: Routes.admin_comment_path(conn, :index))
   end
 end

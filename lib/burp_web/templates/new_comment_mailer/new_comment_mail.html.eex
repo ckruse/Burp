@@ -2,7 +2,7 @@
 
 <p><%= gettext("A new comment has been posted for the post „%{subject}“:", subject: @post.subject) %></p>
 
-<p><%= as_html(@comment, @comment.content) %></p>
+<p><%= WebHelpers.as_html(@comment, @comment.content) %></p>
 
 <p><%= gettext("You can moderate this comment under this URL:") %>
 

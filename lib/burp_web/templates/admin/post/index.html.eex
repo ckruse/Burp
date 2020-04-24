@@ -23,12 +23,12 @@
       <td class="date"><%= Timex.format!(post.inserted_at, gettext("%Y-%m-%d"), :strftime) %></td>
 
       <td class="action-column">
-        <%= link gettext("edit"), to: admin_post_path(@conn, :edit, post), class: "btn btn-secondary btn-xs" %>
-        <%= link gettext("delete"), to: admin_post_path(@conn, :delete, post), method: :delete, data: [confirm: gettext("Are you sure?")], class: "btn btn-danger btn-xs" %>
+        <%= link gettext("edit"), to: Routes.admin_post_path(@conn, :edit, post), class: "btn btn-secondary btn-xs" %>
+        <%= link gettext("delete"), to: Routes.admin_post_path(@conn, :delete, post), method: :delete, data: [confirm: gettext("Are you sure?")], class: "btn btn-danger btn-xs" %>
       </td>
     </tr>
 <% end %>
   </tbody>
 </table>
 
-<%= pagination @conn, @paging, &admin_post_path/3 %>
+<%= pagination @conn, @paging, &Routes.admin_post_path/3 %>

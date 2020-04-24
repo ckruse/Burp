@@ -1,5 +1,5 @@
 <div class="btn-group" role="group">
-  <%= link gettext("New Medium"), to: admin_medium_path(@conn, :new), class: "btn btn-primary" %>
+  <%= link gettext("New Medium"), to: Routes.admin_medium_path(@conn, :new), class: "btn btn-primary" %>
 </div>
 
 <%= render(BurpWeb.AdminView, "subnav.html", assigns) %>

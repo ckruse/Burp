@@ -1,7 +1,6 @@
 defmodule BurpWeb.XmlBuilder do
   import BurpWeb.Gettext
-  import BurpWeb.Router.Helpers
-  import BurpWeb.Helpers
+  alias BurpWeb.Helpers, as: WebHelpers
 
   def maybe_add(nodes, _, nil, nil), do: nodes
   def maybe_add(nodes, type, attrs, value), do: nodes ++ [{type, attrs, value}]
@@ -29,7 +28,8 @@ defmodule BurpWeb.XmlBuilder do
   def description(type, nil), do: {type, nil, gettext("Nobody cares what is written here…")}
   def description(type, blog), do: {type, nil, blog.description}
 
-  def self_link(conn, current_blog), do: {:link, %{rel: "self", href: "#{root_url(conn, current_blog)}feed.atom"}, nil}
+  def self_link(conn, current_blog),
+    do: {:link, %{rel: "self", href: "#{WebHelpers.root_url(conn, current_blog)}feed.atom"}, nil}
 
   def updated(nil), do: []
   def updated(post), do: {:updated, nil, Timex.format!(post.updated_at, "{ISO:Extended}")}
@@ -41,8 +41,8 @@ defmodule BurpWeb.XmlBuilder do
   def categories([head | tags]), do: [{:category, %{term: head.tag_name}, nil} | categories(tags)]
 
   def entry(conn, post, _current_blog) do
-    {:safe, cnt} = as_html(post, post.content)
-    {:safe, excerpt} = as_html(post, post.excerpt)
+    {:safe, cnt} = WebHelpers.as_html(post, post.content)
+    {:safe, excerpt} = WebHelpers.as_html(post, post.excerpt)
 
     {
       :entry,
@@ -53,7 +53,7 @@ defmodule BurpWeb.XmlBuilder do
         updated(post),
         published(post),
         author(post),
-        {:link, %{rel: "alternate", href: posting_url(conn, post)}, nil},
+        {:link, %{rel: "alternate", href: WebHelpers.posting_url(conn, post)}, nil},
         categories(post.tags),
         {:summary, %{type: "html"}, excerpt},
         {:content, %{type: "html"}, cnt}
@@ -68,7 +68,7 @@ defmodule BurpWeb.XmlBuilder do
   end
 
   def item(conn, post, _) do
-    {:safe, cnt} = as_html(post, post.content)
+    {:safe, cnt} = WebHelpers.as_html(post, post.content)
 
     {
       :item,
@@ -77,7 +77,7 @@ defmodule BurpWeb.XmlBuilder do
         {:title, nil, post.subject},
         {:description, nil, cnt},
         {:pubDate, nil, Timex.format!(post.published_at, "{RFC1123}")},
-        {:link, nil, posting_url(conn, post)},
+        {:link, nil, WebHelpers.posting_url(conn, post)},
         {:guid, nil, post.guid}
       ]
     }

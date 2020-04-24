@@ -21,11 +21,11 @@ defmodule BurpWeb do
     quote do
       use Phoenix.Controller, namespace: BurpWeb
       import Plug.Conn
-      import BurpWeb.Router.Helpers
+      alias BurpWeb.Router.Helpers, as: Routes
       import BurpWeb.Gettext
 
-      import Burp.Helpers
-      import BurpWeb.Helpers
+      alias Burp.Helpers
+      alias BurpWeb.Helpers, as: WebHelpers
 
       import BurpWeb.Paginator
     end
@@ -43,12 +43,12 @@ defmodule BurpWeb do
       # Use all HTML functionality (forms, tags, etc)
       use Phoenix.HTML
 
-      import BurpWeb.Router.Helpers
+      alias BurpWeb.Router.Helpers, as: Routes
       import BurpWeb.ErrorHelpers
       import BurpWeb.Gettext
 
-      import Burp.Helpers
-      import BurpWeb.Helpers
+      alias Burp.Helpers
+      alias BurpWeb.Helpers, as: WebHelpers
 
       import Phoenix.Controller,
         only: [

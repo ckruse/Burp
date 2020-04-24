@@ -3,10 +3,7 @@ defmodule Burp.Meta.Blog do
   import Ecto.Changeset
   alias Burp.Meta.Blog
 
-  @timestamps_opts [
-    type: Timex.Ecto.DateTime,
-    autogenerate: {Timex.Ecto.DateTime, :autogenerate, []}
-  ]
+  @timestamps_opts [type: :utc_datetime]
 
   schema "blogs" do
     field(:attrs, :map, default: %{})

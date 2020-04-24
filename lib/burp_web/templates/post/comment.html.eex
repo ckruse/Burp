@@ -1,14 +1,14 @@
 <article id="comment-<%= @comment.id %>" class="comment">
   <header>
-    <%= unless blank?(@comment.email) do %><img class="gravatar" src="https://www.gravatar.com/avatar/<%= gravatar_hash(@comment.email) %>?s=80&amp;d=blank" alt=""><% end %>
-    <h4><%= if !blank?(@comment.url) && valid_url(@comment.url) do %><%= link @comment.author, to: @comment.url %><% else %><%= @comment.author %><% end %></h4>
+    <%= unless Helpers.blank?(@comment.email) do %><img class="gravatar" src="https://www.gravatar.com/avatar/<%= gravatar_hash(@comment.email) %>?s=80&amp;d=blank" alt=""><% end %>
+    <h4><%= if !Helpers.blank?(@comment.url) && WebHelpers.valid_url(@comment.url) do %><%= link @comment.author, to: @comment.url %><% else %><%= @comment.author %><% end %></h4>
     <details open>
       <summary>
         <%= gettext("wrote at") %>
-        <%= link to: comment_url(@conn, @comment, @post), title: gettext("permanent link to this comment") do %><time datetime="<%= iso_date(@comment.inserted_at || Timex.local()) %>"><%= Timex.format!(@comment.inserted_at || Timex.local(), gettext("%Y-%m-%d %H:%M"), :strftime) %></time><% end %>
+        <%= link to: WebHelpers.comment_url(@conn, @comment, @post), title: gettext("permanent link to this comment") do %><time datetime="<%= WebHelpers.iso_date(@comment.inserted_at || Timex.local()) %>"><%= Timex.format!(@comment.inserted_at || Timex.local(), gettext("%Y-%m-%d %H:%M"), :strftime) %></time><% end %>
       </summary>
     </details>
   </header>
 
-  <%= as_html(@comment, @comment.content) %>
+  <%= WebHelpers.as_html(@comment, @comment.content) %>
 </article>

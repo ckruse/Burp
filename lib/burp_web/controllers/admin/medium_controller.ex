@@ -19,7 +19,7 @@ defmodule BurpWeb.Admin.MediumController do
       {:ok, medium} ->
         conn
         |> put_flash(:info, gettext("Medium created successfully."))
-        |> redirect(to: admin_medium_path(conn, :edit, medium))
+        |> redirect(to: Routes.admin_medium_path(conn, :edit, medium))
 
       {:error, %Ecto.Changeset{} = changeset} ->
         render(conn, "new.html", changeset: changeset)
@@ -44,7 +44,7 @@ defmodule BurpWeb.Admin.MediumController do
       {:ok, medium} ->
         conn
         |> put_flash(:info, gettext("Medium updated successfully."))
-        |> redirect(to: admin_medium_path(conn, :edit, medium))
+        |> redirect(to: Routes.admin_medium_path(conn, :edit, medium))
 
       {:error, %Ecto.Changeset{} = changeset} ->
         render(conn, "edit.html", medium: medium, changeset: changeset)
@@ -57,6 +57,6 @@ defmodule BurpWeb.Admin.MediumController do
 
     conn
     |> put_flash(:info, gettext("Medium deleted successfully."))
-    |> redirect(to: admin_medium_path(conn, :index))
+    |> redirect(to: Routes.admin_medium_path(conn, :index))
   end
 end

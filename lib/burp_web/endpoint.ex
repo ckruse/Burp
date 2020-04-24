@@ -1,7 +1,7 @@
 defmodule BurpWeb.Endpoint do
   use Phoenix.Endpoint, otp_app: :burp
 
-  socket("/socket", BurpWeb.UserSocket)
+  socket("/socket", BurpWeb.UserSocket, websocket: true)
 
   # Serve at "/" the static files from "priv/static" directory.
   #

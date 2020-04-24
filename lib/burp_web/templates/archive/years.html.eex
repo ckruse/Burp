@@ -2,6 +2,6 @@
 
 <ol>
   <%= for {year, comments} <- @years do %>
-    <li><%= link "#{round year} (#{comments})", to: archive_path(@conn, :months, round year) %></li>
+    <li><%= link "#{round year} (#{comments})", to: Routes.archive_path(@conn, :months, round year) %></li>
   <% end %>
 </ol>

@@ -21,7 +21,7 @@ defmodule BurpWeb.Admin.PostController do
       {:ok, post} ->
         conn
         |> put_flash(:info, gettext("Post created successfully."))
-        |> redirect(to: admin_post_path(conn, :edit, post))
+        |> redirect(to: Routes.admin_post_path(conn, :edit, post))
 
       {:error, %Ecto.Changeset{} = changeset} ->
         render(conn, "new.html", changeset: changeset)
@@ -41,7 +41,7 @@ defmodule BurpWeb.Admin.PostController do
       {:ok, post} ->
         conn
         |> put_flash(:info, gettext("Post updated successfully."))
-        |> redirect(to: admin_post_path(conn, :edit, post))
+        |> redirect(to: Routes.admin_post_path(conn, :edit, post))
 
       {:error, %Ecto.Changeset{} = changeset} ->
         render(conn, "edit.html", post: post, changeset: changeset)
@@ -54,6 +54,6 @@ defmodule BurpWeb.Admin.PostController do
 
     conn
     |> put_flash(:info, gettext("Post deleted successfully."))
-    |> redirect(to: admin_post_path(conn, :index))
+    |> redirect(to: Routes.admin_post_path(conn, :index))
   end
 end

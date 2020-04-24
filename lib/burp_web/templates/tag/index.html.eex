@@ -2,6 +2,6 @@
 
 <p>
   <%= for {tag, cnt} <- @tags do %>
-    <%= link "#{tag} (#{cnt})", to: tag_path(@conn, :show, tag), style: "font-size:#{get_size(cnt, @min_count, @max_count)}rem" %>
+    <%= link "#{tag} (#{cnt})", to: Routes.tag_path(@conn, :show, tag), style: "font-size:#{get_size(cnt, @min_count, @max_count)}rem" %>
   <% end %>
 </p>

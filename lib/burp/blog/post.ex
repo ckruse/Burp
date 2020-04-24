@@ -3,10 +3,7 @@ defmodule Burp.Blog.Post do
   import Ecto.Changeset
   alias Burp.Blog.Post
 
-  @timestamps_opts [
-    type: Timex.Ecto.DateTime,
-    autogenerate: {Timex.Ecto.DateTime, :autogenerate, []}
-  ]
+  @timestamps_opts [type: :utc_datetime]
 
   schema "posts" do
     field(:attrs, :map, default: %{})
@@ -15,7 +12,7 @@ defmodule Burp.Blog.Post do
     field(:format, :string)
     field(:guid, :string)
     field(:posting_format, :string)
-    field(:published_at, Timex.Ecto.DateTime)
+    field(:published_at, :utc_datetime)
     field(:slug, :string)
     field(:subject, :string)
     field(:visible, :boolean, default: false)

@@ -34,7 +34,7 @@
 
   <div class="fgroup">
     <%= submit gettext("submit"), class: "btn btn-primary" %>
-    <%= link gettext("cancel"), to: posting_url(@conn, @post), class: "btn btn-secondary" %>
+    <%= link gettext("cancel"), to: WebHelpers.posting_url(@conn, @post), class: "btn btn-secondary" %>
   </div>
 
 <% end %>

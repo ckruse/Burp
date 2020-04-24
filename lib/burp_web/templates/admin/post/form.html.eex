@@ -47,6 +47,6 @@
 
   <div>
     <%= submit gettext("submit"), class: "btn btn-primary" %>
-    <%= link gettext("cancel"), to: admin_post_path(@conn, :index), class: "btn btn-secondary" %>
+    <%= link gettext("cancel"), to: Routes.admin_post_path(@conn, :index), class: "btn btn-secondary" %>
   </div>
 <% end %>

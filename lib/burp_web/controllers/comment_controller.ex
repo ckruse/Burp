@@ -16,7 +16,7 @@ defmodule BurpWeb.CommentController do
 
         conn
         |> put_notification(comment)
-        |> redirect(to: posting_path(conn, post))
+        |> redirect(to: WebHelpers.posting_path(conn, post))
 
       {:error, %Ecto.Changeset{} = changeset} ->
         render(conn, "new.html", changeset: changeset, post: post)

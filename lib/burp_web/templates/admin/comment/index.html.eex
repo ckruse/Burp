@@ -1,6 +1,6 @@
 <h2><%= gettext("Comments") %></h2>
 
-<%= pagination @conn, @paging, &admin_comment_path/3 %>
+<%= pagination @conn, @paging, &Routes.admin_comment_path/3 %>
 
 <table class="index-table">
   <thead>
@@ -22,13 +22,13 @@
       <td><%= if comment.visible, do: gettext("yes"), else: gettext("no") %></td>
 
       <td class="action-column">
-        <%= link gettext("show post"), to: comment_url(@conn, comment), class: "btn btn-secondary btn-xs" %>
-        <%= link gettext("edit"), to: admin_comment_path(@conn, :edit, comment), class: "btn btn-secondary btn-xs" %>
-        <%= link gettext("delete"), to: admin_comment_path(@conn, :delete, comment), method: :delete, data: [confirm: gettext("Are you sure?")], class: "btn btn-danger btn-xs" %>
+        <%= link gettext("show post"), to: WebHelpers.comment_url(@conn, comment), class: "btn btn-secondary btn-xs" %>
+        <%= link gettext("edit"), to: Routes.admin_comment_path(@conn, :edit, comment), class: "btn btn-secondary btn-xs" %>
+        <%= link gettext("delete"), to: Routes.admin_comment_path(@conn, :delete, comment), method: :delete, data: [confirm: gettext("Are you sure?")], class: "btn btn-danger btn-xs" %>
       </td>
     </tr>
 <% end %>
   </tbody>
 </table>
 
-<%= pagination @conn, @paging, &admin_comment_path/3 %>
+<%= pagination @conn, @paging, &Routes.admin_comment_path/3 %>

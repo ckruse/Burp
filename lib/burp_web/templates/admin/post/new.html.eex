@@ -1,4 +1,4 @@
 <h2><%= gettext("New Post") %></h2>
 
-<%= render "form.html", Map.put(assigns, :action, admin_post_path(@conn, :create)) %>
+<%= render "form.html", Map.put(assigns, :action, Routes.admin_post_path(@conn, :create)) %>
 

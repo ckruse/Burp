@@ -38,6 +38,6 @@
 
   <div class="fgroup">
     <%= submit gettext("submit"), class: "btn btn-primary" %>
-    <%= link gettext("cancel"), to: admin_comment_path(@conn, :index), class: "btn btn-secondary" %>
+    <%= link gettext("cancel"), to: Routes.admin_comment_path(@conn, :index), class: "btn btn-secondary" %>
   </div>
 <% end %>
