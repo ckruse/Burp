@@ -22,7 +22,7 @@ defmodule BurpWeb.XmlBuilder do
     }
   end
 
-  def title(nil), do: {:title, gettext("Who knows Wayne?")}
+  def title(nil), do: {:title, nil, gettext("Who knows Wayne?")}
   def title(%Burp.Meta.Blog{} = blog), do: {:title, nil, blog.name}
 
   def description(type, nil), do: {type, nil, gettext("Nobody cares what is written here…")}

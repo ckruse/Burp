@@ -22,7 +22,7 @@ defmodule BurpWeb.PostView do
         entries(conn, posts, current_blog)
       ]
     }
-    |> XmlBuilder.doc()
+    |> XmlBuilder.generate()
   end
 
   def render("index.rss", %{conn: conn, posts: posts, current_blog: current_blog}) do
@@ -47,7 +47,7 @@ defmodule BurpWeb.PostView do
         }
       ]
     }
-    |> XmlBuilder.doc()
+    |> XmlBuilder.generate()
   end
 
   def gravatar_hash(email), do: :crypto.hash(:md5, email) |> Base.encode16(case: :lower)
