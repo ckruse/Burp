@@ -68,3 +68,5 @@ config :burp, Burp.Repo,
 config :burp, :storage_path, "#{System.get_env("HOME")}/sites/burp_media"
 config :burp, Burp.Mailer, adapter: Bamboo.LocalAdapter
 config :burp, :scheme, "http"
+
+config :appsignal, :config, active: false

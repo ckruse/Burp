@@ -1,5 +1,6 @@
 defmodule BurpWeb.Endpoint do
   use Phoenix.Endpoint, otp_app: :burp
+  use Appsignal.Phoenix
 
   socket("/socket", BurpWeb.UserSocket, websocket: true)
 

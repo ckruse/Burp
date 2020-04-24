@@ -49,7 +49,8 @@ defmodule Burp.Mixfile do
       {:bamboo, "~> 0.8"},
       {:bamboo_smtp, "~> 1.4.0"},
       {:ex_machina, "~> 2.1", only: :test},
-      {:jason, "~> 1.0"}
+      {:jason, "~> 1.0"},
+      {:appsignal, "~> 1.0"}
     ]
   end
 
