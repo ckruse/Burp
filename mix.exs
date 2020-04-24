@@ -48,8 +48,6 @@ defmodule Burp.Mixfile do
       {:xml_builder, "~> 2.1.1"},
       {:bamboo, "~> 0.8"},
       {:bamboo_smtp, "~> 1.4.0"},
-      {:edeliver, "~> 1.4.4"},
-      {:distillery, "~> 1.5", runtime: false},
       {:ex_machina, "~> 2.1", only: :test},
       {:jason, "~> 1.0"}
     ]
@@ -65,7 +63,9 @@ defmodule Burp.Mixfile do
     [
       "ecto.setup": ["ecto.create", "ecto.migrate", "run priv/repo/seeds.exs"],
       "ecto.reset": ["ecto.drop", "ecto.setup"],
-      test: ["ecto.create --quiet", "ecto.migrate", "test"]
+      test: ["ecto.create --quiet", "ecto.migrate", "test"],
+      build: "cmd ./.build/build",
+      deploy: "cmd ./.build/deploy"
     ]
   end
 end

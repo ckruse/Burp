@@ -1,0 +1,30 @@
+#!/usr/bin/env bash
+
+set -e
+
+latest_version=$(git tag | sort -rV |  head -1)
+HOST=$1
+VERSION=$2
+DIR=/home/ckruse/www/burp
+
+HOST="${HOST:=web.defunced.de}"
+VERSION="${VERSION:=$latest_version}"
+KEY=$(cat .build/secrets/api.key)
+
+if [[ ! -f  .build/releases/burp-$VERSION.tar.gz ]]; then
+    echo "release $VERSION could not be found!"
+    exit 1
+fi
+
+scp .build/releases/burp-$VERSION.tar.gz $HOST:$DIR
+ssh $HOST "cd $DIR && tar -xf burp-$VERSION.tar.gz && cp -r burp-$VERSION/* . || exit 0"
+
+ssh root@$HOST "systemctl restart burp"
+
+echo "waiting 5 seconds for the release to start up"
+sleep 5
+
+ssh $HOST "cd $DIR && ./bin/burp rpc 'Burp.Release.migrate'"
+ssh $HOST "cd $DIR && rm -rf burp-$VERSION.tar.gz burp-$VERSION/"
+
+curl -X POST -d "{\"revision\": \"$VERSION\", \"user\": \"ckruse\"}" "https://push.appsignal.com/1/markers?api_key=${KEY}&name=Burp&environment=prod" >/dev/null
