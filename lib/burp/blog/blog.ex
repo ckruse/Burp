@@ -426,8 +426,8 @@ defmodule Burp.Blog do
         published \\ true,
         query_params \\ [order: nil, limit: nil]
       ) do
-    starts = Timex.beginning_of_month(year, month)
-    ends = Timex.end_of_month(year, month)
+    starts = Timex.beginning_of_month(year, month) |> Timex.to_datetime()
+    ends = Timex.end_of_month(year, month) |> Timex.to_datetime()
 
     from(
       post in Post,
