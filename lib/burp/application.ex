@@ -8,6 +8,7 @@ defmodule Burp.Application do
     children = [
       # Start the Ecto repository
       Burp.Repo,
+      Burp.Release,
       # Start the PubSub system
       {Phoenix.PubSub, name: Burp.PubSub},
       # Start the endpoint when the application starts
