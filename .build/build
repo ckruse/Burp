@@ -46,10 +46,10 @@ scp .build/secrets/prod.$HOST.exs builder@builder:~/src/config/prod.exs
 
 $SSH "cd src && MIX_ENV=prod mix deps.get --only prod && MIX_ENV=prod mix deps.compile appsignal --include-children && MIX_ENV=prod mix compile"
 $SSH "cd src && mkdir -p priv/static && cd assets && MIX_ENV=prod npm install && MIX_ENV=prod npm run deploy"
-$SSH "cd src && MIX_ENV=prod mix phx.digest && MIX_ENV=prod mix release --path ../wwwtech-${VERSION}"
+$SSH "cd src && MIX_ENV=prod mix phx.digest && MIX_ENV=prod mix release --path ../burp-${VERSION}"
 
-$SSH "tar -czf wwwtech-$VERSION.tar.gz wwwtech-$VERSION"
-scp builder@builder:wwwtech-$VERSION.tar.gz .build/releases/
-$SSH "rm wwwtech-$VERSION.tar.gz && rm -rf wwwtech-$VERSION"
+$SSH "tar -czf burp-$VERSION.tar.gz burp-$VERSION"
+scp builder@builder:burp-$VERSION.tar.gz .build/releases/
+$SSH "rm burp-$VERSION.tar.gz && rm -rf burp-$VERSION"
 
 docker container stop $name
