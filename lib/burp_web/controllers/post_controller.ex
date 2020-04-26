@@ -22,7 +22,12 @@ defmodule BurpWeb.PostController do
   def show(conn, %{"year" => year, "mon" => month, "slug" => slug}) do
     full_slug = "#{year}/#{month}/#{slug}"
     post = Blog.get_post_by_slug!(full_slug, conn.assigns[:current_blog])
-    render(conn, "show.html", post: post)
+
+    token = Phoenix.Token.sign(conn, "commenting", Timex.to_unix(Timex.now()))
+
+    conn
+    |> put_resp_cookie("commenting", token)
+    |> render("show.html", post: post)
   end
 
   def index_rss(conn, _params) do
