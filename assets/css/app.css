@@ -118,6 +118,10 @@ footer .admin-nav {
   float: right;
 }
 
+footer .admin-nav a + a {
+  margin-left: 0.25em;
+}
+
 h2 {
   text-align: center;
 }

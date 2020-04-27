@@ -4,7 +4,8 @@
   font-size: 1em;
   line-height: 1.5;
   border-radius: 0.25em;
-  transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out,
+    box-shadow 0.15s ease-in-out;
 }
 .btn.focus,
 .btn:focus {
@@ -167,4 +168,9 @@ a.btn-danger {
 .btn-group > .btn:last-child:not(:first-child) {
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
+}
+
+.fgroup .btn + .btn,
+.action-column .btn + .btn {
+  margin-left: 0.25em;
 }
