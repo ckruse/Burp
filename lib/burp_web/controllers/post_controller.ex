@@ -23,10 +23,8 @@ defmodule BurpWeb.PostController do
     full_slug = "#{year}/#{month}/#{slug}"
     post = Blog.get_post_by_slug!(full_slug, conn.assigns[:current_blog])
 
-    token = Phoenix.Token.sign(conn, "commenting", Timex.to_unix(Timex.now()))
-
     conn
-    |> put_resp_cookie("commenting", token)
+    |> put_comment_token()
     |> render("show.html", post: post)
   end
 
@@ -49,4 +47,15 @@ defmodule BurpWeb.PostController do
   def redirect_atom(conn, _params), do: put_status(conn, 301) |> redirect(to: Routes.post_path(conn, :index_atom))
 
   def redirect_rss(conn, _params), do: put_status(conn, 301) |> redirect(to: Routes.post_path(conn, :index_rss))
+
+  defp put_comment_token(conn) do
+    with cookie when not is_nil(cookie) <- conn.cookies["commenting"],
+         {:ok, _} <- Phoenix.Token.verify(conn, "commenting", cookie, max_age: 3600) do
+      conn
+    else
+      _ ->
+        token = Phoenix.Token.sign(conn, "commenting", Timex.to_unix(Timex.now()))
+        put_resp_cookie(conn, "commenting", token)
+    end
+  end
 end
