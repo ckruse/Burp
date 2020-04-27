@@ -1,3 +1,0 @@
-<h2><%= gettext("New Comment") %></h2>
-
-<%= render "form.html", Map.put(assigns, :action, Routes.admin_comment_path(@conn, :create)) %>
