@@ -5,6 +5,7 @@
 <table class="index-table">
   <thead>
     <tr>
+      <th><%= gettext("Created") %></th>
       <th><%= gettext("Author") %></th>
       <th><%= gettext("Email") %></th>
       <th><%= gettext("URL") %></th>
@@ -16,6 +17,7 @@
   <tbody>
 <%= for comment <- @comments do %>
     <tr>
+      <td><%= comment.inserted_at |> Timex.local() |> Timex.lformat!("%d.%m.%Y %H:%M", Gettext.get_locale(BurpWeb.Gettext), :strftime) %></td>
       <td><%= comment.author %></td>
       <td><%= comment.email %></td>
       <td><%= comment.url %></td>
