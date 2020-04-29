@@ -419,13 +419,7 @@ defmodule Burp.Blog do
     |> Repo.all()
   end
 
-  def list_posts_by_year_and_month(
-        year,
-        month,
-        blog,
-        published \\ true,
-        query_params \\ [order: nil, limit: nil]
-      ) do
+  def list_posts_by_year_and_month(year, month, blog, published \\ true, query_params \\ [order: nil, limit: nil]) do
     starts = Timex.beginning_of_month(year, month) |> Timex.to_datetime()
     ends = Timex.end_of_month(year, month) |> Timex.to_datetime()
 
