@@ -42,23 +42,42 @@ defmodule BurpWeb.XmlBuilder do
 
   def entry(conn, post, _current_blog) do
     {:safe, cnt} = WebHelpers.as_html(post, post.content)
-    {:safe, excerpt} = WebHelpers.as_html(post, post.excerpt)
 
-    {
-      :entry,
-      nil,
-      [
-        {:id, nil, post.guid},
-        {:title, nil, post.subject},
-        updated(post),
-        published(post),
-        author(post),
-        {:link, %{rel: "alternate", href: WebHelpers.posting_url(conn, post)}, nil},
-        categories(post.tags),
-        {:summary, %{type: "html"}, excerpt},
-        {:content, %{type: "html"}, cnt}
-      ]
-    }
+    {:safe, excerpt} =
+      if is_nil(post.excerpt) or post.excerpt == "",
+        do: {:safe, nil},
+        else: WebHelpers.as_html(post, post.excerpt)
+
+    children = children_for_entry(conn, post, excerpt, cnt)
+
+    {:entry, nil, children}
+  end
+
+  defp children_for_entry(conn, post, nil, cnt) do
+    [
+      {:id, nil, post.guid},
+      {:title, nil, post.subject},
+      updated(post),
+      published(post),
+      author(post),
+      {:link, %{rel: "alternate", href: WebHelpers.posting_url(conn, post)}, nil},
+      categories(post.tags),
+      {:content, %{type: "html"}, cnt}
+    ]
+  end
+
+  defp children_for_entry(conn, post, excerpt, cnt) do
+    [
+      {:id, nil, post.guid},
+      {:title, nil, post.subject},
+      updated(post),
+      published(post),
+      author(post),
+      {:link, %{rel: "alternate", href: WebHelpers.posting_url(conn, post)}, nil},
+      categories(post.tags),
+      {:summary, %{type: "html"}, excerpt},
+      {:content, %{type: "html"}, cnt}
+    ]
   end
 
   def entries(_, [], _), do: []
