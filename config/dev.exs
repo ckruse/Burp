@@ -66,7 +66,9 @@ config :burp, Burp.Repo,
   pool_size: 10
 
 config :burp, :storage_path, "#{System.get_env("HOME")}/sites/burp_media"
-config :burp, Burp.Mailer, adapter: Bamboo.LocalAdapter
+config :burp, Burp.Mailer, adapter: Swoosh.Adapters.Local
 config :burp, :scheme, "http"
+
+config :swoosh, serve_mailbox: true, preview_port: 4001
 
 config :appsignal, :config, active: false

@@ -1,3 +1,3 @@
 defmodule Burp.Mailer do
-  use Bamboo.Mailer, otp_app: :burp
+  use Swoosh.Mailer, otp_app: :burp
 end

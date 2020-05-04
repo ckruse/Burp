@@ -11,8 +11,11 @@ defmodule BurpWeb.CommentController do
 
     case Blog.create_comment(comment_params, post) do
       {:ok, comment} ->
-        BurpWeb.NewCommentMailer.new_comment_mail(post, comment)
-        |> Burp.Mailer.deliver_later()
+        Task.start(fn ->
+          post
+          |> BurpWeb.NewCommentMailer.new_comment_mail(comment)
+          |> Burp.Mailer.deliver!()
+        end)
 
         conn
         |> put_notification(comment)

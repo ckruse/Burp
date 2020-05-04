@@ -1,15 +1,12 @@
 defmodule BurpWeb.NewCommentMailer do
-  use Bamboo.Phoenix, view: BurpWeb.NewCommentMailerView
+  use Phoenix.Swoosh, view: BurpWeb.NewCommentMailerView, layout: {BurpWeb.LayoutView, :email}
   import BurpWeb.Gettext
 
   def new_comment_mail(post, comment) do
-    new_email()
+    new()
     |> from("Burp <christian@kruse.cool>")
-    |> put_html_layout({BurpWeb.LayoutView, "email.html"})
     |> to(post.blog.attrs["mail_notify"])
     |> subject(gettext("A new comment has been posted"))
-    |> assign(:post, post)
-    |> assign(:comment, comment)
-    |> render(:new_comment_mail)
+    |> render_body(:new_comment_mail, post: post, comment: comment)
   end
 end

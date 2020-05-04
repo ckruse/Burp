@@ -46,8 +46,9 @@ defmodule Burp.Mixfile do
       {:timex, "~> 3.1"},
       {:cmark, "~> 0.7"},
       {:xml_builder, "~> 2.1.1"},
-      {:bamboo, "~> 1.4"},
-      {:bamboo_smtp, "~> 2.1.0"},
+      {:swoosh, "~> 0.25"},
+      {:gen_smtp, "~> 0.15"},
+      {:phoenix_swoosh, "~> 0.2"},
       {:ex_machina, "~> 2.1", only: :test},
       {:jason, "~> 1.0"},
       {:appsignal, "~> 1.0"}
