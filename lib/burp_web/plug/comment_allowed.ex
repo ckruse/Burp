@@ -41,7 +41,7 @@ defmodule BurpWeb.Plug.CommentAllowed do
     case Phoenix.Token.verify(conn, "commenting", token, max_age: 3600) do
       {:ok, age} ->
         ts = Timex.from_unix(age)
-        Timex.diff(Timex.now(), ts, :seconds) > 15
+        Timex.diff(Timex.now(), ts, :seconds) >= 10
 
       _ ->
         false
