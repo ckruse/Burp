@@ -1,4 +1,4 @@
-FROM ubuntu:18.04
+FROM ubuntu:20.04
 
 # Avoid error messages from apt during image build
 ARG DEBIAN_FRONTEND=noninteractive
@@ -9,8 +9,8 @@ RUN \
   apt-get install -y wget curl gnupg apt-utils
 
 RUN \
-  wget https://packages.erlang-solutions.com/erlang-solutions_1.0_all.deb && \
-  dpkg -i erlang-solutions_1.0_all.deb && \
+  wget https://packages.erlang-solutions.com/erlang-solutions_2.0_all.deb && \
+  dpkg -i erlang-solutions_2.0_all.deb && \
   apt-get update && \
   apt-get install -y esl-erlang elixir build-essential openssh-server git locales
 
