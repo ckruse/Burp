@@ -51,7 +51,7 @@ defmodule Burp.Mixfile do
       {:phoenix_swoosh, "~> 0.2"},
       {:ex_machina, "~> 2.1", only: :test},
       {:jason, "~> 1.0"},
-      {:appsignal, "~> 1.0"}
+      {:appsignal_phoenix, "~> 2.0.0"}
     ]
   end
 

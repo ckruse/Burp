@@ -37,6 +37,8 @@ defmodule BurpWeb do
         root: "lib/burp_web/templates",
         namespace: BurpWeb
 
+      use Appsignal.Phoenix.View
+
       # Import convenience functions from controllers
       import Phoenix.Controller, only: [get_flash: 2, view_module: 1]
 
