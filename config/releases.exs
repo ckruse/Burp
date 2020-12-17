@@ -17,7 +17,8 @@ config :appsignal, :config,
   active: true,
   log_path: "/tmp/burp/",
   otp_app: :burb,
-  ecto_repos: []
+  ecto_repos: [],
+  ignore_errors: ["Phoenix.Router.NoRouteError"]
 
 # Configure your database
 config :burp, Burp.Repo,
