@@ -27,6 +27,11 @@ defmodule BurpWeb.Endpoint do
   plug(Plug.RequestId)
   plug(Plug.Logger)
 
+  plug GhWebhookPlug,
+    secret: Application.get_env(:burp, :deploy_secret),
+    path: "/api/deploy",
+    action: {Burp.DeployTask, :deploy}
+
   plug(
     Plug.Parsers,
     parsers: [:urlencoded, :multipart, :json],

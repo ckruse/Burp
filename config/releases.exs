@@ -36,3 +36,9 @@ config :burp, Burp.Mailer,
   tls: :if_available,
   auth: :always,
   retries: 3
+
+config :burp,
+  deploy_secret: System.fetch_env!("BURP_DEPLOY_SECRET"),
+  deploy_script: System.fetch_env!("BURP_DEPLOY_SCRIPT")
+
+config :gh_webhook_plug, secret: System.fetch_env!("BURP_DEPLOY_SECRET")
