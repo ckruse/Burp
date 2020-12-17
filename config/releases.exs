@@ -1,0 +1,38 @@
+import Config
+
+config :burp, BurpWeb.Endpoint,
+  http: [ip: {127, 0, 0, 1}, port: System.fetch_env!("BURP_PORT")],
+  url: [scheme: "https", port: 443],
+  secret_key_base: System.fetch_env!("BURP_SECRET_KEY")
+
+config :burp, :storage_path, System.fetch_env!("BURP_STORAGE_PATH")
+config :burp, :scheme, System.fetch_env!("BURP_HTTP_SCHEME")
+config :burp, :port, System.fetch_env!("BURP_HTTP_PORT") |> String.to_integer()
+
+config :appsignal, :config,
+  name: "Burp",
+  push_api_key: System.fetch_env!("BURP_APPSIGNAL_KEY"),
+  env: :prod,
+  working_directory_path: "/tmp/burp",
+  active: true,
+  log_path: "/tmp/burp/",
+  otp_app: :burb,
+  ecto_repos: []
+
+# Configure your database
+config :burp, Burp.Repo,
+  adapter: Ecto.Adapters.Postgres,
+  username: System.fetch_env!("BURP_DB_USER"),
+  password: System.fetch_env!("BURP_DB_PASSWORD"),
+  database: System.fetch_env!("BURP_DB_NAME"),
+  pool_size: 15
+
+config :burp, Burp.Mailer,
+  adapter: Swoosh.Adapters.SMTP,
+  relay: System.fetch_env!("BURP_SMTP_HOST"),
+  port: System.fetch_env!("BURP_SMTP_PORT") |> String.to_integer(),
+  username: System.fetch_env!("BURP_SMTP_USER"),
+  password: System.fetch_env!("BURP_SMTP_PASSWORD"),
+  tls: :if_available,
+  auth: :always,
+  retries: 3
