@@ -17,13 +17,6 @@ defmodule Burp.Application do
       # worker(Burp.Worker, [arg1, arg2, arg3]),
     ]
 
-    :telemetry.attach(
-      "appsignal-ecto",
-      [:burp, :repo, :query],
-      &Appsignal.Ecto.handle_event/4,
-      nil
-    )
-
     # See https://hexdocs.pm/elixir/Supervisor.html
     # for other strategies and supported options
     opts = [strategy: :one_for_one, name: Burp.Supervisor]
