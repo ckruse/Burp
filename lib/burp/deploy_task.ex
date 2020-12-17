@@ -6,7 +6,7 @@ defmodule Burp.DeployTask do
 
   def deploy(_conn, %{"action" => "published", "release" => %{"html_url" => url}}) do
     version = Regex.replace(~r{.*/}, url, "")
-    script = Application.get_env(:wwwtech, :deploy_script)
+    script = Application.get_env(:burp, :deploy_script)
 
     if !Helpers.blank?(script) do
       Task.start(fn ->
