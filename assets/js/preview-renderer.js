@@ -1,10 +1,10 @@
-import CommonMark from "commonmark/lib";
+import MarkdownIt from "markdown-it";
 
 export default class PreviewRenderer {
   constructor(container, subj, excerpt, content) {
     let tm = null;
-    [subj, excerpt, content].forEach(el => {
-      el.addEventListener("input", ev => {
+    [subj, excerpt, content].forEach((el) => {
+      el.addEventListener("input", (ev) => {
         if (tm) {
           window.clearTimeout(tm);
         }
@@ -18,29 +18,27 @@ export default class PreviewRenderer {
     this.excerpt = excerpt;
     this.content = content;
 
-    this.parser = new CommonMark.Parser();
-    this.renderer = new CommonMark.HtmlRenderer();
+    this.parser = MarkdownIt();
 
     this.renderPreview();
   }
 
   renderPreview() {
-    let subject = this.subj.value;
+    const subject = this.subj.value;
 
-    let header = document.createElement("header");
-    let h2 = document.createElement("h2");
+    const header = document.createElement("header");
+    const h2 = document.createElement("h2");
     h2.appendChild(document.createTextNode(subject));
 
     header.appendChild(h2);
 
-    let excerpt = document.createElement("div");
+    const excerpt = document.createElement("div");
     excerpt.classList.add("excerpt");
-    let excerptText = this.renderer.render(this.parser.parse(this.excerpt.value));
-    excerpt.innerHTML = excerptText;
+    excerpt.innerHTML = this.parser.render(this.excerpt.value);
 
-    let content = document.createElement("div");
+    const content = document.createElement("div");
     content.classList.add("content");
-    let contentText = this.renderer.render(this.parser.parse(this.content.value));
+    const contentText = this.parser.render(this.content.value);
     content.innerHTML = contentText;
 
     while (this.container.firstChild) {
