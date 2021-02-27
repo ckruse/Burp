@@ -110,7 +110,7 @@ defmodule Burp.Meta do
     author = get_author_by_username_or_email_and_blog(login, blog)
 
     cond do
-      author && Comeonin.Bcrypt.checkpw(password, author.encrypted_password) ->
+      author && Bcrypt.verify_pass(password, author.encrypted_password) ->
         {:ok, author}
 
       author ->
@@ -118,7 +118,7 @@ defmodule Burp.Meta do
 
       true ->
         # just waste some time for timing sidechannel attacks
-        Comeonin.Bcrypt.dummy_checkpw()
+        Bcrypt.no_user_verify()
         {:error, Author.login_changeset(%Author{}, %{"login" => login, "password" => password})}
     end
   end

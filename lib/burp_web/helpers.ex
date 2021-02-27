@@ -61,9 +61,9 @@ defmodule BurpWeb.Helpers do
   alias Burp.Blog.Comment
 
   def as_html(%Post{posting_format: "html"}, html), do: {:safe, html}
-  def as_html(%Post{}, markdown), do: {:safe, Cmark.to_html(markdown, [:unsafe])}
-  def as_html(%Comment{format: "html"}, html), do: {:safe, Cmark.to_html(html)}
-  def as_html(%Comment{}, markdown), do: {:safe, Cmark.to_html(markdown, [:smart])}
+  def as_html(%Post{}, markdown), do: {:safe, Earmark.as_html!(markdown, escape: false)}
+  def as_html(%Comment{format: "html"}, html), do: {:safe, Earmark.as_html!(html)}
+  def as_html(%Comment{}, markdown), do: {:safe, Earmark.as_html!(markdown, smartypants: true)}
 
   def valid_url(url) do
     uri = URI.parse(url)
