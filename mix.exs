@@ -39,7 +39,7 @@ defmodule Burp.Mixfile do
       {:ecto_sql, "~> 3.4"},
       {:phoenix_ecto, "~> 4.1"},
       {:postgrex, ">= 0.0.0"},
-      {:phoenix_html, "~> 2.14"},
+      {:phoenix_html, "~> 3.0"},
       {:phoenix_live_reload, "~> 1.0", only: :dev},
       {:gettext, "~> 0.11"},
       {:bcrypt_elixir, "~> 2.0"},
