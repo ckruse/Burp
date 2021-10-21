@@ -48,7 +48,7 @@ defmodule Burp.Mixfile do
       {:xml_builder, "~> 2.2.0"},
       {:swoosh, "~> 1.3"},
       {:gen_smtp, "~> 1.1"},
-      {:phoenix_swoosh, "~> 0.3"},
+      {:phoenix_swoosh, "~> 1.0"},
       {:ex_machina, "~> 2.1", only: :test},
       {:jason, "~> 1.0"},
       {:appsignal_phoenix, "~> 2.0.0"},
