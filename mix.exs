@@ -4,7 +4,7 @@ defmodule Burp.Mixfile do
   def project do
     [
       app: :burp,
-      version: "0.5.19",
+      version: "0.5.20",
       elixir: "~> 1.12",
       elixirc_paths: elixirc_paths(Mix.env()),
       compilers: [:phoenix, :gettext] ++ Mix.compilers(),
