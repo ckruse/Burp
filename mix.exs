@@ -42,7 +42,7 @@ defmodule Burp.Mixfile do
       {:phoenix_html, "~> 3.0"},
       {:phoenix_live_reload, "~> 1.0", only: :dev},
       {:gettext, "~> 0.11"},
-      {:bcrypt_elixir, "~> 2.0"},
+      {:bcrypt_elixir, "~> 3.0"},
       {:timex, "~> 3.1"},
       {:earmark, "~> 1.4"},
       {:xml_builder, "~> 2.2.0"},
