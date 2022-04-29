@@ -13,7 +13,15 @@ defmodule BurpWeb.Endpoint do
     at: "/",
     from: :burp,
     gzip: false,
-    only: ~w(css fonts images js favicon.ico robots.txt humans.txt)
+    only: ~w(css fonts images js favicon.ico robots.txt humans.txt security.txt)
+  )
+
+  plug(
+    Plug.Static,
+    at: "/.well-known",
+    from: :burp,
+    gzip: false,
+    only: ~w(security.txt)
   )
 
   # Code reloading can be explicitly enabled under the
@@ -27,10 +35,11 @@ defmodule BurpWeb.Endpoint do
   plug(Plug.RequestId)
   plug(Plug.Logger)
 
-  plug GhWebhookPlug,
+  plug(GhWebhookPlug,
     secret: Application.get_env(:burp, :deploy_secret),
     path: "/api/deploy",
     action: {Burp.DeployTask, :deploy}
+  )
 
   plug(
     Plug.Parsers,

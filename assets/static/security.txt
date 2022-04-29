@@ -1,0 +1,23 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA256
+
+Contact: mailto:christian@kruse.cool
+Expires: 2024-12-31T23:00:00.000Z
+Encryption: https://wwwtech.de/A99A9D73.asc
+Preferred-Languages: de, en
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAEBCAAdFiEEvF2fTvf7Q4JgVug0uODzQqmanXMFAmJsOrIACgkQuODzQqma
+nXPJOw/+PsZ0ZGDEiTRplLcztyRy1o+D7SLR1zm64+3zJSxbHbuALOZVX9nr0u9u
+ywC1bCAblt9QaSw0V4urTfHoljpoegEMAV2acdLYhzmfOP8BBio9MVow4sKK5fAm
+IMHyBfHhOKehyVl+fHVpDgPXIIqCF7/5bw/zlew2C90UZK+ZN8Qae6JHuBMhsfvJ
+zFGO1AVDCdcArbif2nD1GCzpdQYbWvGr0Y2X0/XhRo+vMjFwEEbGojAyvqQ8U611
+9+TbZokZKTRAu37d63kXyAqfukhHdA2JTtwl/B8htZ/Wpdn80kUXjCkdXEBnuGOV
+46XCpivoqbcCyxzMNiIbf3N41wchLeqtiJPxpJNH9RrUy2hmWidhSv3CQ353M0P5
+aPtIEvRV+5vsSF+Sefp1ZdJntSCX/McBbSFGSDAoP2WUtvRu+1lWdCT09G6iW1YL
+YqANpg4NC9FeSWWOr66MupcgRMwIuMUtloCNIFyGBC+G9L9gUv5XmQcfozphsvzo
+jGFbHU3O5AudwbkmR4i3XCUwFHrOUxPw3T/BRlu1Qjh358lcj+aIkiLxI49Tac4y
+5LXTkUKs0w8tXBcOzWr7ndzxA1Jf9w6g7tkemC2oTYztRP24HMrcI/jMqy5ibq/Q
+LFbn+tcVtlKPxSgTdb60CxjVQP+XmJjhcEcVUNi1HJEI2JFTJCI=
+=f6Bo
+-----END PGP SIGNATURE-----
