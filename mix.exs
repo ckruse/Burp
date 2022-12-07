@@ -51,7 +51,7 @@ defmodule Burp.Mixfile do
       {:phoenix_swoosh, "~> 1.0"},
       {:ex_machina, "~> 2.1", only: :test},
       {:jason, "~> 1.0"},
-      {:appsignal_phoenix, "~> 2.1.0"},
+      {:appsignal_phoenix, "~> 2.2.0"},
       {:gh_webhook_plug, "~> 0.0.5"}
     ]
   end
