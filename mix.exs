@@ -7,7 +7,6 @@ defmodule Burp.Mixfile do
       version: "0.5.23",
       elixir: "~> 1.12",
       elixirc_paths: elixirc_paths(Mix.env()),
-      compilers: [:phoenix, :gettext] ++ Mix.compilers(),
       start_permanent: Mix.env() == :prod,
       aliases: aliases(),
       deps: deps()
@@ -41,7 +40,7 @@ defmodule Burp.Mixfile do
       {:postgrex, ">= 0.0.0"},
       {:phoenix_html, "~> 3.0"},
       {:phoenix_live_reload, "~> 1.0", only: :dev},
-      {:gettext, "~> 0.11"},
+      {:gettext, "~> 0.21.0"},
       {:bcrypt_elixir, "~> 3.0"},
       {:timex, "~> 3.1"},
       {:cmark, "~> 0.10.0"},
@@ -51,8 +50,7 @@ defmodule Burp.Mixfile do
       {:phoenix_swoosh, "~> 1.0"},
       {:ex_machina, "~> 2.1", only: :test},
       {:jason, "~> 1.0"},
-      {:appsignal_phoenix, "~> 2.3.0"},
-      {:gh_webhook_plug, "~> 0.0.5"}
+      {:appsignal_phoenix, "~> 2.3.0"}
     ]
   end
 
