@@ -40,7 +40,7 @@ defmodule Burp.Mixfile do
       {:postgrex, ">= 0.0.0"},
       {:phoenix_html, "~> 3.0"},
       {:phoenix_live_reload, "~> 1.0", only: :dev},
-      {:gettext, "~> 0.23.1"},
+      {:gettext, "~> 0.24.0"},
       {:bcrypt_elixir, "~> 3.0"},
       {:timex, "~> 3.1"},
       {:cmark, "~> 0.10.0"},
