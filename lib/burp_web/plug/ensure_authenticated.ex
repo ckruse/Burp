@@ -14,7 +14,8 @@ defmodule BurpWeb.Plug.EnsureAuthenticated do
       conn
       |> Plug.Conn.put_status(403)
       |> Phoenix.Controller.put_flash(:error, gettext("You don't have access to this page!"))
-      |> Phoenix.Controller.render(BurpWeb.ErrorView, "403.html", conn.assigns)
+      |> Phoenix.Controller.put_view(BurpWeb.ErrorView)
+      |> Phoenix.Controller.render("403.html", conn.assigns)
       |> Plug.Conn.halt()
     else
       conn

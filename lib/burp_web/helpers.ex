@@ -1,5 +1,5 @@
 defmodule BurpWeb.Helpers do
-  use Phoenix.HTML
+  use PhoenixHTMLHelpers
 
   @doc """
   generates a „sub-form“ in a different namespace: the input fields will be prefixed

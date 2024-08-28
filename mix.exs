@@ -50,7 +50,7 @@ defmodule Burp.Mixfile do
       {:phoenix_swoosh, "~> 1.0"},
       {:ex_machina, "~> 2.1", only: :test},
       {:jason, "~> 1.0"},
-      {:appsignal_phoenix, "~> 2.4.0"}
+      {:phoenix_html_helpers, "~> 1.0"}
     ]
   end
 

@@ -11,15 +11,15 @@ defmodule BurpWeb.Sortable do
     cond do
       column == field && dir == :desc ->
         path = apply(path_helper, [conn, action, extra_args ++ [sort: field, dir: :asc]])
-        Phoenix.HTML.Link.link(text, to: path, class: "sortable sort-descending")
+        PhoenixHTMLHelpers.Link.link(text, to: path, class: "sortable sort-descending")
 
       column == field && dir == :asc ->
         path = apply(path_helper, [conn, action, extra_args ++ [sort: field, dir: :desc]])
-        Phoenix.HTML.Link.link(text, to: path, class: "sortable sort-ascending")
+        PhoenixHTMLHelpers.Link.link(text, to: path, class: "sortable sort-ascending")
 
       true ->
         path = apply(path_helper, [conn, action, extra_args ++ [sort: field, dir: :asc]])
-        Phoenix.HTML.Link.link(text, to: path, class: "sortable")
+        PhoenixHTMLHelpers.Link.link(text, to: path, class: "sortable")
     end
   end
 

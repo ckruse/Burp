@@ -9,17 +9,6 @@ config :burp, :storage_path, System.fetch_env!("BURP_STORAGE_PATH")
 config :burp, :scheme, System.fetch_env!("BURP_HTTP_SCHEME")
 config :burp, :port, System.fetch_env!("BURP_HTTP_PORT") |> String.to_integer()
 
-config :appsignal, :config,
-  name: "Burp",
-  push_api_key: System.fetch_env!("BURP_APPSIGNAL_KEY"),
-  env: :prod,
-  working_directory_path: "/tmp/burp",
-  active: true,
-  log_path: "/tmp/burp/",
-  otp_app: :burb,
-  ecto_repos: [],
-  ignore_errors: ["Phoenix.Router.NoRouteError"]
-
 # Configure your database
 config :burp, Burp.Repo,
   adapter: Ecto.Adapters.Postgres,

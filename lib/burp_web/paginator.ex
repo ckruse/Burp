@@ -5,7 +5,7 @@ defmodule BurpWeb.Paginator do
 
   import BurpWeb.Gettext
 
-  use Phoenix.HTML
+  use PhoenixHTMLHelpers
 
   def paginate(data_count, opts \\ []) do
     config = Application.get_env(:cforum, :paginator)

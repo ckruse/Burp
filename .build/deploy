@@ -26,5 +26,3 @@ sleep 5
 
 ssh $HOST "cd $DIR && ./bin/burp rpc 'Burp.Release.migrate'"
 ssh $HOST "cd $DIR && rm -rf burp-$VERSION.tar.gz burp-$VERSION/"
-
-curl -X POST -d "{\"revision\": \"$VERSION\", \"user\": \"ckruse\"}" "https://push.appsignal.com/1/markers?api_key=${KEY}&name=Burp&environment=prod" >/dev/null
