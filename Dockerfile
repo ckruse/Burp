@@ -1,4 +1,4 @@
-FROM ubuntu:20.04
+FROM ubuntu:24.04
 
 # Avoid error messages from apt during image build
 ARG DEBIAN_FRONTEND=noninteractive
