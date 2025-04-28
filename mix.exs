@@ -44,7 +44,7 @@ defmodule Burp.Mixfile do
       {:bcrypt_elixir, "~> 3.0"},
       {:timex, "~> 3.1"},
       {:cmark, "~> 0.10.0"},
-      {:xml_builder, "~> 2.3.0"},
+      {:xml_builder, "~> 2.4.0"},
       {:swoosh, "~> 1.3"},
       {:gen_smtp, "~> 1.1"},
       {:phoenix_swoosh, "~> 1.0"},
