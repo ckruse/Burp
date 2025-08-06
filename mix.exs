@@ -32,7 +32,7 @@ defmodule Burp.Mixfile do
   # Type `mix help deps` for examples and options.
   defp deps do
     [
-      {:phoenix, "~> 1.7.2"},
+      {:phoenix, "~> 1.8.0"},
       {:phoenix_pubsub, "~> 2.0"},
       {:plug_cowboy, "~> 2.1"},
       {:ecto_sql, "~> 3.4"},
